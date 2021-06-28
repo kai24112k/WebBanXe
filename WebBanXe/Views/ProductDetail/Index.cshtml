@@ -1,0 +1,149 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2"> Chi tiết sản phẩm</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"> Chi tiết sản phẩm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <section class="bar no-padding-bottom">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h2>Chi tiết sản phẩm</h2>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+        <section class="bar">
+            <div class="row portfolio-product">
+                <div class="col-sm-6 card">
+                    <div class="product owl-carousel mb-4">
+                        @foreach(var product in Model.ProductDetails)
+                        <div class="item"><img src="~/Public/img/hm-6530.jpg" alt="" class="img-fluid"></div>
+                        <div class="item"><img src="~/Public/img/1.jpg" alt="" class="img-fluid"></div>
+                        <div class="item"><img src="~/Public/img/2.jpg" alt="" class="img-fluid"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 card">
+                    <div class="product-more">
+                        <h3 class="my-4">Tên xe:</h3>
+                        <h3 class="my-4">Loại xe:</h3>
+                        <h3 class="my-4">Hãng xe:</h3>
+                        <h3 class="my-4">Dòng xe:</h3>
+                        <h3 class="my-4">Giá tiền:</h3>
+                        <h4 class="my-4">Tình trạng:</h4>
+                        <h4 class="my-4">
+                            Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
+                                             class="form-control" style="width: 250px; ">
+                        </h4>
+                        <button class="btn-outline-danger my-4" style="height: 50px;">THÊM VÀO GIỎ HÀNG</button>
+                        <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
+                        <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
+                        <h4 style="color: brown;">CHIA SẺ NGAY</h4>
+                    </div>
+                </div>
+                <div class="col-sm-2 card">
+                    <h4 class="my-4 text-center">HÀNG MỚI VỀ</h4>
+                </div>
+            </div>
+            </section>
+            <div class="col-sm-12">
+                <div class="heading">
+                    <h3>Mô tả sản phẩm</h3>
+                </div>
+                <p>Trong từ ngữ văn học Việt Nam,không có từ ngữ nào có thể mô tả được độ tốt và đẹp như xe máy này</p>
+                <p>Vì vậy,THÍCH THÌ MUA ! KHÔNG THÍCH THÌ MUA</p>
+                <section>
+                    <div class="row portfolio">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h3>Sản phẩm liên quan</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="box-image">
+                                <div class="image">
+                                    <img src="~/Public/img/1.jpg" alt="" class="img-fluid">
+                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                        <div class="content">
+                                            <div class="name no-mb">
+                                                <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                            </div>
+                                            <div class="text">
+
+                                                <p class="buttons">
+                                                    <a href="/ProductDetail/Index"
+                                                       class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="box-image">
+                                <div class="image">
+                                    <img src="~/Public/img/2.jpg" alt="" class="img-fluid">
+                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                        <div class="content">
+                                            <div class="name no-mb">
+                                                <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                            </div>
+                                            <div class="text">
+
+                                                <p class="buttons">
+                                                    <a href="/ProductDetail/Index"
+                                                       class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="box-image">
+                                <div class="image">
+                                    <img src="~/Public/img/hm-6530.jpg" alt="" class="img-fluid">
+                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                        <div class="content">
+                                            <div class="name no-mb">
+                                                <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                            </div>
+                                            <div class="text">
+
+                                                <p class="buttons">
+                                                    <a href="/ProductDetail/Index"
+                                                       class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+    </div>
+</div>
+ 

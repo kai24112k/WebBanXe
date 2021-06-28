@@ -1,0 +1,1098 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBBanXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BLOG">
+          <Key>
+            <PropertyRef Name="IdBlog" />
+          </Key>
+          <Property Name="IdBlog" Type="int" Nullable="false" />
+          <Property Name="IdCate" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Content" Type="ntext" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BRAND">
+          <Key>
+            <PropertyRef Name="IdBrand" />
+          </Key>
+          <Property Name="IdBrand" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NameBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImgBrand" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CATEGORY_BLOG">
+          <Key>
+            <PropertyRef Name="IdCate" />
+          </Key>
+          <Property Name="IdCate" Type="int" Nullable="false" />
+          <Property Name="NameCate" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLASS">
+          <Key>
+            <PropertyRef Name="IdClass" />
+          </Key>
+          <Property Name="IdClass" Type="int" Nullable="false" />
+          <Property Name="NameClass" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="IdContact" />
+          </Key>
+          <Property Name="IdContact" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="ntext" />
+        </EntityType>
+        <EntityType Name="DISCOUNT">
+          <Key>
+            <PropertyRef Name="IdDiscount" />
+          </Key>
+          <Property Name="IdDiscount" Type="int" Nullable="false" />
+          <Property Name="CodeDiscount" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGE_CONTENT">
+          <Key>
+            <PropertyRef Name="IdImg" />
+          </Key>
+          <Property Name="IdImg" Type="int" Nullable="false" />
+          <Property Name="IdClass" Type="int" Nullable="false" />
+          <Property Name="AltImg" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMG_BLOG">
+          <Key>
+            <PropertyRef Name="IdImg" />
+          </Key>
+          <Property Name="IdImg" Type="int" Nullable="false" />
+          <Property Name="IdBlog" Type="int" />
+          <Property Name="AltImg" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMG_PRODUCT">
+          <Key>
+            <PropertyRef Name="IdImg" />
+          </Key>
+          <Property Name="IdImg" Type="int" Nullable="false" />
+          <Property Name="AltImg" Type="varchar" MaxLength="20" />
+          <Property Name="LinkImg" Type="varchar" MaxLength="50" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdDiscount" Type="int" />
+          <Property Name="TotalMoney" Type="int" Nullable="false" />
+          <Property Name="ReduceMoney" Type="int" Nullable="false" />
+          <Property Name="FinalMoney" Type="int" Nullable="false" />
+          <Property Name="DayCreate" Type="datetime" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_DETAIL">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IdBrand" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdType" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RENT">
+          <Key>
+            <PropertyRef Name="IdRent" />
+          </Key>
+          <Property Name="IdRent" Type="int" Nullable="false" />
+          <Property Name="DateRent" Type="datetime" Nullable="false" />
+          <Property Name="DateBack" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TYPECAR">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NameType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ImgType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="DayCreate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USER_ROLE">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__BLOG__IdCate__398D8EEE">
+          <End Role="CATEGORY_BLOG" Type="Self.CATEGORY_BLOG" Multiplicity="1" />
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_BLOG">
+              <PropertyRef Name="IdCate" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="IdCate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BLOG__IdUser__2F10007B">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CONTACT__IdUser__2E1BDC42">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="CONTACT" Type="Self.CONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="CONTACT">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMAGE_CON__IdCla__3A81B327">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="1" />
+          <End Role="IMAGE_CONTENT" Type="Self.IMAGE_CONTENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="IdClass" />
+            </Principal>
+            <Dependent Role="IMAGE_CONTENT">
+              <PropertyRef Name="IdClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMG_BLOG__IdBlog__38996AB5">
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="0..1" />
+          <End Role="IMG_BLOG" Type="Self.IMG_BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLOG">
+              <PropertyRef Name="IdBlog" />
+            </Principal>
+            <Dependent Role="IMG_BLOG">
+              <PropertyRef Name="IdBlog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMG_PRODU__IdPro__31EC6D26">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="IMG_PRODUCT" Type="Self.IMG_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="IMG_PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__IdDiscoun__37A5467C">
+          <End Role="DISCOUNT" Type="Self.DISCOUNT" Multiplicity="0..1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISCOUNT">
+              <PropertyRef Name="IdDiscount" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="IdDiscount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__IdUser__2D27B809">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_DET__IdOrd__36B12243">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="IdOrder" />
+            </Principal>
+            <Dependent Role="ORDER_DETAIL">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_DET__IdPro__32E0915F">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ORDER_DETAIL">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCT__IdBrand__34C8D9D1">
+          <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRAND">
+              <PropertyRef Name="IdBrand" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="IdBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCT__IdType__35BCFE0A">
+          <End Role="TYPECAR" Type="Self.TYPECAR" Multiplicity="1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPECAR">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RENT__IdProduct__33D4B598">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="RENT">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RENT__IdUser__300424B4">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="RENT">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USER__IdRole__30F848ED">
+          <End Role="USER_ROLE" Type="Self.USER_ROLE" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_ROLE">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBanXeModelStoreContainer">
+          <EntitySet Name="BLOG" EntityType="Self.BLOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BRAND" EntityType="Self.BRAND" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORY_BLOG" EntityType="Self.CATEGORY_BLOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLASS" EntityType="Self.CLASS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTACT" EntityType="Self.CONTACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DISCOUNT" EntityType="Self.DISCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE_CONTENT" EntityType="Self.IMAGE_CONTENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMG_BLOG" EntityType="Self.IMG_BLOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMG_PRODUCT" EntityType="Self.IMG_PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER" EntityType="Self.ORDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_DETAIL" EntityType="Self.ORDER_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RENT" EntityType="Self.RENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPECAR" EntityType="Self.TYPECAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BLOG__IdCate__398D8EEE" Association="Self.FK__BLOG__IdCate__398D8EEE">
+            <End Role="CATEGORY_BLOG" EntitySet="CATEGORY_BLOG" />
+            <End Role="BLOG" EntitySet="BLOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BLOG__IdUser__2F10007B" Association="Self.FK__BLOG__IdUser__2F10007B">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="BLOG" EntitySet="BLOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CONTACT__IdUser__2E1BDC42" Association="Self.FK__CONTACT__IdUser__2E1BDC42">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="CONTACT" EntitySet="CONTACT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMAGE_CON__IdCla__3A81B327" Association="Self.FK__IMAGE_CON__IdCla__3A81B327">
+            <End Role="CLASS" EntitySet="CLASS" />
+            <End Role="IMAGE_CONTENT" EntitySet="IMAGE_CONTENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMG_BLOG__IdBlog__38996AB5" Association="Self.FK__IMG_BLOG__IdBlog__38996AB5">
+            <End Role="BLOG" EntitySet="BLOG" />
+            <End Role="IMG_BLOG" EntitySet="IMG_BLOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMG_PRODU__IdPro__31EC6D26" Association="Self.FK__IMG_PRODU__IdPro__31EC6D26">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="IMG_PRODUCT" EntitySet="IMG_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__IdDiscoun__37A5467C" Association="Self.FK__ORDER__IdDiscoun__37A5467C">
+            <End Role="DISCOUNT" EntitySet="DISCOUNT" />
+            <End Role="ORDER" EntitySet="ORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__IdUser__2D27B809" Association="Self.FK__ORDER__IdUser__2D27B809">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ORDER" EntitySet="ORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_DET__IdOrd__36B12243" Association="Self.FK__ORDER_DET__IdOrd__36B12243">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_DET__IdPro__32E0915F" Association="Self.FK__ORDER_DET__IdPro__32E0915F">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCT__IdBrand__34C8D9D1" Association="Self.FK__PRODUCT__IdBrand__34C8D9D1">
+            <End Role="BRAND" EntitySet="BRAND" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCT__IdType__35BCFE0A" Association="Self.FK__PRODUCT__IdType__35BCFE0A">
+            <End Role="TYPECAR" EntitySet="TYPECAR" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RENT__IdProduct__33D4B598" Association="Self.FK__RENT__IdProduct__33D4B598">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="RENT" EntitySet="RENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RENT__IdUser__300424B4" Association="Self.FK__RENT__IdUser__300424B4">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="RENT" EntitySet="RENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USER__IdRole__30F848ED" Association="Self.FK__USER__IdRole__30F848ED">
+            <End Role="USER_ROLE" EntitySet="USER_ROLE" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBBanXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BLOG">
+          <Key>
+            <PropertyRef Name="IdBlog" />
+          </Key>
+          <Property Name="IdBlog" Type="Int32" Nullable="false" />
+          <Property Name="IdCate" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CATEGORY_BLOG" Relationship="Self.FK__BLOG__IdCate__398D8EEE" FromRole="BLOG" ToRole="CATEGORY_BLOG" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__BLOG__IdUser__2F10007B" FromRole="BLOG" ToRole="USER" />
+          <NavigationProperty Name="IMG_BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__38996AB5" FromRole="BLOG" ToRole="IMG_BLOG" />
+        </EntityType>
+        <EntityType Name="BRAND">
+          <Key>
+            <PropertyRef Name="IdBrand" />
+          </Key>
+          <Property Name="IdBrand" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NameBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImgBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdBrand__34C8D9D1" FromRole="BRAND" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="CATEGORY_BLOG">
+          <Key>
+            <PropertyRef Name="IdCate" />
+          </Key>
+          <Property Name="IdCate" Type="Int32" Nullable="false" />
+          <Property Name="NameCate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IdCate__398D8EEE" FromRole="CATEGORY_BLOG" ToRole="BLOG" />
+        </EntityType>
+        <EntityType Name="CLASS">
+          <Key>
+            <PropertyRef Name="IdClass" />
+          </Key>
+          <Property Name="IdClass" Type="Int32" Nullable="false" />
+          <Property Name="NameClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IMAGE_CONTENT" Relationship="Self.FK__IMAGE_CON__IdCla__3A81B327" FromRole="CLASS" ToRole="IMAGE_CONTENT" />
+        </EntityType>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="IdContact" />
+          </Key>
+          <Property Name="IdContact" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__CONTACT__IdUser__2E1BDC42" FromRole="CONTACT" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="DISCOUNT">
+          <Key>
+            <PropertyRef Name="IdDiscount" />
+          </Key>
+          <Property Name="IdDiscount" Type="Int32" Nullable="false" />
+          <Property Name="CodeDiscount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__IdDiscoun__37A5467C" FromRole="DISCOUNT" ToRole="ORDER" />
+        </EntityType>
+        <EntityType Name="IMAGE_CONTENT">
+          <Key>
+            <PropertyRef Name="IdImg" />
+          </Key>
+          <Property Name="IdImg" Type="Int32" Nullable="false" />
+          <Property Name="IdClass" Type="Int32" Nullable="false" />
+          <Property Name="AltImg" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK__IMAGE_CON__IdCla__3A81B327" FromRole="IMAGE_CONTENT" ToRole="CLASS" />
+        </EntityType>
+        <EntityType Name="IMG_BLOG">
+          <Key>
+            <PropertyRef Name="IdImg" />
+          </Key>
+          <Property Name="IdImg" Type="Int32" Nullable="false" />
+          <Property Name="IdBlog" Type="Int32" />
+          <Property Name="AltImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__38996AB5" FromRole="IMG_BLOG" ToRole="BLOG" />
+        </EntityType>
+        <EntityType Name="IMG_PRODUCT">
+          <Key>
+            <PropertyRef Name="IdImg" />
+          </Key>
+          <Property Name="IdImg" Type="Int32" Nullable="false" />
+          <Property Name="AltImg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__31EC6D26" FromRole="IMG_PRODUCT" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdDiscount" Type="Int32" />
+          <Property Name="TotalMoney" Type="Int32" Nullable="false" />
+          <Property Name="ReduceMoney" Type="Int32" Nullable="false" />
+          <Property Name="FinalMoney" Type="Int32" Nullable="false" />
+          <Property Name="DayCreate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="DISCOUNT" Relationship="Self.FK__ORDER__IdDiscoun__37A5467C" FromRole="ORDER" ToRole="DISCOUNT" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__ORDER__IdUser__2D27B809" FromRole="ORDER" ToRole="USER" />
+          <NavigationProperty Name="ORDER_DETAIL" Relationship="Self.FK__ORDER_DET__IdOrd__36B12243" FromRole="ORDER" ToRole="ORDER_DETAIL" />
+        </EntityType>
+        <EntityType Name="ORDER_DETAIL">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK__ORDER_DET__IdOrd__36B12243" FromRole="ORDER_DETAIL" ToRole="ORDER" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__ORDER_DET__IdPro__32E0915F" FromRole="ORDER_DETAIL" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="NameProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IdBrand" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BRAND" Relationship="Self.FK__PRODUCT__IdBrand__34C8D9D1" FromRole="PRODUCT" ToRole="BRAND" />
+          <NavigationProperty Name="IMG_PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__31EC6D26" FromRole="PRODUCT" ToRole="IMG_PRODUCT" />
+          <NavigationProperty Name="ORDER_DETAIL" Relationship="Self.FK__ORDER_DET__IdPro__32E0915F" FromRole="PRODUCT" ToRole="ORDER_DETAIL" />
+          <NavigationProperty Name="TYPECAR" Relationship="Self.FK__PRODUCT__IdType__35BCFE0A" FromRole="PRODUCT" ToRole="TYPECAR" />
+          <NavigationProperty Name="RENTs" Relationship="Self.FK__RENT__IdProduct__33D4B598" FromRole="PRODUCT" ToRole="RENT" />
+        </EntityType>
+        <EntityType Name="RENT">
+          <Key>
+            <PropertyRef Name="IdRent" />
+          </Key>
+          <Property Name="IdRent" Type="Int32" Nullable="false" />
+          <Property Name="DateRent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateBack" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__RENT__IdProduct__33D4B598" FromRole="RENT" ToRole="PRODUCT" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__RENT__IdUser__300424B4" FromRole="RENT" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TYPECAR">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NameType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImgType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdType__35BCFE0A" FromRole="TYPECAR" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DayCreate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IdUser__2F10007B" FromRole="USER" ToRole="BLOG" />
+          <NavigationProperty Name="CONTACTs" Relationship="Self.FK__CONTACT__IdUser__2E1BDC42" FromRole="USER" ToRole="CONTACT" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__IdUser__2D27B809" FromRole="USER" ToRole="ORDER" />
+          <NavigationProperty Name="RENTs" Relationship="Self.FK__RENT__IdUser__300424B4" FromRole="USER" ToRole="RENT" />
+          <NavigationProperty Name="USER_ROLE" Relationship="Self.FK__USER__IdRole__30F848ED" FromRole="USER" ToRole="USER_ROLE" />
+        </EntityType>
+        <EntityType Name="USER_ROLE">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK__USER__IdRole__30F848ED" FromRole="USER_ROLE" ToRole="USER" />
+        </EntityType>
+        <Association Name="FK__BLOG__IdCate__398D8EEE">
+          <End Role="CATEGORY_BLOG" Type="Self.CATEGORY_BLOG" Multiplicity="1" />
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_BLOG">
+              <PropertyRef Name="IdCate" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="IdCate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BLOG__IdUser__2F10007B">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMG_BLOG__IdBlog__38996AB5">
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="0..1" />
+          <End Role="IMG_BLOG" Type="Self.IMG_BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLOG">
+              <PropertyRef Name="IdBlog" />
+            </Principal>
+            <Dependent Role="IMG_BLOG">
+              <PropertyRef Name="IdBlog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCT__IdBrand__34C8D9D1">
+          <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRAND">
+              <PropertyRef Name="IdBrand" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="IdBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMAGE_CON__IdCla__3A81B327">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="1" />
+          <End Role="IMAGE_CONTENT" Type="Self.IMAGE_CONTENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="IdClass" />
+            </Principal>
+            <Dependent Role="IMAGE_CONTENT">
+              <PropertyRef Name="IdClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CONTACT__IdUser__2E1BDC42">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="CONTACT" Type="Self.CONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="CONTACT">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__IdDiscoun__37A5467C">
+          <End Role="DISCOUNT" Type="Self.DISCOUNT" Multiplicity="0..1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISCOUNT">
+              <PropertyRef Name="IdDiscount" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="IdDiscount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IMG_PRODU__IdPro__31EC6D26">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="IMG_PRODUCT" Type="Self.IMG_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="IMG_PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__IdUser__2D27B809">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_DET__IdOrd__36B12243">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="IdOrder" />
+            </Principal>
+            <Dependent Role="ORDER_DETAIL">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_DET__IdPro__32E0915F">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ORDER_DETAIL">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCT__IdType__35BCFE0A">
+          <End Role="TYPECAR" Type="Self.TYPECAR" Multiplicity="1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPECAR">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RENT__IdProduct__33D4B598">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="RENT">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RENT__IdUser__300424B4">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="RENT">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USER__IdRole__30F848ED">
+          <End Role="USER_ROLE" Type="Self.USER_ROLE" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_ROLE">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBanXeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BLOGs" EntityType="Self.BLOG" />
+          <EntitySet Name="BRANDs" EntityType="Self.BRAND" />
+          <EntitySet Name="CATEGORY_BLOG" EntityType="Self.CATEGORY_BLOG" />
+          <EntitySet Name="CLASSes" EntityType="Self.CLASS" />
+          <EntitySet Name="CONTACTs" EntityType="Self.CONTACT" />
+          <EntitySet Name="DISCOUNTs" EntityType="Self.DISCOUNT" />
+          <EntitySet Name="IMAGE_CONTENT" EntityType="Self.IMAGE_CONTENT" />
+          <EntitySet Name="IMG_BLOG" EntityType="Self.IMG_BLOG" />
+          <EntitySet Name="IMG_PRODUCT" EntityType="Self.IMG_PRODUCT" />
+          <EntitySet Name="ORDERs" EntityType="Self.ORDER" />
+          <EntitySet Name="ORDER_DETAIL" EntityType="Self.ORDER_DETAIL" />
+          <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="RENTs" EntityType="Self.RENT" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TYPECARs" EntityType="Self.TYPECAR" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" />
+          <AssociationSet Name="FK__BLOG__IdCate__398D8EEE" Association="Self.FK__BLOG__IdCate__398D8EEE">
+            <End Role="CATEGORY_BLOG" EntitySet="CATEGORY_BLOG" />
+            <End Role="BLOG" EntitySet="BLOGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BLOG__IdUser__2F10007B" Association="Self.FK__BLOG__IdUser__2F10007B">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="BLOG" EntitySet="BLOGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMG_BLOG__IdBlog__38996AB5" Association="Self.FK__IMG_BLOG__IdBlog__38996AB5">
+            <End Role="BLOG" EntitySet="BLOGs" />
+            <End Role="IMG_BLOG" EntitySet="IMG_BLOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCT__IdBrand__34C8D9D1" Association="Self.FK__PRODUCT__IdBrand__34C8D9D1">
+            <End Role="BRAND" EntitySet="BRANDs" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMAGE_CON__IdCla__3A81B327" Association="Self.FK__IMAGE_CON__IdCla__3A81B327">
+            <End Role="CLASS" EntitySet="CLASSes" />
+            <End Role="IMAGE_CONTENT" EntitySet="IMAGE_CONTENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CONTACT__IdUser__2E1BDC42" Association="Self.FK__CONTACT__IdUser__2E1BDC42">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="CONTACT" EntitySet="CONTACTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__IdDiscoun__37A5467C" Association="Self.FK__ORDER__IdDiscoun__37A5467C">
+            <End Role="DISCOUNT" EntitySet="DISCOUNTs" />
+            <End Role="ORDER" EntitySet="ORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IMG_PRODU__IdPro__31EC6D26" Association="Self.FK__IMG_PRODU__IdPro__31EC6D26">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="IMG_PRODUCT" EntitySet="IMG_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__IdUser__2D27B809" Association="Self.FK__ORDER__IdUser__2D27B809">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="ORDER" EntitySet="ORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_DET__IdOrd__36B12243" Association="Self.FK__ORDER_DET__IdOrd__36B12243">
+            <End Role="ORDER" EntitySet="ORDERs" />
+            <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_DET__IdPro__32E0915F" Association="Self.FK__ORDER_DET__IdPro__32E0915F">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCT__IdType__35BCFE0A" Association="Self.FK__PRODUCT__IdType__35BCFE0A">
+            <End Role="TYPECAR" EntitySet="TYPECARs" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RENT__IdProduct__33D4B598" Association="Self.FK__RENT__IdProduct__33D4B598">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="RENT" EntitySet="RENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RENT__IdUser__300424B4" Association="Self.FK__RENT__IdUser__300424B4">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="RENT" EntitySet="RENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USER__IdRole__30F848ED" Association="Self.FK__USER__IdRole__30F848ED">
+            <End Role="USER_ROLE" EntitySet="USER_ROLE" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBBanXeModelStoreContainer" CdmEntityContainer="DBBanXeEntities">
+          <EntitySetMapping Name="BLOGs">
+            <EntityTypeMapping TypeName="DBBanXeModel.BLOG">
+              <MappingFragment StoreEntitySet="BLOG">
+                <ScalarProperty Name="IdBlog" ColumnName="IdBlog" />
+                <ScalarProperty Name="IdCate" ColumnName="IdCate" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BRANDs">
+            <EntityTypeMapping TypeName="DBBanXeModel.BRAND">
+              <MappingFragment StoreEntitySet="BRAND">
+                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
+                <ScalarProperty Name="NameBrand" ColumnName="NameBrand" />
+                <ScalarProperty Name="ImgBrand" ColumnName="ImgBrand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY_BLOG">
+            <EntityTypeMapping TypeName="DBBanXeModel.CATEGORY_BLOG">
+              <MappingFragment StoreEntitySet="CATEGORY_BLOG">
+                <ScalarProperty Name="IdCate" ColumnName="IdCate" />
+                <ScalarProperty Name="NameCate" ColumnName="NameCate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLASSes">
+            <EntityTypeMapping TypeName="DBBanXeModel.CLASS">
+              <MappingFragment StoreEntitySet="CLASS">
+                <ScalarProperty Name="IdClass" ColumnName="IdClass" />
+                <ScalarProperty Name="NameClass" ColumnName="NameClass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACTs">
+            <EntityTypeMapping TypeName="DBBanXeModel.CONTACT">
+              <MappingFragment StoreEntitySet="CONTACT">
+                <ScalarProperty Name="IdContact" ColumnName="IdContact" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISCOUNTs">
+            <EntityTypeMapping TypeName="DBBanXeModel.DISCOUNT">
+              <MappingFragment StoreEntitySet="DISCOUNT">
+                <ScalarProperty Name="IdDiscount" ColumnName="IdDiscount" />
+                <ScalarProperty Name="CodeDiscount" ColumnName="CodeDiscount" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGE_CONTENT">
+            <EntityTypeMapping TypeName="DBBanXeModel.IMAGE_CONTENT">
+              <MappingFragment StoreEntitySet="IMAGE_CONTENT">
+                <ScalarProperty Name="IdImg" ColumnName="IdImg" />
+                <ScalarProperty Name="IdClass" ColumnName="IdClass" />
+                <ScalarProperty Name="AltImg" ColumnName="AltImg" />
+                <ScalarProperty Name="LinkImg" ColumnName="LinkImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMG_BLOG">
+            <EntityTypeMapping TypeName="DBBanXeModel.IMG_BLOG">
+              <MappingFragment StoreEntitySet="IMG_BLOG">
+                <ScalarProperty Name="IdImg" ColumnName="IdImg" />
+                <ScalarProperty Name="IdBlog" ColumnName="IdBlog" />
+                <ScalarProperty Name="AltImg" ColumnName="AltImg" />
+                <ScalarProperty Name="LinkImg" ColumnName="LinkImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMG_PRODUCT">
+            <EntityTypeMapping TypeName="DBBanXeModel.IMG_PRODUCT">
+              <MappingFragment StoreEntitySet="IMG_PRODUCT">
+                <ScalarProperty Name="IdImg" ColumnName="IdImg" />
+                <ScalarProperty Name="AltImg" ColumnName="AltImg" />
+                <ScalarProperty Name="LinkImg" ColumnName="LinkImg" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERs">
+            <EntityTypeMapping TypeName="DBBanXeModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDER">
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdDiscount" ColumnName="IdDiscount" />
+                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+                <ScalarProperty Name="ReduceMoney" ColumnName="ReduceMoney" />
+                <ScalarProperty Name="FinalMoney" ColumnName="FinalMoney" />
+                <ScalarProperty Name="DayCreate" ColumnName="DayCreate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_DETAIL">
+            <EntityTypeMapping TypeName="DBBanXeModel.ORDER_DETAIL">
+              <MappingFragment StoreEntitySet="ORDER_DETAIL">
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="DBBanXeModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RENTs">
+            <EntityTypeMapping TypeName="DBBanXeModel.RENT">
+              <MappingFragment StoreEntitySet="RENT">
+                <ScalarProperty Name="IdRent" ColumnName="IdRent" />
+                <ScalarProperty Name="DateRent" ColumnName="DateRent" />
+                <ScalarProperty Name="DateBack" ColumnName="DateBack" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBBanXeModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPECARs">
+            <EntityTypeMapping TypeName="DBBanXeModel.TYPECAR">
+              <MappingFragment StoreEntitySet="TYPECAR">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+                <ScalarProperty Name="ImgType" ColumnName="ImgType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="DBBanXeModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DayCreate" ColumnName="DayCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_ROLE">
+            <EntityTypeMapping TypeName="DBBanXeModel.USER_ROLE">
+              <MappingFragment StoreEntitySet="USER_ROLE">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
