@@ -38,7 +38,6 @@ namespace WebBanXe.Model
         public virtual DbSet<ORDER_DETAIL> ORDER_DETAIL { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<RENT> RENTs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TYPECAR> TYPECARs { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
         public virtual DbSet<USER_ROLE> USER_ROLE { get; set; }

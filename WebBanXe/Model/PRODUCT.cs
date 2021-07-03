@@ -28,7 +28,7 @@ namespace WebBanXe.Model
         public string Description { get; set; }
         public bool Status { get; set; }
         public string IdBrand { get; set; }
-        public string IdType { get; set; }
+        public int IdType { get; set; }
     
         public virtual BRAND BRAND { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

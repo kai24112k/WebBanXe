@@ -2,10 +2,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using WebBanXe.Controllers;
-
-
-
 
 <div id="heading-breadcrumbs">
     <div class="container">
@@ -157,25 +153,24 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row portfolio text-center">
-                        @foreach (var product in ViewBag.listProduct)
+                        @foreach (var product in Model)
                         {
                             <div class="col-md-4">
                                 <div class="box-image">
                                     <div class="image">
-                                        <a href="@Url.Action("ProductDetail","Product", new { id = product.IdProduct })">
-                                            
-                                                    <img src="@product.IMG_PRODUCT.LinkImg" class="img-fluid">
+                                        <a href="@Url.Action("Detail","Product", new { id = product.IdProduct },null)">
+                                            @foreach (var item in product.IMG_PRODUCT)
+                                            {
+                                                if (item.IdProduct == product.IdProduct && item.AltImg == item.IdProduct + "_1")
+                                                {
+                                                    <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                }
+                                            }
+                                        <div style="text-align:left;">Giá : @string.Format("{0:#,##0}", @product.Price) đ</div>
                                         </a>
-                                        <div class="overlay d-flex align-items-center justify-content-center">
-                                            <div class="content">
-                                                <div class="text">
-                                                    <p class="d-none d-sm-block">Hình ảnh chỉ mang tính chất minh họa</p>
-                                                    <p class="buttons"><a href="@Url.Action("ProductDetail","Product", new { id = product.IdProduct })" class="btn btn-template-outlined-white">Xem chi tiết</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                                
                             </div>
 
 
@@ -243,5 +238,3 @@
         </div>
     </div>
 </section>
-
-

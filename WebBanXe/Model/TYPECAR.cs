@@ -20,7 +20,7 @@ namespace WebBanXe.Model
             this.PRODUCTs = new HashSet<PRODUCT>();
         }
     
-        public string IdType { get; set; }
+        public int IdType { get; set; }
         public string NameType { get; set; }
         public string ImgType { get; set; }
     

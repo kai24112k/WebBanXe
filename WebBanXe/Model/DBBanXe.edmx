@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBBanXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBBanXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BLOG">
           <Key>
             <PropertyRef Name="IdBlog" />
           </Key>
-          <Property Name="IdBlog" Type="int" Nullable="false" />
+          <Property Name="IdBlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCate" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Content" Type="ntext" Nullable="false" />
@@ -27,21 +27,21 @@
           <Key>
             <PropertyRef Name="IdCate" />
           </Key>
-          <Property Name="IdCate" Type="int" Nullable="false" />
+          <Property Name="IdCate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameCate" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CLASS">
           <Key>
             <PropertyRef Name="IdClass" />
           </Key>
-          <Property Name="IdClass" Type="int" Nullable="false" />
+          <Property Name="IdClass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameClass" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CONTACT">
           <Key>
             <PropertyRef Name="IdContact" />
           </Key>
-          <Property Name="IdContact" Type="int" Nullable="false" />
+          <Property Name="IdContact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="int" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
@@ -51,7 +51,7 @@
           <Key>
             <PropertyRef Name="IdDiscount" />
           </Key>
-          <Property Name="IdDiscount" Type="int" Nullable="false" />
+          <Property Name="IdDiscount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeDiscount" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Value" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" Nullable="false" />
+          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClass" Type="int" Nullable="false" />
           <Property Name="AltImg" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" Nullable="false" />
+          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdBlog" Type="int" />
           <Property Name="AltImg" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
@@ -78,7 +78,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" Nullable="false" />
+          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AltImg" Type="varchar" MaxLength="20" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
@@ -87,7 +87,7 @@
           <Key>
             <PropertyRef Name="IdOrder" />
           </Key>
-          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="IdDiscount" Type="int" />
           <Property Name="TotalMoney" Type="int" Nullable="false" />
@@ -101,7 +101,7 @@
             <PropertyRef Name="IdOrder" />
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -110,19 +110,19 @@
           <Key>
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="IdBrand" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="IdType" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RENT">
           <Key>
             <PropertyRef Name="IdRent" />
           </Key>
-          <Property Name="IdRent" Type="int" Nullable="false" />
+          <Property Name="IdRent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateRent" Type="datetime" Nullable="false" />
           <Property Name="DateBack" Type="datetime" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -130,21 +130,11 @@
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TYPECAR">
           <Key>
             <PropertyRef Name="IdType" />
           </Key>
-          <Property Name="IdType" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameType" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ImgType" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -152,7 +142,7 @@
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -166,10 +156,10 @@
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
-          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__BLOG__IdCate__398D8EEE">
+        <Association Name="FK__BLOG__IdCate__4D94879B">
           <End Role="CATEGORY_BLOG" Type="Self.CATEGORY_BLOG" Multiplicity="1" />
           <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -181,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BLOG__IdUser__2F10007B">
+        <Association Name="FK__BLOG__IdUser__4316F928">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONTACT__IdUser__2E1BDC42">
+        <Association Name="FK__CONTACT__IdUser__4222D4EF">
           <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
           <End Role="CONTACT" Type="Self.CONTACT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -205,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMAGE_CON__IdCla__3A81B327">
+        <Association Name="FK__IMAGE_CON__IdCla__4E88ABD4">
           <End Role="CLASS" Type="Self.CLASS" Multiplicity="1" />
           <End Role="IMAGE_CONTENT" Type="Self.IMAGE_CONTENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -217,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMG_BLOG__IdBlog__38996AB5">
+        <Association Name="FK__IMG_BLOG__IdBlog__4CA06362">
           <End Role="BLOG" Type="Self.BLOG" Multiplicity="0..1" />
           <End Role="IMG_BLOG" Type="Self.IMG_BLOG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMG_PRODU__IdPro__31EC6D26">
+        <Association Name="FK__IMG_PRODU__IdPro__45F365D3">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="IMG_PRODUCT" Type="Self.IMG_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -241,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER__IdDiscoun__37A5467C">
+        <Association Name="FK__ORDER__IdDiscoun__4BAC3F29">
           <End Role="DISCOUNT" Type="Self.DISCOUNT" Multiplicity="0..1" />
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -253,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER__IdUser__2D27B809">
+        <Association Name="FK__ORDER__IdUser__412EB0B6">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -265,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER_DET__IdOrd__36B12243">
+        <Association Name="FK__ORDER_DET__IdOrd__4AB81AF0">
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
           <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -277,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER_DET__IdPro__32E0915F">
+        <Association Name="FK__ORDER_DET__IdPro__46E78A0C">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -289,7 +279,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCT__IdBrand__34C8D9D1">
+        <Association Name="FK__PRODUCT__IdBrand__48CFD27E">
           <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -301,7 +291,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCT__IdType__35BCFE0A">
+        <Association Name="FK__PRODUCT__IdType__49C3F6B7">
           <End Role="TYPECAR" Type="Self.TYPECAR" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -313,7 +303,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RENT__IdProduct__33D4B598">
+        <Association Name="FK__RENT__IdProduct__47DBAE45">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -325,7 +315,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RENT__IdUser__300424B4">
+        <Association Name="FK__RENT__IdUser__440B1D61">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -337,7 +327,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USER__IdRole__30F848ED">
+        <Association Name="FK__USER__IdRole__44FF419A">
           <End Role="USER_ROLE" Type="Self.USER_ROLE" Multiplicity="1" />
           <End Role="USER" Type="Self.USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -363,73 +353,71 @@
           <EntitySet Name="ORDER_DETAIL" EntityType="Self.ORDER_DETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RENT" EntityType="Self.RENT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TYPECAR" EntityType="Self.TYPECAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BLOG__IdCate__398D8EEE" Association="Self.FK__BLOG__IdCate__398D8EEE">
+          <AssociationSet Name="FK__BLOG__IdCate__4D94879B" Association="Self.FK__BLOG__IdCate__4D94879B">
             <End Role="CATEGORY_BLOG" EntitySet="CATEGORY_BLOG" />
             <End Role="BLOG" EntitySet="BLOG" />
           </AssociationSet>
-          <AssociationSet Name="FK__BLOG__IdUser__2F10007B" Association="Self.FK__BLOG__IdUser__2F10007B">
+          <AssociationSet Name="FK__BLOG__IdUser__4316F928" Association="Self.FK__BLOG__IdUser__4316F928">
             <End Role="USER" EntitySet="USER" />
             <End Role="BLOG" EntitySet="BLOG" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONTACT__IdUser__2E1BDC42" Association="Self.FK__CONTACT__IdUser__2E1BDC42">
+          <AssociationSet Name="FK__CONTACT__IdUser__4222D4EF" Association="Self.FK__CONTACT__IdUser__4222D4EF">
             <End Role="USER" EntitySet="USER" />
             <End Role="CONTACT" EntitySet="CONTACT" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMAGE_CON__IdCla__3A81B327" Association="Self.FK__IMAGE_CON__IdCla__3A81B327">
+          <AssociationSet Name="FK__IMAGE_CON__IdCla__4E88ABD4" Association="Self.FK__IMAGE_CON__IdCla__4E88ABD4">
             <End Role="CLASS" EntitySet="CLASS" />
             <End Role="IMAGE_CONTENT" EntitySet="IMAGE_CONTENT" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMG_BLOG__IdBlog__38996AB5" Association="Self.FK__IMG_BLOG__IdBlog__38996AB5">
+          <AssociationSet Name="FK__IMG_BLOG__IdBlog__4CA06362" Association="Self.FK__IMG_BLOG__IdBlog__4CA06362">
             <End Role="BLOG" EntitySet="BLOG" />
             <End Role="IMG_BLOG" EntitySet="IMG_BLOG" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMG_PRODU__IdPro__31EC6D26" Association="Self.FK__IMG_PRODU__IdPro__31EC6D26">
+          <AssociationSet Name="FK__IMG_PRODU__IdPro__45F365D3" Association="Self.FK__IMG_PRODU__IdPro__45F365D3">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="IMG_PRODUCT" EntitySet="IMG_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER__IdDiscoun__37A5467C" Association="Self.FK__ORDER__IdDiscoun__37A5467C">
+          <AssociationSet Name="FK__ORDER__IdDiscoun__4BAC3F29" Association="Self.FK__ORDER__IdDiscoun__4BAC3F29">
             <End Role="DISCOUNT" EntitySet="DISCOUNT" />
             <End Role="ORDER" EntitySet="ORDER" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER__IdUser__2D27B809" Association="Self.FK__ORDER__IdUser__2D27B809">
+          <AssociationSet Name="FK__ORDER__IdUser__412EB0B6" Association="Self.FK__ORDER__IdUser__412EB0B6">
             <End Role="USER" EntitySet="USER" />
             <End Role="ORDER" EntitySet="ORDER" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER_DET__IdOrd__36B12243" Association="Self.FK__ORDER_DET__IdOrd__36B12243">
+          <AssociationSet Name="FK__ORDER_DET__IdOrd__4AB81AF0" Association="Self.FK__ORDER_DET__IdOrd__4AB81AF0">
             <End Role="ORDER" EntitySet="ORDER" />
             <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER_DET__IdPro__32E0915F" Association="Self.FK__ORDER_DET__IdPro__32E0915F">
+          <AssociationSet Name="FK__ORDER_DET__IdPro__46E78A0C" Association="Self.FK__ORDER_DET__IdPro__46E78A0C">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCT__IdBrand__34C8D9D1" Association="Self.FK__PRODUCT__IdBrand__34C8D9D1">
+          <AssociationSet Name="FK__PRODUCT__IdBrand__48CFD27E" Association="Self.FK__PRODUCT__IdBrand__48CFD27E">
             <End Role="BRAND" EntitySet="BRAND" />
             <End Role="PRODUCT" EntitySet="PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCT__IdType__35BCFE0A" Association="Self.FK__PRODUCT__IdType__35BCFE0A">
+          <AssociationSet Name="FK__PRODUCT__IdType__49C3F6B7" Association="Self.FK__PRODUCT__IdType__49C3F6B7">
             <End Role="TYPECAR" EntitySet="TYPECAR" />
             <End Role="PRODUCT" EntitySet="PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__RENT__IdProduct__33D4B598" Association="Self.FK__RENT__IdProduct__33D4B598">
+          <AssociationSet Name="FK__RENT__IdProduct__47DBAE45" Association="Self.FK__RENT__IdProduct__47DBAE45">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="RENT" EntitySet="RENT" />
           </AssociationSet>
-          <AssociationSet Name="FK__RENT__IdUser__300424B4" Association="Self.FK__RENT__IdUser__300424B4">
+          <AssociationSet Name="FK__RENT__IdUser__440B1D61" Association="Self.FK__RENT__IdUser__440B1D61">
             <End Role="USER" EntitySet="USER" />
             <End Role="RENT" EntitySet="RENT" />
           </AssociationSet>
-          <AssociationSet Name="FK__USER__IdRole__30F848ED" Association="Self.FK__USER__IdRole__30F848ED">
+          <AssociationSet Name="FK__USER__IdRole__44FF419A" Association="Self.FK__USER__IdRole__44FF419A">
             <End Role="USER_ROLE" EntitySet="USER_ROLE" />
             <End Role="USER" EntitySet="USER" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBBanXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -437,14 +425,14 @@
           <Key>
             <PropertyRef Name="IdBlog" />
           </Key>
-          <Property Name="IdBlog" Type="Int32" Nullable="false" />
+          <Property Name="IdBlog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCate" Type="Int32" Nullable="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CATEGORY_BLOG" Relationship="Self.FK__BLOG__IdCate__398D8EEE" FromRole="BLOG" ToRole="CATEGORY_BLOG" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__BLOG__IdUser__2F10007B" FromRole="BLOG" ToRole="USER" />
-          <NavigationProperty Name="IMG_BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__38996AB5" FromRole="BLOG" ToRole="IMG_BLOG" />
+          <NavigationProperty Name="CATEGORY_BLOG" Relationship="Self.FK__BLOG__IdCate__4D94879B" FromRole="BLOG" ToRole="CATEGORY_BLOG" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__BLOG__IdUser__4316F928" FromRole="BLOG" ToRole="USER" />
+          <NavigationProperty Name="IMG_BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__4CA06362" FromRole="BLOG" ToRole="IMG_BLOG" />
         </EntityType>
         <EntityType Name="BRAND">
           <Key>
@@ -453,80 +441,80 @@
           <Property Name="IdBrand" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NameBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ImgBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdBrand__34C8D9D1" FromRole="BRAND" ToRole="PRODUCT" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdBrand__48CFD27E" FromRole="BRAND" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="CATEGORY_BLOG">
           <Key>
             <PropertyRef Name="IdCate" />
           </Key>
-          <Property Name="IdCate" Type="Int32" Nullable="false" />
+          <Property Name="IdCate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IdCate__398D8EEE" FromRole="CATEGORY_BLOG" ToRole="BLOG" />
+          <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IdCate__4D94879B" FromRole="CATEGORY_BLOG" ToRole="BLOG" />
         </EntityType>
         <EntityType Name="CLASS">
           <Key>
             <PropertyRef Name="IdClass" />
           </Key>
-          <Property Name="IdClass" Type="Int32" Nullable="false" />
+          <Property Name="IdClass" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="IMAGE_CONTENT" Relationship="Self.FK__IMAGE_CON__IdCla__3A81B327" FromRole="CLASS" ToRole="IMAGE_CONTENT" />
+          <NavigationProperty Name="IMAGE_CONTENT" Relationship="Self.FK__IMAGE_CON__IdCla__4E88ABD4" FromRole="CLASS" ToRole="IMAGE_CONTENT" />
         </EntityType>
         <EntityType Name="CONTACT">
           <Key>
             <PropertyRef Name="IdContact" />
           </Key>
-          <Property Name="IdContact" Type="Int32" Nullable="false" />
+          <Property Name="IdContact" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__CONTACT__IdUser__2E1BDC42" FromRole="CONTACT" ToRole="USER" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__CONTACT__IdUser__4222D4EF" FromRole="CONTACT" ToRole="USER" />
         </EntityType>
         <EntityType Name="DISCOUNT">
           <Key>
             <PropertyRef Name="IdDiscount" />
           </Key>
-          <Property Name="IdDiscount" Type="Int32" Nullable="false" />
+          <Property Name="IdDiscount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeDiscount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Value" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__IdDiscoun__37A5467C" FromRole="DISCOUNT" ToRole="ORDER" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__IdDiscoun__4BAC3F29" FromRole="DISCOUNT" ToRole="ORDER" />
         </EntityType>
         <EntityType Name="IMAGE_CONTENT">
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="Int32" Nullable="false" />
+          <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClass" Type="Int32" Nullable="false" />
           <Property Name="AltImg" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CLASS" Relationship="Self.FK__IMAGE_CON__IdCla__3A81B327" FromRole="IMAGE_CONTENT" ToRole="CLASS" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK__IMAGE_CON__IdCla__4E88ABD4" FromRole="IMAGE_CONTENT" ToRole="CLASS" />
         </EntityType>
         <EntityType Name="IMG_BLOG">
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="Int32" Nullable="false" />
+          <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdBlog" Type="Int32" />
           <Property Name="AltImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__38996AB5" FromRole="IMG_BLOG" ToRole="BLOG" />
+          <NavigationProperty Name="BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__4CA06362" FromRole="IMG_BLOG" ToRole="BLOG" />
         </EntityType>
         <EntityType Name="IMG_PRODUCT">
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="Int32" Nullable="false" />
+          <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AltImg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__31EC6D26" FromRole="IMG_PRODUCT" ToRole="PRODUCT" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__45F365D3" FromRole="IMG_PRODUCT" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="ORDER">
           <Key>
             <PropertyRef Name="IdOrder" />
           </Key>
-          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="IdDiscount" Type="Int32" />
           <Property Name="TotalMoney" Type="Int32" Nullable="false" />
@@ -534,77 +522,67 @@
           <Property Name="FinalMoney" Type="Int32" Nullable="false" />
           <Property Name="DayCreate" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="DISCOUNT" Relationship="Self.FK__ORDER__IdDiscoun__37A5467C" FromRole="ORDER" ToRole="DISCOUNT" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__ORDER__IdUser__2D27B809" FromRole="ORDER" ToRole="USER" />
-          <NavigationProperty Name="ORDER_DETAIL" Relationship="Self.FK__ORDER_DET__IdOrd__36B12243" FromRole="ORDER" ToRole="ORDER_DETAIL" />
+          <NavigationProperty Name="DISCOUNT" Relationship="Self.FK__ORDER__IdDiscoun__4BAC3F29" FromRole="ORDER" ToRole="DISCOUNT" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__ORDER__IdUser__412EB0B6" FromRole="ORDER" ToRole="USER" />
+          <NavigationProperty Name="ORDER_DETAIL" Relationship="Self.FK__ORDER_DET__IdOrd__4AB81AF0" FromRole="ORDER" ToRole="ORDER_DETAIL" />
         </EntityType>
         <EntityType Name="ORDER_DETAIL">
           <Key>
             <PropertyRef Name="IdOrder" />
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ORDER" Relationship="Self.FK__ORDER_DET__IdOrd__36B12243" FromRole="ORDER_DETAIL" ToRole="ORDER" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__ORDER_DET__IdPro__32E0915F" FromRole="ORDER_DETAIL" ToRole="PRODUCT" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK__ORDER_DET__IdOrd__4AB81AF0" FromRole="ORDER_DETAIL" ToRole="ORDER" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__ORDER_DET__IdPro__46E78A0C" FromRole="ORDER_DETAIL" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="PRODUCT">
           <Key>
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="IdBrand" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="BRAND" Relationship="Self.FK__PRODUCT__IdBrand__34C8D9D1" FromRole="PRODUCT" ToRole="BRAND" />
-          <NavigationProperty Name="IMG_PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__31EC6D26" FromRole="PRODUCT" ToRole="IMG_PRODUCT" />
-          <NavigationProperty Name="ORDER_DETAIL" Relationship="Self.FK__ORDER_DET__IdPro__32E0915F" FromRole="PRODUCT" ToRole="ORDER_DETAIL" />
-          <NavigationProperty Name="TYPECAR" Relationship="Self.FK__PRODUCT__IdType__35BCFE0A" FromRole="PRODUCT" ToRole="TYPECAR" />
-          <NavigationProperty Name="RENTs" Relationship="Self.FK__RENT__IdProduct__33D4B598" FromRole="PRODUCT" ToRole="RENT" />
+          <Property Name="IdType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BRAND" Relationship="Self.FK__PRODUCT__IdBrand__48CFD27E" FromRole="PRODUCT" ToRole="BRAND" />
+          <NavigationProperty Name="IMG_PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__45F365D3" FromRole="PRODUCT" ToRole="IMG_PRODUCT" />
+          <NavigationProperty Name="ORDER_DETAIL" Relationship="Self.FK__ORDER_DET__IdPro__46E78A0C" FromRole="PRODUCT" ToRole="ORDER_DETAIL" />
+          <NavigationProperty Name="TYPECAR" Relationship="Self.FK__PRODUCT__IdType__49C3F6B7" FromRole="PRODUCT" ToRole="TYPECAR" />
+          <NavigationProperty Name="RENTs" Relationship="Self.FK__RENT__IdProduct__47DBAE45" FromRole="PRODUCT" ToRole="RENT" />
         </EntityType>
         <EntityType Name="RENT">
           <Key>
             <PropertyRef Name="IdRent" />
           </Key>
-          <Property Name="IdRent" Type="Int32" Nullable="false" />
+          <Property Name="IdRent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DateRent" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateBack" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__RENT__IdProduct__33D4B598" FromRole="RENT" ToRole="PRODUCT" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__RENT__IdUser__300424B4" FromRole="RENT" ToRole="USER" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__RENT__IdProduct__47DBAE45" FromRole="RENT" ToRole="PRODUCT" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__RENT__IdUser__440B1D61" FromRole="RENT" ToRole="USER" />
         </EntityType>
         <EntityType Name="TYPECAR">
           <Key>
             <PropertyRef Name="IdType" />
           </Key>
-          <Property Name="IdType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ImgType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdType__35BCFE0A" FromRole="TYPECAR" ToRole="PRODUCT" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdType__49C3F6B7" FromRole="TYPECAR" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -613,21 +591,21 @@
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DayCreate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IdUser__2F10007B" FromRole="USER" ToRole="BLOG" />
-          <NavigationProperty Name="CONTACTs" Relationship="Self.FK__CONTACT__IdUser__2E1BDC42" FromRole="USER" ToRole="CONTACT" />
-          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__IdUser__2D27B809" FromRole="USER" ToRole="ORDER" />
-          <NavigationProperty Name="RENTs" Relationship="Self.FK__RENT__IdUser__300424B4" FromRole="USER" ToRole="RENT" />
-          <NavigationProperty Name="USER_ROLE" Relationship="Self.FK__USER__IdRole__30F848ED" FromRole="USER" ToRole="USER_ROLE" />
+          <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IdUser__4316F928" FromRole="USER" ToRole="BLOG" />
+          <NavigationProperty Name="CONTACTs" Relationship="Self.FK__CONTACT__IdUser__4222D4EF" FromRole="USER" ToRole="CONTACT" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__IdUser__412EB0B6" FromRole="USER" ToRole="ORDER" />
+          <NavigationProperty Name="RENTs" Relationship="Self.FK__RENT__IdUser__440B1D61" FromRole="USER" ToRole="RENT" />
+          <NavigationProperty Name="USER_ROLE" Relationship="Self.FK__USER__IdRole__44FF419A" FromRole="USER" ToRole="USER_ROLE" />
         </EntityType>
         <EntityType Name="USER_ROLE">
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
-          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="USERs" Relationship="Self.FK__USER__IdRole__30F848ED" FromRole="USER_ROLE" ToRole="USER" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK__USER__IdRole__44FF419A" FromRole="USER_ROLE" ToRole="USER" />
         </EntityType>
-        <Association Name="FK__BLOG__IdCate__398D8EEE">
+        <Association Name="FK__BLOG__IdCate__4D94879B">
           <End Role="CATEGORY_BLOG" Type="Self.CATEGORY_BLOG" Multiplicity="1" />
           <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -639,7 +617,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BLOG__IdUser__2F10007B">
+        <Association Name="FK__BLOG__IdUser__4316F928">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -651,7 +629,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMG_BLOG__IdBlog__38996AB5">
+        <Association Name="FK__IMG_BLOG__IdBlog__4CA06362">
           <End Role="BLOG" Type="Self.BLOG" Multiplicity="0..1" />
           <End Role="IMG_BLOG" Type="Self.IMG_BLOG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -663,7 +641,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCT__IdBrand__34C8D9D1">
+        <Association Name="FK__PRODUCT__IdBrand__48CFD27E">
           <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -675,7 +653,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMAGE_CON__IdCla__3A81B327">
+        <Association Name="FK__IMAGE_CON__IdCla__4E88ABD4">
           <End Role="CLASS" Type="Self.CLASS" Multiplicity="1" />
           <End Role="IMAGE_CONTENT" Type="Self.IMAGE_CONTENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -687,7 +665,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONTACT__IdUser__2E1BDC42">
+        <Association Name="FK__CONTACT__IdUser__4222D4EF">
           <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
           <End Role="CONTACT" Type="Self.CONTACT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -699,7 +677,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER__IdDiscoun__37A5467C">
+        <Association Name="FK__ORDER__IdDiscoun__4BAC3F29">
           <End Role="DISCOUNT" Type="Self.DISCOUNT" Multiplicity="0..1" />
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -711,7 +689,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMG_PRODU__IdPro__31EC6D26">
+        <Association Name="FK__IMG_PRODU__IdPro__45F365D3">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="IMG_PRODUCT" Type="Self.IMG_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -723,7 +701,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER__IdUser__2D27B809">
+        <Association Name="FK__ORDER__IdUser__412EB0B6">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -735,7 +713,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER_DET__IdOrd__36B12243">
+        <Association Name="FK__ORDER_DET__IdOrd__4AB81AF0">
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
           <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -747,7 +725,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ORDER_DET__IdPro__32E0915F">
+        <Association Name="FK__ORDER_DET__IdPro__46E78A0C">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="ORDER_DETAIL" Type="Self.ORDER_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -759,7 +737,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCT__IdType__35BCFE0A">
+        <Association Name="FK__PRODUCT__IdType__49C3F6B7">
           <End Role="TYPECAR" Type="Self.TYPECAR" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -771,7 +749,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RENT__IdProduct__33D4B598">
+        <Association Name="FK__RENT__IdProduct__47DBAE45">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -783,7 +761,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RENT__IdUser__300424B4">
+        <Association Name="FK__RENT__IdUser__440B1D61">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="RENT" Type="Self.RENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -795,7 +773,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USER__IdRole__30F848ED">
+        <Association Name="FK__USER__IdRole__44FF419A">
           <End Role="USER_ROLE" Type="Self.USER_ROLE" Multiplicity="1" />
           <End Role="USER" Type="Self.USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -821,67 +799,66 @@
           <EntitySet Name="ORDER_DETAIL" EntityType="Self.ORDER_DETAIL" />
           <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
           <EntitySet Name="RENTs" EntityType="Self.RENT" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TYPECARs" EntityType="Self.TYPECAR" />
           <EntitySet Name="USERs" EntityType="Self.USER" />
           <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" />
-          <AssociationSet Name="FK__BLOG__IdCate__398D8EEE" Association="Self.FK__BLOG__IdCate__398D8EEE">
+          <AssociationSet Name="FK__BLOG__IdCate__4D94879B" Association="Self.FK__BLOG__IdCate__4D94879B">
             <End Role="CATEGORY_BLOG" EntitySet="CATEGORY_BLOG" />
             <End Role="BLOG" EntitySet="BLOGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__BLOG__IdUser__2F10007B" Association="Self.FK__BLOG__IdUser__2F10007B">
+          <AssociationSet Name="FK__BLOG__IdUser__4316F928" Association="Self.FK__BLOG__IdUser__4316F928">
             <End Role="USER" EntitySet="USERs" />
             <End Role="BLOG" EntitySet="BLOGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMG_BLOG__IdBlog__38996AB5" Association="Self.FK__IMG_BLOG__IdBlog__38996AB5">
+          <AssociationSet Name="FK__IMG_BLOG__IdBlog__4CA06362" Association="Self.FK__IMG_BLOG__IdBlog__4CA06362">
             <End Role="BLOG" EntitySet="BLOGs" />
             <End Role="IMG_BLOG" EntitySet="IMG_BLOG" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCT__IdBrand__34C8D9D1" Association="Self.FK__PRODUCT__IdBrand__34C8D9D1">
+          <AssociationSet Name="FK__PRODUCT__IdBrand__48CFD27E" Association="Self.FK__PRODUCT__IdBrand__48CFD27E">
             <End Role="BRAND" EntitySet="BRANDs" />
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMAGE_CON__IdCla__3A81B327" Association="Self.FK__IMAGE_CON__IdCla__3A81B327">
+          <AssociationSet Name="FK__IMAGE_CON__IdCla__4E88ABD4" Association="Self.FK__IMAGE_CON__IdCla__4E88ABD4">
             <End Role="CLASS" EntitySet="CLASSes" />
             <End Role="IMAGE_CONTENT" EntitySet="IMAGE_CONTENT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONTACT__IdUser__2E1BDC42" Association="Self.FK__CONTACT__IdUser__2E1BDC42">
+          <AssociationSet Name="FK__CONTACT__IdUser__4222D4EF" Association="Self.FK__CONTACT__IdUser__4222D4EF">
             <End Role="USER" EntitySet="USERs" />
             <End Role="CONTACT" EntitySet="CONTACTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER__IdDiscoun__37A5467C" Association="Self.FK__ORDER__IdDiscoun__37A5467C">
+          <AssociationSet Name="FK__ORDER__IdDiscoun__4BAC3F29" Association="Self.FK__ORDER__IdDiscoun__4BAC3F29">
             <End Role="DISCOUNT" EntitySet="DISCOUNTs" />
             <End Role="ORDER" EntitySet="ORDERs" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMG_PRODU__IdPro__31EC6D26" Association="Self.FK__IMG_PRODU__IdPro__31EC6D26">
+          <AssociationSet Name="FK__IMG_PRODU__IdPro__45F365D3" Association="Self.FK__IMG_PRODU__IdPro__45F365D3">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="IMG_PRODUCT" EntitySet="IMG_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER__IdUser__2D27B809" Association="Self.FK__ORDER__IdUser__2D27B809">
+          <AssociationSet Name="FK__ORDER__IdUser__412EB0B6" Association="Self.FK__ORDER__IdUser__412EB0B6">
             <End Role="USER" EntitySet="USERs" />
             <End Role="ORDER" EntitySet="ORDERs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER_DET__IdOrd__36B12243" Association="Self.FK__ORDER_DET__IdOrd__36B12243">
+          <AssociationSet Name="FK__ORDER_DET__IdOrd__4AB81AF0" Association="Self.FK__ORDER_DET__IdOrd__4AB81AF0">
             <End Role="ORDER" EntitySet="ORDERs" />
             <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__ORDER_DET__IdPro__32E0915F" Association="Self.FK__ORDER_DET__IdPro__32E0915F">
+          <AssociationSet Name="FK__ORDER_DET__IdPro__46E78A0C" Association="Self.FK__ORDER_DET__IdPro__46E78A0C">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="ORDER_DETAIL" EntitySet="ORDER_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCT__IdType__35BCFE0A" Association="Self.FK__PRODUCT__IdType__35BCFE0A">
+          <AssociationSet Name="FK__PRODUCT__IdType__49C3F6B7" Association="Self.FK__PRODUCT__IdType__49C3F6B7">
             <End Role="TYPECAR" EntitySet="TYPECARs" />
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__RENT__IdProduct__33D4B598" Association="Self.FK__RENT__IdProduct__33D4B598">
+          <AssociationSet Name="FK__RENT__IdProduct__47DBAE45" Association="Self.FK__RENT__IdProduct__47DBAE45">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="RENT" EntitySet="RENTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__RENT__IdUser__300424B4" Association="Self.FK__RENT__IdUser__300424B4">
+          <AssociationSet Name="FK__RENT__IdUser__440B1D61" Association="Self.FK__RENT__IdUser__440B1D61">
             <End Role="USER" EntitySet="USERs" />
             <End Role="RENT" EntitySet="RENTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USER__IdRole__30F848ED" Association="Self.FK__USER__IdRole__30F848ED">
+          <AssociationSet Name="FK__USER__IdRole__44FF419A" Association="Self.FK__USER__IdRole__44FF419A">
             <End Role="USER_ROLE" EntitySet="USER_ROLE" />
             <End Role="USER" EntitySet="USERs" />
           </AssociationSet>
@@ -1026,17 +1003,6 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DBBanXeModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

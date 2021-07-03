@@ -14,25 +14,16 @@ namespace WebBanXe.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            //if (brand != null)
-            //{
-            //    List<PRODUCT> listProduct = new List<PRODUCT>();
-            //    listProduct = db.PRODUCTs.Where(p => p.BRAND.IdBrand == brand).ToList();
-            //    ViewBag.listProduct = listProduct; // lấy sản phẩm
-            //    ViewBag.title_product = db.BRANDs.Where(p => p.IdBrand == brand).FirstOrDefault(); //lấy tiêu đề
-            //}
-            //else
-            //{
                 List<PRODUCT> listProduct = new List<PRODUCT>();
                 listProduct = db.PRODUCTs.ToList();
-                ViewBag.listProduct = listProduct;// lấy sản phẩm
-                ViewBag.title_product = "Tất cả sản phẩm"; // lấy tiêu đề
-            //}
-            return View();
+            return View(listProduct);
         }
-        public ActionResult ProductDetail()
+
+        public ActionResult Detail(int id)
         {
-            return View();
+            PRODUCT product = new PRODUCT();
+            product = db.PRODUCTs.Where(p => p.IdProduct == id).SingleOrDefault();
+            return View(product);
         }
     }
 }

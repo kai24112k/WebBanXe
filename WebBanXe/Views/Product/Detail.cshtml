@@ -1,8 +1,7 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿
+@{ ViewBag.Title = "Detail";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div id="heading-breadcrumbs">
     <div class="container">
@@ -37,12 +36,12 @@
                     <div class=" mb-4">
 
                         <div class="item"><img src="~/Public/img/hm-6530.jpg" alt="" class="img-fluid"></div>
-                       
+
                     </div>
                 </div>
                 <div class="col-sm-4 card">
                     <div class="product-more">
-                        <h2 class="my-4 text-center card-footer" > Xe Máy Honda Airblade - Phiên bản tiêu chuẩn</h2>
+                        <h2 class="my-4 text-center card-footer"> Xe Máy Honda Airblade - Phiên bản tiêu chuẩn</h2>
                         <h2 class="my-4">52.100.000đ</h2>
                         <p class="my-4">Danh mục: <b>Xe tay ga</b></p>
                         <p class="my-4">Từ khóa: <b>Honda,Xe tay ga</b></p>
@@ -74,12 +73,7 @@
             <div class="heading">
                 <h3>Mô tả sản phẩm</h3>
             </div>
-            <h4>Thiết kế mạnh mẽ, ấn tượng</h4>
-            <p>Xe Máy Honda Air Blade 2019 (Phiên Bản Cao Cấp) mới được ra mắt cùng những đường nét mạnh mẽ, mang đậm vẻ nam tính, giúp người dùng thêm tự tin và hãnh diện khi sở hữu.</p>
-            <h4>Tem xe hoàn toàn mới</h4>
-            <p>Toàn bộ phần tem của chiếc AIR BLADE được thiết kế mới trên từng phiên bản khiến cho chiếc xe mang một vẻ mạnh mẽ và cuốn hút hơn bao giờ hết, tạo những điểm nhấn ấn tượng, thu hút mọi ánh nhìn.</p>
-            <h4>Hệ thống đèn pha LED</h4>
-            <p>Cụm đèn trước liền khối được trang bị đồng bộ công nghệ chiếu sáng LED, giúp mặt trước xe thon gọn, hài hòa với tổng thể thiết kế, nâng tầm đẳng cấp của chiếc xe. Hệ thống chiếu sáng LED độ bền cao của Air Blade hạn chế tối đa mức điện năng cũng như lượng nhiên liệu tiêu thụ.</p>
+            @Html.Raw(Model.Description)
             <section>
                 <div class="row portfolio">
                     <div class="col-md-12">
@@ -156,4 +150,3 @@
         </div>
     </div>
 </div>
-
