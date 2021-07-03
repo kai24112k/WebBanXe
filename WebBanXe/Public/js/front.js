@@ -90,26 +90,17 @@ $(function () {
     // ------------------------------------------------------- //
     // Customers Slider
     // ------------------------------------------------------ //
-    $(".brand").owlCarousel({
-        loop: true,
-        margin: 0,
-        dots: true,
-        nav: false,
-        autoplay: true,
-        smartSpeed: 800,
-        addClassActive: true,
-        
+    $(".customers").owlCarousel({
         responsiveClass: true,
         responsive: {
             0: {
-                items: 1
-            },
-            600: {
                 items: 2
             },
+            600: {
+                items: 3
+            },
             1000: {
-                items: 6,
-                loop: true
+                items: 6
             }
         }
     });
@@ -146,7 +137,10 @@ $(function () {
         autoplay: true,
         smartSpeed: 1000,
         addClassActive: true,
-        navText: ["<img src='../img/left-arrow.pngg'>", "<img src='i../img/right-arrow.pngg'>"],
+        navText: [
+            "<i class='fa fa-angle-left'></i>",
+            "<i class='fa fa-angle-right'></i>"
+        ],
         responsiveClass: true,
         responsive: {
             0: {
@@ -177,79 +171,32 @@ $(function () {
     // ------------------------------------------------------- //
     // Project Caroudel
     // ------------------------------------------------------ //
-    // $('.project').owlCarousel({
-    //     loop: true,
-    //     margin: 0,
-    //     dots: true,
-    //     nav: true,
-    //     autoplay: true,
-    //     smartSpeed: 1000,
-    //     addClassActive: true,
-    //     lazyload: true,
-    //     navText: ["<img src='img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
-    //     responsiveClass: true,
-    //     responsive: {
-    //         0: {
-    //             items: 1
-    //         },
-    //         600: {
-    //             items: 1
-    //         },
-    //         1000: {
-    //             items: 1,
-    //             loop: true
-    //         }
-    //     }
-    // });
+    $('.project').owl-carousel({
+        loop: true,
+        margin: 0,
+        dots: true,
+        nav: true,
+        autoplay: true,
+        smartSpeed: 1000,
+        addClassActive: true,
+        lazyload: true,
+     
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 1,
+                loop: true
+            }
+        }
+    });
 
-    $('.project').owlCarousel({
-        loop: true,
-        margin: 0,
-        dots: true,
-        nav: true,
-        autoplay: true,
-        smartSpeed: 1000,
-        addClassActive: true,
-        lazyload: true,
-        navText: ["<img src='./Public/img/left-arrow.png'>", "<img src='./Public/img/right-arrow.png'>"],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1,
-                loop: true
-            }
-        }
-    });
-    $('.product').owlCarousel({
-        loop: true,
-        margin: 0,
-        dots: true,
-        nav: true,
-        autoplay: true,
-        smartSpeed: 1000,
-        addClassActive: true,
-        lazyload: true,
-        navText: ["<img src='../img/left-arrow.png'>", "<img src='../img/right-arrow.png'>"],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1,
-                loop: true
-            }
-        }
-    });
+
     // ------------------------------------------------------- //
     // jQuery Counter Up
     // ------------------------------------------------------ //
@@ -341,26 +288,5 @@ $(function () {
             });
         }
     });
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        animateOut: 'fadeOut',
-        autoplayTimeout: 2000,
-        autoplayHoverPause: false,
-        nav: true,
-        navText: ["<img src='./img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
 
 });

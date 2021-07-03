@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2"> Chi tiết sản phẩm</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"> Chi tiết sản phẩm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <section class="bar no-padding-bottom">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h2>Chi tiết sản phẩm</h2>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="bar">
+            <div class="row portfolio-project">
+                <div class="col-sm-6 card">
+                    <div class=" mb-4">
+
+                        <div class="item"><img src="~/Public/img/hm-6530.jpg" alt="" class="img-fluid"></div>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4 card">
+                    <div class="product-more">
+                        <h2 class="my-4 text-center card-footer" > Xe Máy Honda Airblade - Phiên bản tiêu chuẩn</h2>
+                        <h2 class="my-4">52.100.000đ</h2>
+                        <p class="my-4">Danh mục: <b>Xe tay ga</b></p>
+                        <p class="my-4">Từ khóa: <b>Honda,Xe tay ga</b></p>
+                        <p class="my-4">Brand: <b>Honda</b></p>
+                        <h7 class="my-4">Tình trạng: <b>Còn hàng</b></h7>
+                        <h4 class="my-4">
+                            Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
+                                             class="form-control" style="width: 250px; ">
+                        </h4>
+                        <button class="btn-outline-danger my-4" style="height: 50px;">THÊM VÀO GIỎ HÀNG</button>
+                        <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
+                        <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
+                        <h4 style="color: brown;">CHIA SẺ NGAY</h4>
+                        <i class="fab fa-facebook" style="color: rgb(66, 66, 216);font-size: 30px;"></i>
+                        <i class="fab fa-twitter" style="color: rgb(99, 129, 218);font-size: 30px"></i>
+                        <i class="fab fa-instagram" style="color: rgb(158, 95, 95);font-size: 30px"></i>
+                    </div>
+                </div>
+                <div class="col-sm-2 card">
+                    <h4 class="my-4 text-center card-footer">HÀNG MỚI VỀ</h4>
+                    <div class="item "><img src="~/Public/img/hm-7471.jpg" alt="" class="img-fluid"></div>
+                    <div class="item "><img src="~/Public/img/hm-7874.jpg" alt="" class="img-fluid"></div>
+                    <div class="item  my-2"><img src="~/Public/img/winner-x-v10-phien-ban-camo.png" alt="" class="img-fluid"></div>
+                    <div class="item  my-5"><img src="~/Public/img/monkey_1.png" alt="" class="img-fluid"></div>
+                </div>
+            </div>
+        </section>
+        <div class="col-sm-12">
+            <div class="heading">
+                <h3>Mô tả sản phẩm</h3>
+            </div>
+            <h4>Thiết kế mạnh mẽ, ấn tượng</h4>
+            <p>Xe Máy Honda Air Blade 2019 (Phiên Bản Cao Cấp) mới được ra mắt cùng những đường nét mạnh mẽ, mang đậm vẻ nam tính, giúp người dùng thêm tự tin và hãnh diện khi sở hữu.</p>
+            <h4>Tem xe hoàn toàn mới</h4>
+            <p>Toàn bộ phần tem của chiếc AIR BLADE được thiết kế mới trên từng phiên bản khiến cho chiếc xe mang một vẻ mạnh mẽ và cuốn hút hơn bao giờ hết, tạo những điểm nhấn ấn tượng, thu hút mọi ánh nhìn.</p>
+            <h4>Hệ thống đèn pha LED</h4>
+            <p>Cụm đèn trước liền khối được trang bị đồng bộ công nghệ chiếu sáng LED, giúp mặt trước xe thon gọn, hài hòa với tổng thể thiết kế, nâng tầm đẳng cấp của chiếc xe. Hệ thống chiếu sáng LED độ bền cao của Air Blade hạn chế tối đa mức điện năng cũng như lượng nhiên liệu tiêu thụ.</p>
+            <section>
+                <div class="row portfolio">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h3>Sản phẩm liên quan</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="box-image">
+                            <div class="image">
+                                <img src="~/Public/img/1.jpg" alt="" class="img-fluid">
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name no-mb">
+                                            <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                        </div>
+                                        <div class="text">
+
+                                            <p class="buttons">
+                                                <a href="/ProductDetail/Index"
+                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="box-image">
+                            <div class="image">
+                                <img src="~/Public/img/2.jpg" alt="" class="img-fluid">
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name no-mb">
+                                            <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                        </div>
+                                        <div class="text">
+
+                                            <p class="buttons">
+                                                <a href="/ProductDetail/Index"
+                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="box-image">
+                            <div class="image">
+                                <img src="~/Public/img/hm-6530.jpg" alt="" class="img-fluid">
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name no-mb">
+                                            <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                        </div>
+                                        <div class="text">
+
+                                            <p class="buttons">
+                                                <a href="/ProductDetail/Index"
+                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

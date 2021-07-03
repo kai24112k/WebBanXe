@@ -404,7 +404,7 @@
     <Content Include="vendor\waypoints\testem.json" />
     <Content Include="Public\img\.DS_Store" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
