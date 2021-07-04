@@ -25,5 +25,7 @@ namespace WebBanXe.Controllers
             product = db.PRODUCTs.Where(p => p.IdProduct == id).SingleOrDefault();
             return View(product);
         }
+
+       
     }
 }

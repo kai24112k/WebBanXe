@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IdBlog" />
           </Key>
-          <Property Name="IdBlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBlog" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdCate" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Content" Type="ntext" Nullable="false" />
@@ -27,21 +27,21 @@
           <Key>
             <PropertyRef Name="IdCate" />
           </Key>
-          <Property Name="IdCate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCate" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NameCate" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CLASS">
           <Key>
             <PropertyRef Name="IdClass" />
           </Key>
-          <Property Name="IdClass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClass" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NameClass" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CONTACT">
           <Key>
             <PropertyRef Name="IdContact" />
           </Key>
-          <Property Name="IdContact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdContact" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="int" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
@@ -51,7 +51,7 @@
           <Key>
             <PropertyRef Name="IdDiscount" />
           </Key>
-          <Property Name="IdDiscount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDiscount" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CodeDiscount" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Value" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdClass" Type="int" Nullable="false" />
           <Property Name="AltImg" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdBlog" Type="int" />
           <Property Name="AltImg" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
@@ -78,7 +78,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="AltImg" Type="varchar" MaxLength="20" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
@@ -87,7 +87,7 @@
           <Key>
             <PropertyRef Name="IdOrder" />
           </Key>
-          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="IdDiscount" Type="int" />
           <Property Name="TotalMoney" Type="int" Nullable="false" />
@@ -101,7 +101,7 @@
             <PropertyRef Name="IdOrder" />
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -110,10 +110,10 @@
           <Key>
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="IdBrand" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="IdType" Type="int" Nullable="false" />
@@ -122,7 +122,7 @@
           <Key>
             <PropertyRef Name="IdRent" />
           </Key>
-          <Property Name="IdRent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRent" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="DateRent" Type="datetime" Nullable="false" />
           <Property Name="DateBack" Type="datetime" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -142,7 +142,7 @@
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -156,7 +156,7 @@
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
-          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__BLOG__IdCate__4D94879B">
