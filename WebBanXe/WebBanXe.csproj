@@ -133,6 +133,7 @@
     <Content Include="Public\img\logo1.png" />
     <Content Include="Public\img\logo2.png" />
     <Content Include="Public\img\logo7.png" />
+    <Content Include="Public\img\logoDHCV.ico" />
     <Content Include="Public\img\logoDHCV.png" />
     <Content Include="Public\img\logodhcv2.png" />
     <Content Include="Public\img\logodhcv6.png" />

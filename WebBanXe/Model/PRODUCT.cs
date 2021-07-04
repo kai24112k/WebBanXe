@@ -26,8 +26,8 @@ namespace WebBanXe.Model
         public string NameProduct { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
-        public bool Status { get; set; }
-        public string IdBrand { get; set; }
+        public int Status { get; set; }
+        public int IdBrand { get; set; }
         public int IdType { get; set; }
     
         public virtual BRAND BRAND { get; set; }

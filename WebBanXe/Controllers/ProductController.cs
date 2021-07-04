@@ -12,12 +12,13 @@ namespace WebBanXe.Controllers
     {
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
                 List<PRODUCT> listProduct = new List<PRODUCT>();
-                listProduct = db.PRODUCTs.ToList();
+                listProduct = db.PRODUCTs.Where(p => p.Status == id).ToList();
             return View(listProduct);
         }
+
 
         public ActionResult Detail(int id)
         {
