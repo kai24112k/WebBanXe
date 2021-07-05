@@ -316,7 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -408,20 +407,17 @@
     <Content Include="vendor\waypoints\testem.json" />
     <Content Include="Public\img\.DS_Store" />
     <Content Include="Views\Home\Index.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Views\Contact\ContactPage.cshtml" />
     <Content Include="Views\Customer\SignUp.cshtml" />
     <Content Include="Views\Blog\CategoryBlog.cshtml" />
     <Content Include="Views\Blog\BlogHome.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
-=======
     <Content Include="Views\Product\Brand.cshtml" />
     <Content Include="Views\Product\LineCar.cshtml" />
     <Content Include="Views\Product\PBrand.cshtml" />
     <Content Include="Views\Product\Price.cshtml" />
     <Content Include="Views\Product\Status.cshtml" />
     <Content Include="Views\Product\TypeCar.cshtml" />
->>>>>>> Stashed changes
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
