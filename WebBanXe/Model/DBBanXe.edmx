@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IdBlog" />
           </Key>
-          <Property Name="IdBlog" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdBlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCate" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Content" Type="ntext" Nullable="false" />
@@ -41,7 +41,7 @@
           <Key>
             <PropertyRef Name="IdContact" />
           </Key>
-          <Property Name="IdContact" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdContact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="int" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
@@ -142,7 +142,7 @@
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
