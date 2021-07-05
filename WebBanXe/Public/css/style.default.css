@@ -222,7 +222,7 @@ p.lead {
 .background-pentagon, #heading-breadcrumbs {
     background: url("/Public/img/texture-bw.png") center center repeat !important;
     border-top: 1px solid #999;
-    border-bottom: 1px solid #999
+    border-bottom: 1px solid #999;
 }
 
 .heading, .panel-heading {
