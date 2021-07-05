@@ -1,4 +1,6 @@
-﻿@{
+﻿
+    
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -26,124 +28,15 @@
                     <div class="heading">
                         <h2><a href="@Url.Action("Index", "Product")">SẢN PHẨM</a></h2>
                     </div>
-
                 </div>
                 <div class="col-md-3 py-3">
                     <div class="card mb-3" style="width: 100%;">
-                        <div class="card-header">
-                            <h3>Hãng xe</h3>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Honda
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Yamaha
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Suzuki
-                            </label>
-                        </div>
-                    </div>
-                    <div class="card mb-3" style="width: 100%;">
-                        <div class="card-header">
-                            <h3>Loại xe</h3>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Xe số
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Xe tay ga
-                            </label>
-                        </div>
-                    </div>
-                    <div class="card mb-3" style="width: 100%;">
-                        <div class="card-header">
-                            <h3>Tình trạng</h3>
-                        </div>
-                        <div class="form-check">
-                                <a href="@Url.Action("Loc","Product", new { id = 1 })">Mới</a>
-                        </div>
-                        <div class="form-check">
-                            <a href="@Url.Action("Loc","Product", new { id = 0 })">Cũ</a>
 
-                        </div>
-                    </div>
-                    <div class="card mb-3" style="width: 100%;">
-                        <div class="card-header">
-                            <h3>Khoảng giá</h3>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                0 - 10 triệu
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                10 triệu - 20 triệu
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                20 triệu - 30 triệu
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                30 triệu - 50 triệu
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Trên 50 triệu
-                            </label>
-                        </div>
-                    </div>
-                    <div class="card mb-3" style="width: 100%;">
-                        <div class="card-header">
-                            <h3>Dòng xe</h3>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Air Black
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Exciter
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Wave
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Winner
-                            </label>
-                        </div>
+                        @Html.Action("Brand", "Product")
+                        @Html.Action("TypeCar", "Product")
+                        @Html.Action("Status", "Product")
+                        @Html.Action("Price", "Product")
+                        @Html.Action("LineCar", "Product")
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -151,7 +44,7 @@
                         @foreach (var product in Model)
                         {
                             <div class="col-md-4">
-                                <div class="box-image">
+                                <div class="box-image card">
                                     <div class="image">
                                         <a href="@Url.Action("Detail","Product", new { id = product.IdProduct },null)">
                                             @foreach (var item in product.IMG_PRODUCT)
@@ -161,11 +54,12 @@
                                                     <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                                 }
                                             }
-                                        <div style="text-align:left;">Giá : @string.Format("{0:#,##0}", @product.Price) đ</div>
+                                            <div style="text-align:center;">@product.NameProduct</div>
+                                            <div style="text-align:center;">Giá : @string.Format("{0:#,##0}", @product.Price) đ</div>
                                         </a>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
 

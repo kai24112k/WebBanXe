@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebBanXe.Model.BRAND>
+@{
+    ViewBag.Title = "PBrand";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">CỬA HÀNG</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="#">TRANG CHỦ</a></li>
+                    <li class="breadcrumb-item active">CỬA HÀNG</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <section class="bar">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading">
+                    <h2>Sản Phẩm</h2>
+                </div>
+            </div>
+            @foreach (var brand in Model)
+            {
+                <div class="text-center mx-4"><h2>@brand.NameBrand</h2></div>
+                <div class="col-sm-4 my-5 mr-4">
+                    <a href="@Url.Action("Detail","Product",new { id = brand.IdBrand })" )></a>
+                    <img src="~/Public/img/@brand.ImgBrand" alt="@brand.NameBrand" class="img-fluid card"  />
+                </div>
+            }
+        </div>
+    </section>
+</div>

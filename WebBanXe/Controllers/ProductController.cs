@@ -12,11 +12,12 @@ namespace WebBanXe.Controllers
     {
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Product
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-                List<PRODUCT> listProduct = new List<PRODUCT>();
-                listProduct = db.PRODUCTs.Where(p => p.Status == id).ToList();
-            return View(listProduct);
+                List<PRODUCT> listProduct = new List<PRODUCT>();             
+                listProduct = db.PRODUCTs.ToList();
+                return View(listProduct);
+
         }
 
 
@@ -27,6 +28,72 @@ namespace WebBanXe.Controllers
             return View(product);
         }
 
-       
+        public ActionResult Brand()
+        {
+            List<BRAND> listbrand = new List<BRAND>();
+            listbrand = db.BRANDs.ToList();
+            return View(listbrand);
+        }
+        public ActionResult TypeCar()
+        {
+            List<TYPECAR> listtypecar = new List<TYPECAR>();
+            listtypecar = db.TYPECARs.ToList();
+            return View(listtypecar);
+        }
+        public ActionResult Status(int? id)
+        {
+            List<PRODUCT> listProduct = new List<PRODUCT>();
+            if (id != null)
+            {
+                listProduct = db.PRODUCTs.Where(p=>p.Status == id).ToList();
+            }
+            else
+            {
+                listProduct = db.PRODUCTs.ToList();
+            }
+            return View(listProduct);
+        }
+        public ActionResult Price(int? id)
+        {
+            List<PRODUCT> listProduct = new List<PRODUCT>();
+            if (id != null)
+            {
+                listProduct = new List<PRODUCT>();
+                listProduct = db.PRODUCTs.Where(p =>p.Price <= id).ToList();
+            }
+            else
+            {
+                listProduct = db.PRODUCTs.ToList();
+            }
+            return View(listProduct);
+        }
+        public ActionResult LineCar(String id)
+        {
+            List<PRODUCT> listProduct = new List<PRODUCT>();
+            if (id != null)
+            {
+                listProduct = new List<PRODUCT>();
+                listProduct = db.PRODUCTs.Where(p => p.NameProduct.Contains(id)).ToList();
+            }
+            else
+            {
+                listProduct = db.PRODUCTs.ToList();
+            }
+            return View(listProduct);
+        }
+        public ActionResult PBrand(int? id)
+        {
+            List<BRAND> listbrand = new List<BRAND>();
+            if (id != null)
+            {
+                listbrand = db.BRANDs.Where(p => p.IdBrand == id).ToList();
+            }
+            else
+            {
+                listbrand = db.BRANDs.ToList();
+            }
+            return View(listbrand);
+        }
+
     }
 }
