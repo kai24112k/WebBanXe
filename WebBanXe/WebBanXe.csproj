@@ -413,9 +413,8 @@
     <Content Include="Views\Blog\BlogHome.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Views\Product\Brand.cshtml" />
-    <Content Include="Views\Product\PBrand.cshtml" />
     <Content Include="Views\Product\TypeCar.cshtml" />
-    <Content Include="Views\Product\PTypeCar.cshtml" />
+    <Content Include="Views\Product\StatusCar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

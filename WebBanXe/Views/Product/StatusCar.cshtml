@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "StatusCar";
+}
+
+<div class="card-header ">
+    <h3>TÌNH TRẠNG</h3>
+</div>
+<div class="list-group list-group-flush">
+    <a href="@Url.Action("Index","Product", new { idStatus = 1 },null)" class="list-group-item">Mới</a>
+    <a href="@Url.Action("Index","Product", new { idStatus = 0 },null)" class="list-group-item">Cũ</a>
+</div>
+
