@@ -40,47 +40,6 @@ namespace WebBanXe.Controllers
             listtypecar = db.TYPECARs.ToList();
             return View(listtypecar);
         }
-        public ActionResult Status(int? id)
-        {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            if (id != null)
-            {
-                listProduct = db.PRODUCTs.Where(p=>p.Status == id).ToList();
-            }
-            else
-            {
-                listProduct = db.PRODUCTs.ToList();
-            }
-            return View(listProduct);
-        }
-        public ActionResult Price(int? id)
-        {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            if (id != null)
-            {
-                listProduct = new List<PRODUCT>();
-                listProduct = db.PRODUCTs.Where(p =>p.Price <= id).ToList();
-            }
-            else
-            {
-                listProduct = db.PRODUCTs.ToList();
-            }
-            return View(listProduct);
-        }
-        public ActionResult LineCar(String id)
-        {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            if (id != null)
-            {
-                listProduct = new List<PRODUCT>();
-                listProduct = db.PRODUCTs.Where(p => p.NameProduct.Contains(id)).ToList();
-            }
-            else
-            {
-                listProduct = db.PRODUCTs.ToList();
-            }
-            return View(listProduct);
-        }
         public ActionResult PBrand(int? id)
         {
             List<BRAND> listbrand = new List<BRAND>();
@@ -93,6 +52,19 @@ namespace WebBanXe.Controllers
                 listbrand = db.BRANDs.ToList();
             }
             return View(listbrand);
+        }
+        public ActionResult PTypeCar(int? id)
+        {
+            List<TYPECAR> listtypecar = new List<TYPECAR>();
+            if (id != null)
+            {
+                listtypecar = db.TYPECARs.Where(p => p.IdType == id).ToList();
+            }
+            else
+            {
+                listtypecar = db.TYPECARs.ToList();
+            }
+            return View(listtypecar);
         }
 
     }

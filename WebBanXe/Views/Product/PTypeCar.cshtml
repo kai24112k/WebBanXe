@@ -1,8 +1,9 @@
-﻿@model IEnumerable<WebBanXe.Model.BRAND>
+﻿@model IEnumerable<WebBanXe.Model.TYPECAR>
 @{
-    ViewBag.Title = "PBrand";
+    ViewBag.Title = "PTypeCar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
@@ -31,18 +32,22 @@
 
                     @Html.Action("Brand", "Product")
                     @Html.Action("TypeCar", "Product")
+
                 </div>
             </div>
             <div class="col-md-9">
-                @foreach (var brand in Model)
+                @foreach (var typecar in Model)
                 {
-                    <div class="text-center mx-4"><h2>@brand.NameBrand</h2></div>
-                    <div class="col-sm-4 ">
-                        <a href="@Url.Action("Detail","Product",new { id = brand.IdBrand })" )></a>
-                        <img src="~/Public/img/@brand.ImgBrand" alt="@brand.NameBrand" class="img-fluid card" />
+                    <div class="text-center mx-4"><h2>@typecar.NameType</h2></div>
+                    <div class="col-sm-4 my-5 mr-4">
+                        <a href="@Url.Action("Detail","Product",new { id = typecar.IdType })" )></a>
+                        <img src="~/Public/img/@typecar.ImgType" alt="@typecar.NameType" class="img-fluid card" />
                     </div>
                 }
             </div>
         </div>
-</section>
+    </section>
 </div>
+
+
+

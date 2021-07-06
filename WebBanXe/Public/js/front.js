@@ -14,7 +14,7 @@ $(function () {
             $('header.nav-holder.make-sticky').removeClass('sticky');
             $('body').css('padding-top', '0');
         }
-    });
+    }); 
 
     // ------------------------------------------------------- //
     // Multi-level dropdown
@@ -98,7 +98,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 800,
         addClassActive: true,
-
+        
         responsiveClass: true,
         responsive: {
             0: {
@@ -146,7 +146,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 1000,
         addClassActive: true,
-        navText: ["<img src='../img/left-arrow.png'>", "<img src='i../img/right-arrow.png'>"],
+        navText: ["<img src='../img/left-arrow.pngg'>", "<img src='i../img/right-arrow.pngg'>"],
         responsiveClass: true,
         responsive: {
             0: {
@@ -211,7 +211,7 @@ $(function () {
         smartSpeed: 1000,
         addClassActive: true,
         lazyload: true,
-        navText: ["<img src='./Public/img/left-arrow.png'>", "<img src='./Public/img/right-arrow.png'>"],
+        navText: ["<img src='img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
         responsiveClass: true,
         responsive: {
             0: {
@@ -235,7 +235,7 @@ $(function () {
         smartSpeed: 1000,
         addClassActive: true,
         lazyload: true,
-        navText: ["<img src='/Public/img/left-arrow.png'>", "<img src='/Public/img/right-arrow.png'>"],
+        navText: ["<img src='img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
         responsiveClass: true,
         responsive: {
             0: {
