@@ -316,6 +316,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -329,6 +330,7 @@
     <Compile Include="Model\BRAND.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\CATEGORY_BLOG.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
@@ -418,6 +420,8 @@
     <Content Include="Views\Product\Price.cshtml" />
     <Content Include="Views\Product\Status.cshtml" />
     <Content Include="Views\Product\TypeCar.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

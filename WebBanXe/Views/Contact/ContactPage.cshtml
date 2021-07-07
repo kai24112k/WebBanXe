@@ -34,6 +34,33 @@
             </div>
         </section>
         <section>
+            <section class=" bar pt-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-center">
+                            <h2>liên hệ</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12 ">
+                        @using (Html.BeginForm())
+                        {
+
+                            @Html.Raw(ViewBag.Notice)
+                            <div class="container mb-3 border border-1 shadow rounded rounded-3" style="padding: 30px">
+                                <label class="mb-0" for="tieude"><b>Tiêu đề</b></label>
+                                <input name="title" class="form-control mb-2" style="width:100%" placeholder="Xin chào!" required />
+
+                                <label class="mb-0" for="email"><b>Email</b></label>
+                                <input name="email" class="form-control mb-2" style="width:100%" placeholder="xemaydhcv@gmail.com" required />
+
+                                <label class="mb-0" for="noidung"><b>Nội dung</b></label>
+                                <textarea name="content" class="form-control mb-2" style="width:100%" rows="6" placeholder="Viết nội dung" required></textarea>
+                                <button on type="submit" class="btn btn-template-outlined" style="width:100%"><b>Gửi</b></button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
             <div class="row text-center">
                 <div class="col-md-4">
                     <div class="box-simple">
@@ -66,32 +93,7 @@
                 </div>
             </div>
         </section>
-        <section class=" bar pt-0">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading text-center">
-                        <h2>liên hệ</h2>
-                    </div>
-                </div>
-                <div class="col-md-12 col-12 ">
-                    @using (Html.BeginForm())
-                    {
-
-                        @Html.Raw(ViewBag.Notice)
-                        <div class="container mb-3 border border-1 shadow rounded rounded-3" style="padding: 30px">
-                            <label class="mb-0" for="tieude"><b>Tiêu đề</b></label>
-                            <input name="title" class="form-control mb-2" style="width:100%" placeholder="Xin chào!" required />
-
-                            <label class="mb-0" for="email"><b>Email</b></label>
-                            <input name="email" class="form-control mb-2" style="width:100%" placeholder="xemaydhcv@gmail.com" required />
-
-                            <label class="mb-0" for="noidung"><b>Nội dung</b></label>
-                            <textarea name="content" class="form-control mb-2" style="width:100%" rows="6" placeholder="Viết nội dung" required></textarea>
-                            <button on type="submit" class="btn btn-template-outlined" style="width:100%"><b>Gửi</b></button>
-                        </div>
-                    }
-                </div>
-                </div>
+     
 
 
 

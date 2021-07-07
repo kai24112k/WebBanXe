@@ -14,9 +14,9 @@ namespace WebBanXe.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            List<PRODUCT> listProductHome = new List<PRODUCT>();
-            listProductHome = db.PRODUCTs.ToList();
-            return View(listProductHome);
+            List<PRODUCT> listProduct = new List<PRODUCT>();
+            listProduct = db.PRODUCTs.ToList();
+            return View(listProduct);
         }
     }
 }
