@@ -90,7 +90,15 @@ $(function () {
     // ------------------------------------------------------- //
     // Customers Slider
     // ------------------------------------------------------ //
-    $(".customers").owlCarousel({
+    $(".brand").owlCarousel({
+        loop: true,
+        margin: 0,
+        dots: true,
+        nav: false,
+        autoplay: true,
+        smartSpeed: 800,
+        addClassActive: true,
+        
         responsiveClass: true,
         responsive: {
             0: {
@@ -137,10 +145,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 1000,
         addClassActive: true,
-        navText: [
-            "<i class='fa fa-angle-left'></i>",
-            "<i class='fa fa-angle-right'></i>"
-        ],
+        navText: ["<img src='../img/left-arrow.pngg'>", "<img src='i../img/right-arrow.pngg'>"],
         responsiveClass: true,
         responsive: {
             0: {
@@ -171,7 +176,32 @@ $(function () {
     // ------------------------------------------------------- //
     // Project Caroudel
     // ------------------------------------------------------ //
-    $('.project').owl-carousel({
+    // $('.project').owlCarousel({
+    //     loop: true,
+    //     margin: 0,
+    //     dots: true,
+    //     nav: true,
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     addClassActive: true,
+    //     lazyload: true,
+    //     navText: ["<img src='img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         },
+    //         600: {
+    //             items: 1
+    //         },
+    //         1000: {
+    //             items: 1,
+    //             loop: true
+    //         }
+    //     }
+    // });
+
+    $('.project').owlCarousel({
         loop: true,
         margin: 0,
         dots: true,
@@ -180,7 +210,31 @@ $(function () {
         smartSpeed: 1000,
         addClassActive: true,
         lazyload: true,
-     
+        navText: ["<img src='img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 1,
+                loop: true
+            }
+        }
+    });
+    $('.product').owlCarousel({
+        loop: true,
+        margin: 0,
+        dots: true,
+        nav: true,
+        autoplay: true,
+        smartSpeed: 1000,
+        addClassActive: true,
+        lazyload: true,
+        navText: ["<img src='img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
         responsiveClass: true,
         responsive: {
             0: {

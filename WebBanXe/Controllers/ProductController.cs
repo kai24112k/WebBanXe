@@ -12,11 +12,18 @@ namespace WebBanXe.Controllers
     {
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? idBrand, int? idType, int? idStatus)
         {
-                List<PRODUCT> listProduct = new List<PRODUCT>();             
-                listProduct = db.PRODUCTs.ToList();
-                return View(listProduct);
+            List<PRODUCT> listproduct = new List<PRODUCT>();
+            if (idBrand != null || idType != null || idStatus != null)
+            {
+                listproduct = db.PRODUCTs.Where(p => p.IdBrand == idBrand || p.IdType == idType || p.Status == idStatus).ToList();
+            }
+            else
+            {
+                listproduct = db.PRODUCTs.ToList();
+            }
+            return View(listproduct);
 
         }
 
@@ -25,6 +32,8 @@ namespace WebBanXe.Controllers
         {
             PRODUCT product = new PRODUCT();
             product = db.PRODUCTs.Where(p => p.IdProduct == id).SingleOrDefault();
+            var request = HttpContext.Request.Url.AbsoluteUri;
+            ViewBag.Url = request;
             return View(product);
         }
 
@@ -40,60 +49,10 @@ namespace WebBanXe.Controllers
             listtypecar = db.TYPECARs.ToList();
             return View(listtypecar);
         }
-        public ActionResult Status(int? id)
-        {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            if (id != null)
-            {
-                listProduct = db.PRODUCTs.Where(p=>p.Status == id).ToList();
-            }
-            else
-            {
-                listProduct = db.PRODUCTs.ToList();
-            }
-            return View(listProduct);
-        }
-        public ActionResult Price(int? id)
-        {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            if (id != null)
-            {
-                listProduct = new List<PRODUCT>();
-                listProduct = db.PRODUCTs.Where(p =>p.Price <= id).ToList();
-            }
-            else
-            {
-                listProduct = db.PRODUCTs.ToList();
-            }
-            return View(listProduct);
-        }
-        public ActionResult LineCar(String id)
-        {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            if (id != null)
-            {
-                listProduct = new List<PRODUCT>();
-                listProduct = db.PRODUCTs.Where(p => p.NameProduct.Contains(id)).ToList();
-            }
-            else
-            {
-                listProduct = db.PRODUCTs.ToList();
-            }
-            return View(listProduct);
-        }
-        public ActionResult PBrand(int? id)
-        {
-            List<BRAND> listbrand = new List<BRAND>();
-            if (id != null)
-            {
-                listbrand = db.BRANDs.Where(p => p.IdBrand == id).ToList();
-            }
-            else
-            {
-                listbrand = db.BRANDs.ToList();
-            }
-            return View(listbrand);
-        }
 
+        public ActionResult StatusCar()
+        {
+            return View();
+        }
     }
 }

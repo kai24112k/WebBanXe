@@ -1,7 +1,6 @@
 ﻿﻿﻿
 @{ ViewBag.Title = "Detail";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
-
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
@@ -10,7 +9,7 @@
             </div>
             <div class="col-md-5">
                 <ul class="breadcrumb d-flex justify-content-end">
-                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                     <li class="breadcrumb-item active"> Chi tiết sản phẩm</li>
                 </ul>
             </div>
@@ -20,7 +19,7 @@
 <div id="content">
     <div class="container">
         <section class="bar">
-            <div class="row portfolio-project">
+            <div class="row portfolio-product">
                 <div class="col-sm-6 card">
                     <div class=" mb-4">
                
@@ -42,11 +41,9 @@
                       </div> 
                 <div class="col-sm-4 card">
                     <div class="product-more">
-                        <h2 class="my-4 text-center card-footer"> Xe Máy Honda Airblade - Phiên bản tiêu chuẩn</h2>
-                        <h2 class="my-4">52.100.000đ</h2>
-                        <p class="my-4">Danh mục: <b>Xe tay ga</b></p>
-                        <p class="my-4">Từ khóa: <b>Honda,Xe tay ga</b></p>
-                        <p class="my-4">Brand: <b>Honda</b></p>
+
+                        <h1 class="my-4 text-center card-footer"> @Model.NameProduct</h1>
+                        <h2 class="my-4">Giá tiền: @string.Format("{0:#,##0}", @Model.Price) đ</h2>
                         <h7 class="my-4">Tình trạng: <b>Còn hàng</b></h7>
                         <h4 class="my-4">
                             Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
@@ -60,9 +57,26 @@
                         <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
                         <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
                         <h4 style="color: brown;">CHIA SẺ NGAY</h4>
-                        <i class="fab fa-facebook" style="color: rgb(66, 66, 216);font-size: 30px;"></i>
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.Url" style="clear">
+                            <i class="fab fa-facebook" style="font-size: 30px; color: #3a589d !important;
+"></i>
+                        </a>
                         <i class="fab fa-twitter" style="color: rgb(99, 129, 218);font-size: 30px"></i>
                         <i class="fab fa-instagram" style="color: rgb(158, 95, 95);font-size: 30px"></i>
+
+                    </div>
+                </div>
+                <div class="col-sm-2 card">
+
+                    <div class="card">
+                        <h3 class="my-4 text-center card-footer"> Thông tin nổi bật</h3>
+                        <ul>
+                            <li>Dành cho lứa tuổi từ 15 trở lên</li>
+                            <li>Không còn nỗi lo lên về số, chỉ cần kéo ga nhẹ nhàng lướt nhanh</li>
+                            <li>Cốp rộng chứa đồ và sàn để chân thoải mái</li>
+                            <li>Bảo hành 2 năm động cơ và 3 năm khung sườn</li>
+                            <li>Đổi mới trong 3 ngày đầu tiên</li>
+                        </ul>
                     </div>
                 </div>
                 @*}*@
@@ -85,16 +99,19 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="box-image">
                             <div class="image">
-                                <img src="~/Public/img/1.jpg" alt="" class="img-fluid">
+                                @foreach (var item in Model.IMG_PRODUCT)
+                                {
+                                    <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                }
                                 <div class="overlay d-flex align-items-center justify-content-center">
                                     <div class="content">
                                         <div class="name no-mb">
-                                            <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
+                                            <h3><a href="@Url.Action("Detail","Product", new { id = 2 },null)" class="color-white"></a></h3>
                                         </div>
                                         <div class="text">
 
                                             <p class="buttons">
-                                                <a href="/ProductDetail/Index"
+                                                <a href="@Url.Action("Detail","Product", new { id = 2 },null)"
                                                    class="btn btn-template-outlined-white">Xem chi tiết</a>
                                             </p>
                                         </div>
@@ -103,49 +120,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="box-image">
-                            <div class="image">
-                                <img src="~/Public/img/2.jpg" alt="" class="img-fluid">
-                                <div class="overlay d-flex align-items-center justify-content-center">
-                                    <div class="content">
-                                        <div class="name no-mb">
-                                            <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
-                                        </div>
-                                        <div class="text">
-
-                                            <p class="buttons">
-                                                <a href="/ProductDetail/Index"
-                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="box-image">
-                            <div class="image">
-                                <img src="~/Public/img/hm-6530.jpg" alt="" class="img-fluid">
-                                <div class="overlay d-flex align-items-center justify-content-center">
-                                    <div class="content">
-                                        <div class="name no-mb">
-                                            <h3><a href="/ProductDetail/Index" class="color-white"></a></h3>
-                                        </div>
-                                        <div class="text">
-
-                                            <p class="buttons">
-                                                <a href="/ProductDetail/Index"
-                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
         </div>
