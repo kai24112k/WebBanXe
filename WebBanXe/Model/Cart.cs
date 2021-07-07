@@ -27,7 +27,7 @@ namespace WebBanXe.Model
             iMaProduct = IdProduct;
             PRODUCT product = db.PRODUCTs.Single(n => n.IdProduct == IdProduct);
             sNameProduct = product.NameProduct;
-            sLinkImg = db.IMG_PRODUCT.Single(n => n.IdProduct == iMaProduct).LinkImg;
+            sLinkImg = db.IMG_PRODUCT.Where(n => n.IdProduct == iMaProduct).FirstOrDefault().LinkImg;
             sPrice = int.Parse(product.Price.ToString());
             iQuantity = 1;
         }

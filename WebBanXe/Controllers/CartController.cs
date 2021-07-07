@@ -25,6 +25,10 @@ namespace WebBanXe.Controllers
         }
         public ActionResult addCart(int iMaProduct, string strURL)
         {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Login", "Customer");
+            }
             //Lay ra Session gio hang
             List<Cart> listProduct = getCart();
             //Kiem tra sách này tồn tại trong Session["Giohang"] chưa?
@@ -42,10 +46,13 @@ namespace WebBanXe.Controllers
             }
         }
 
-
         //Xay dung trang Gio hang
         public ActionResult Cart()
         {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Login", "Customer");
+            }   
             List<Cart> listCart = getCart();
             if (listCart.Count == 0)
             {

@@ -21,24 +21,15 @@
         <section class="bar">
             <div class="row portfolio-product">
                 <div class="col-sm-6 card">
-                    <div class=" mb-4">
-               
-                    <div class="col-sm-8 card">
-                        <div class=" mb-4">
-                            <div class="item"><img src="img/hm-6530.jpg" alt="" class="img-fluid"></div>
-                            <div class="item"><img src="img/1.jpg" alt="" class="img-fluid"></div>
-                            <div class="item"><img src="img/2.jpg" alt="" class="img-fluid"></div>
+                    <div class=" owl-carouse mb-4">
+                        <div class="item">
                             @foreach (var item in Model.IMG_PRODUCT)
                             {
-                                if (item.IdProduct == Model.IdProduct && item.AltImg == item.IdProduct + "_1")
-                                {
-                <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
-                                }
+                                <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                             }
                         </div>
                     </div>
-                
-                      </div> 
+                </div>
                 <div class="col-sm-4 card">
                     <div class="product-more">
 
@@ -49,18 +40,14 @@
                             Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
                                              class="form-control" style="width: 250px; ">
                         </h4>
-                        <button class="btn-outline-danger my-4" style="height: 50px;">
-                            <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })" class="list-group-item">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </button>
+                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })" 
+                           class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
+                            THÊM VÀO GIỎ HÀNG
+                        </a>
                         <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
                         <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
                         <h4 style="color: brown;">CHIA SẺ NGAY</h4>
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.Url" style="clear">
-                            <i class="fab fa-facebook" style="font-size: 30px; color: #3a589d !important;
-"></i>
-                        </a>
+                        <div class="fb-share-button" data-href="@ViewBag.Url" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.Url" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                         <i class="fab fa-twitter" style="color: rgb(99, 129, 218);font-size: 30px"></i>
                         <i class="fab fa-instagram" style="color: rgb(158, 95, 95);font-size: 30px"></i>
 
@@ -79,10 +66,8 @@
                         </ul>
                     </div>
                 </div>
-                @*}*@
             </div>
-                    
-                </div>
+            <div class="fb-comments" data-href="@ViewBag.Url" data-width="1100" data-numposts="5"></div>
         </section>
         <div class="col-sm-12">
             <div class="heading">
