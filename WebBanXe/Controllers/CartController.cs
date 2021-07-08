@@ -134,5 +134,20 @@ namespace WebBanXe.Controllers
             listCart.Clear();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Discount(FormCollection f)
+        {
+            int iReduceMoney = 0;
+            string code = f["txtDiscount"].ToString();
+            DISCOUNT discount = new DISCOUNT();
+            discount = db.DISCOUNTs.Where(d => d.CodeDiscount == code).FirstOrDefault();
+            List<Cart> listCart = Session["GioHang"] as List<Cart>;
+            if (listCart != null && discount != null)
+            {
+                iReduceMoney = (listCart.Sum(n => n.sTotalMoney) / 100 )* discount.Value;
+            }
+            ViewBag.iReduceMoney = iReduceMoney;
+            return RedirectToAction("Cart");
+        }
     }
 }

@@ -533,7 +533,7 @@ table {
     }
 
     table input[type="number"] {
-        max-width: 50px
+        max-width: 80px
     }
 
 .nav-tabs {

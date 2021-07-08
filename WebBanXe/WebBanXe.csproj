@@ -648,7 +648,6 @@
     <Content Include="Content\fonts\dashboard.ttf" />
     <Content Include="Content\fonts\dashboard.woff" />
     <Content Include="Areas\Admin\Views\PRODUCTs\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\PRODUCTs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\PRODUCTs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PRODUCTs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PRODUCTs\Index.cshtml" />

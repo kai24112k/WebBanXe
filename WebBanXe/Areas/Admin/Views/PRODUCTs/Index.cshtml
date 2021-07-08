@@ -5,60 +5,83 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+
+<p style="text-align:right; margin: 20px">
+    <a href="@Url.Action("Create", "Products")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NameProduct)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BRAND.NameBrand)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TYPECAR.NameType)
-        </th>
-        <th></th>
-    </tr>
+<div class="card-body">
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BRAND.NameBrand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TYPECAR.NameType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameProduct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BRAND.NameBrand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TYPECAR.NameType)
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-success" href="@Url.Action("Edit","PRODUCTs",new { @id = item.IdProduct })">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","PRODUCTs",new { @id = item.IdProduct })">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a class="btn btn-sm btn-info" href="@Url.Action("Details","PRODUCTs",new { @id = item.IdProduct })">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameProduct)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BRAND.NameBrand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TYPECAR.NameType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProduct }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProduct }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProduct })
-        </td>
-    </tr>
-}
 
-</table>
+    </table>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        });
+    });
+</script>
+

@@ -51,14 +51,17 @@
                             </ul>
                             @if (Session["userID"] != null)
                             {
-                                <div class="login">
-                                    <a class="login-btn"> <span class="d-none d-md-inline-block"> Xin chào: @Session["fullName"] </span></a>
+                        <div class="login">
+                            <a class="login-btn"> <span class="d-none d-md-inline-block"> Xin chào: @Session["fullName"] </span></a>
 
 
-                                    <a href="@Url.Action("Logout", "Customer")" class="login-btn">
-                                        <i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Đăng xuất</span>
-                                    </a>
-                                </div>
+                            <a href="@Url.Action("Logout", "Customer")" class="login-btn">
+                                <i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Đăng xuất</span>
+                            </a>
+                            <a>
+                                @Html.Action("CartPartial", "Cart")
+                            </a>
+                        </div>
                             }
                             else
                             {

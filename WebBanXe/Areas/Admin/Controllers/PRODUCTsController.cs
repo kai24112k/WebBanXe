@@ -49,6 +49,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "IdProduct,NameProduct,Price,Description,Status,IdBrand,IdType")] PRODUCT pRODUCT)
         {
             if (ModelState.IsValid)
@@ -85,6 +86,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "IdProduct,NameProduct,Price,Description,Status,IdBrand,IdType")] PRODUCT pRODUCT)
         {
             if (ModelState.IsValid)
@@ -98,25 +100,8 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View(pRODUCT);
         }
 
-        // GET: Admin/PRODUCTs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PRODUCT pRODUCT = db.PRODUCTs.Find(id);
-            if (pRODUCT == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pRODUCT);
-        }
-
         // POST: Admin/PRODUCTs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
             PRODUCT pRODUCT = db.PRODUCTs.Find(id);
             db.PRODUCTs.Remove(pRODUCT);

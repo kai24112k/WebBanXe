@@ -3,14 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="/Content/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="/Content/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="/Content/css/fontastic.css">
     <!-- Google fonts - Roboto -->
@@ -21,9 +23,11 @@
     <link rel="stylesheet" href="/Content/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="/Content/css/style.default.css" id="theme-stylesheet">
+    <script src="/Content/vendor/jquery/jquery.min.js"></script>
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="/Content/css/custom.css">
-  
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -39,14 +43,14 @@
             <div class="sidenav-header d-flex align-items-center justify-content-center">
                 <!-- User Info-->
                 <div class="sidenav-header-inner text-center">
-                   
+
                     <h2 class="h5">Nathan Andrews</h2><span>Web Developer</span>
                 </div>
                 <!-- Small Brand information, appears on minimized sidebar-->
                 <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
             </div>
             <!-- Sidebar Navigation Menus-->
-            <div class="main-menu">        
+            <div class="main-menu">
                 <ul id="side-main-menu" class="side-menu list-unstyled">
                     <li>
                         <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-picture"></i>Sản phẩm </a>
@@ -65,9 +69,9 @@
             <div class="admin-menu">
                 <h5 class="sidenav-heading">Thông tin</h5>
                 <ul id="side-admin-menu" class="side-menu list-unstyled">
-                    <li> <a href="#"> <i class="icon-screen"> </i>Đăng xuất</a></li>               
+                    <li> <a href="#"> <i class="icon-screen"> </i>Đăng xuất</a></li>
                     <li> <a href="#"> <i class="icon-flask"> </i>Thông tin cá nhân</a></li>
-                  
+
                 </ul>
             </div>
         </div>
@@ -107,14 +111,11 @@
         </footer>
     </div>
     <!-- JavaScript files-->
-    <script src="/Content/vendor/jquery/jquery.min.js"></script>
     <script src="/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/Content/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
     <script src="/Content/vendor/jquery.cookie/jquery.cookie.js"></script>
-    <script src="/Content/vendor/chart.js/Chart.min.js"></script>
     <script src="/Content/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="/Content/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="/Content/js/charts-home.js"></script>
     <!-- Main File-->
     <script src="/Content/js/front.js"></script>
 

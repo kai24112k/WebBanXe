@@ -11,7 +11,8 @@ namespace WebBanXe.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PRODUCT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +24,8 @@ namespace WebBanXe.Model
         }
     
         public int IdProduct { get; set; }
+
+        [Display(Name = "Tên xe")]
         public string NameProduct { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
