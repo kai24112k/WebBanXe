@@ -14,5 +14,9 @@ namespace WebBanXe
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+        protected void Session_Start()
+        {
+            Session["UserAdmin"] = "";
+        }
     }
 }
