@@ -102,14 +102,13 @@ $(function () {
         responsiveClass: true,
         responsive: {
             0: {
-                items: 1
-            },
-            600: {
                 items: 2
             },
+            600: {
+                items: 3
+            },
             1000: {
-                items: 6,
-                loop: true
+                items: 6
             }
         }
     });
@@ -250,6 +249,8 @@ $(function () {
             }
         }
     });
+
+
     // ------------------------------------------------------- //
     // jQuery Counter Up
     // ------------------------------------------------------ //
@@ -341,26 +342,5 @@ $(function () {
             });
         }
     });
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        animateOut: 'fadeOut',
-        autoplayTimeout: 2000,
-        autoplayHoverPause: false,
-        nav: true,
-        navText: ["<img src='./img/left-arrow.png'>", "<img src='./img/right-arrow.png'>"],
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
 
 });

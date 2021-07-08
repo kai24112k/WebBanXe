@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebBanXe.Model.CATEGORY_BLOG>
+<div class="panel panel-default sidebar-menu">
+    
+    <div class="panel-body">
+        <ul class="nav nav-pills flex-column text-sm">
+            <li class="nav-item">
+                @foreach (var categoryblog in Model)
+                {
+                    <a href="@Url.Action("BlogHome","Blog", new { id = @categoryblog.IdCate },null)" class="list-group-item">@categoryblog.NameCate</a>
+                }
+            </li>
+          
+        </ul>
+    </div>
+</div>

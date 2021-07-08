@@ -2,9 +2,9 @@
 <div class="card-header ">
     <h3>Loại xe</h3>
 </div>
-<div class="list-group list-group-flush">
+<div class="list-unstyled mb-3">
     @foreach (var typecar in Model)
     {
-    <a href="@Url.Action("Index","Product", new { idType = typecar.IdType },null)" class="list-group-item">@typecar.NameType</a>
+    <a href="@Url.Action("Index","Product", new { idType = typecar.IdType },null)" class="nav-link">@typecar.NameType</a>
     }
 </div>

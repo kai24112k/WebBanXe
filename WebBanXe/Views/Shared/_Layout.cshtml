@@ -18,8 +18,8 @@
     <!-- Bootstrap Select-->
     <link rel="stylesheet" href="~/vendor/bootstrap-select/css/bootstrap-select.min.css">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="~/Public/css/style.default.css" id="theme-stylesheet">
     <link rel="shortcut icon" href="~/Public/img/favicon.ico" />
@@ -40,10 +40,10 @@
         <div class="top-bar">
             <div class="container">
                 <div class="row d-flex align-items-center">
-                    <div class=" text-light col-md-6 d-md-block d-none">
+                    <div class=" text-light col-md-4 d-md-block d-none">
                         <p class="h4">Mua bán xe cũ Gọi ngay: <a href="#"> </a>0123456789</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="d-flex justify-content-md-end justify-content-between">
                             <ul class="list-inline contact-info d-block d-md-none">
                                 <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
@@ -103,7 +103,7 @@
                     <div id="navigation" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item dropdown ">
-                                <a href="@Url.Action("Index","Home")" data-toggle="dropdown">
+                                <a href="@Url.Action("Index","Home")">
                                     Trang chủ <b class="caret"></b>
                                 </a>
                             </li>
@@ -152,7 +152,7 @@
                                 <ul class="dropdown-menu megamenu">
                                     <li>
                                         <div class="row">
-                                            <div class="col-lg-6"><img src="~/Public/img/Ducati.jpg" alt="" class="img-fluid d-none d-lg-block"></div>
+                                            <div class="col-lg-6"><img src="img/Ducati.jpg" alt="" class="img-fluid d-none d-lg-block"></div>
                                             <div class="col-lg-3 col-md-6">
                                                 <h5>Bài viết mới nhất</h5>
                                                 <ul class="list-unstyled mb-3">
@@ -213,15 +213,8 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-6 col-lg-4">
-                                                <h5>Hãng xe</h5>
                                                 <ul class="list-unstyled mb-3">
-                                                    <li class="nav-item"><a href="index.html" class="nav-link">Honda</a></li>
-                                                    <li class="nav-item"><a href="index2.html" class="nav-link">Kawasaki</a></li>
-                                                    <li class="nav-item"><a href="index3.html" class="nav-link">Kymco</a></li>
-                                                    <li class="nav-item"><a href="index4.html" class="nav-link">Yamaha</a></li>
-                                                    <li class="nav-item"><a href="index5.html" class="nav-link">Suzuki</a></li>
-                                                    <li class="nav-item"><a href="index5.html" class="nav-link">SYM</a></li>
-                                                    <li class="nav-item"><a href="index5.html" class="nav-link">Piaggio</a></li>
+                                                    @Html.Action("Brand", "Product")
                                                 </ul>
                                                 <h5>Loại xe</h5>
                                                 <ul class="list-unstyled mb-3">
@@ -304,7 +297,7 @@
                                 <a href="javascript: void(0)" data-toggle="dropdown"
                                    class="dropdown-toggle">Thuê xe<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-
+                                    
                                     <li class="dropdown-item"><a href="index2.html" class="nav-link">xe tay ga</a></li>
                                     <li class="dropdown-item"><a href="index3.html" class="nav-link">xe số</a></li>
                                     <li class="dropdown-item"><a href="index4.html" class="nav-link">xe côn tay</a></li>
@@ -352,7 +345,8 @@
 
     </div>
     <!-- Javascript files-->
-    <footer class="main-footer" style="background: url('/Public/img/footer-bg.jpg') center center repeat; background-size: cover;">
+    <footer class="main-footer" style="background: url('/Public/img/footer-bg.jpg') center center repeat; background-size: cover;"
+            >
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -360,10 +354,10 @@
                     <br>
                     <p class="text-left">
                         @*XemayDHCV là đơn vị thu mua,
-                            rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
-                            cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
-                            máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
-                            trường.*@
+                        rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
+                        cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
+                        máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
+                        trường.*@
                     </p>
                     <!-- <hr> -->
                     <!-- <h4 class="h6">Join Our Monthly Newsletter</h4> -->

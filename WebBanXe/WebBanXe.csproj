@@ -513,6 +513,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\PRODUCTsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -526,6 +527,7 @@
     <Compile Include="Model\BRAND.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\CATEGORY_BLOG.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
@@ -667,6 +669,8 @@
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Views\Product\Brand.cshtml" />
     <Content Include="Views\Product\TypeCar.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Product\StatusCar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
