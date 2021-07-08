@@ -512,6 +512,7 @@
     <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EMPLOYEEsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PRODUCTsController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -651,6 +652,11 @@
     <Content Include="Areas\Admin\Views\PRODUCTs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PRODUCTs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PRODUCTs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EMPLOYEEs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\EMPLOYEEs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\EMPLOYEEs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\EMPLOYEEs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\EMPLOYEEs\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="vendor\.DS_Store" />
