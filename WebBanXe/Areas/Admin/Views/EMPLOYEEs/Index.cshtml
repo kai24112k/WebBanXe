@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<WebBanXe.Model.USER>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "USER";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="text-align:right;margin:20px;">
+    <a href="@Url.Action("Create","EMPLOYEEs")" class="btn btn-primary">Tạo mới</a>
 </p>
 <table class="table" id="myTable">
     <thead>
@@ -69,9 +67,15 @@
                     @Html.DisplayFor(modelItem => item.USER_ROLE.RoleName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUser }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdUser }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUser })
+                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","EMPLOYEEs",new { @id = item.IdUser })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","EMPLOYEEs",new { @id = item.IdUser })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","EMPLOYEEs",new { @id = item.IdUser })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
                 </td>
             </tr>
         }
