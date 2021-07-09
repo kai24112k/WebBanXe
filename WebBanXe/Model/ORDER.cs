@@ -28,6 +28,7 @@ namespace WebBanXe.Model
         public int FinalMoney { get; set; }
         public Nullable<System.DateTime> DayCreate { get; set; }
         public byte Status { get; set; }
+        public string MomoPaymentID { get; set; }
     
         public virtual DISCOUNT DISCOUNT { get; set; }
         public virtual USER USER { get; set; }
