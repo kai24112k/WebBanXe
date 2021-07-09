@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebBanXe.Model.BRAND>
+
+@{
+    ViewBag.Title = "BRAND";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<p style="text-align:right;margin:20px;">
+    <a href="@Url.Action("Create","BRANDs")" class="btn btn-primary">Tạo mới</a>
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgBrand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameBrand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImgBrand)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","BRANDs",new { @id = item.IdBrand })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","BRANDs",new { @id = item.IdBrand })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","BRANDs",new { @id = item.IdBrand })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    jQuery(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        });
+    });
+</script>

@@ -95,24 +95,8 @@ namespace WebBanXe.Areas.Admin.Controllers
         }
 
         // GET: Admin/EMPLOYEEs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            USER uSER = db.USERs.Find(id);
-            if (uSER == null)
-            {
-                return HttpNotFound();
-            }
-            return View(uSER);
-        }
-
-        // POST: Admin/EMPLOYEEs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+       
+        public ActionResult Delete(int id)
         {
             USER uSER = db.USERs.Find(id);
             db.USERs.Remove(uSER);
