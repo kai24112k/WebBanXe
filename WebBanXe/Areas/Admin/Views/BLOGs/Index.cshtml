@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebBanXe.Model.BLOG>
+
+@{
+    ViewBag.Title = "BLOG";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<p style="text-align:right;margin:20px;">
+    <a href="@Url.Action("Create","BLOGs")" class="btn btn-primary">Tạo mới</a>
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CATEGORY_BLOG.NameCate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.USER.FullName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CATEGORY_BLOG.NameCate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER.FullName)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","BLOGs",new { @id = item.IdBlog })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","BLOGs",new { @id = item.IdBlog })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","BLOGs",new { @id = item.IdBlog })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    jQuery(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        });
+    });
+</script>

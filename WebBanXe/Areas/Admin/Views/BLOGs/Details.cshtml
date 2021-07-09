@@ -1,0 +1,51 @@
+﻿@model WebBanXe.Model.BLOG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BLOG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORY_BLOG.NameCate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORY_BLOG.NameCate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER.FullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdBlog }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

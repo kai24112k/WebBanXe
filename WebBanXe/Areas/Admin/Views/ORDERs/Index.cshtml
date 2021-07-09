@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebBanXe.Model.ORDER>
+
+@{
+    ViewBag.Title = "ORDER";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p style="text-align:right;margin:20px;">
+    <a href="@Url.Action("Create","ORDERs")" class="btn btn-primary">Tạo mới</a>
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReduceMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalMoney)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DayCreate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DISCOUNT.CodeDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.USER.FullName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReduceMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalMoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DayCreate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DISCOUNT.CodeDiscount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER.FullName)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","ORDERs",new { @id = item.IdOrder })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","ORDERs",new { @id = item.IdOrder })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","ORDERs",new { @id = item.IdOrder })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    jQuery(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        });
+    });
+</script>

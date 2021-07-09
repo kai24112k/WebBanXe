@@ -3,8 +3,7 @@
     ViewBag.Title = "ContactPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <div id="heading-breadcrumbs" class="brder-top-0 border-bottom-0">
     <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
@@ -33,15 +32,42 @@
                 </div>
             </div>
         </section>
-        <section>
-            <section class=" bar pt-0">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="box-simple">
+                    <div class="icon-outlined"><i class="fa fa-map-marker"></i></div>
+                    <h3 class="h4">Địa chỉ</h3>
+                    <p>
+                        Hiệp Phú, Quận 9, <br>
+                        Thành phố Hồ Chí Minh<br>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box-simple">
+                    <div class="icon-outlined"><i class="fa fa-phone"></i></div>
+                    <h3 class="h4">Gọi ngay</h3>
+                    <!-- <p>This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p> -->
+                    <p><strong>+33 555 444 333</strong></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box-simple">
+                    <div class="icon-outlined"><i class="fa fa-envelope"></i></div>
+                    <h3 class="h4">Email</h3>
+                    <!-- <p>Please feel free to write an email to us or to use our electronic ticketing system.</p> -->
+                    <ul class="list-unstyled text-sm">
+                        <li><strong><a href="mailto:">contact@xemaydhcv.com</a></strong></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="container mb-3 border border-1 shadow rounded rounded-3" style="width:auto">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="heading text-center">
-                            <h2>liên hệ</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-12 ">
+                    <div class="col-md-6 col-12">
+
                         @using (Html.BeginForm())
                         {
 
@@ -59,73 +85,60 @@
                             </div>
                         }
                     </div>
-                </div>
-            </section>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <div class="box-simple">
-                        <div class="icon-outlined"><i class="fa fa-map-marker"></i></div>
-                        <h3 class="h4">Địa chỉ</h3>
-                        <p>
-                            32 Hai bà Trưng, phường 12,<br>Quận 10,
-                            TP. Hồ Chí Minh<br>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box-simple">
-                        <div class="icon-outlined"><i class="fa fa-phone"></i></div>
-                        <h3 class="h4">Gọi ngay</h3>
-                        <!-- <p>This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p> -->
-                        <p><strong>+33 555 444 333</strong></p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box-simple">
-                        <div class="icon-outlined"><i class="fa fa-envelope"></i></div>
-                        <h3 class="h4">Email</h3>
-                        <!-- <p>Please feel free to write an email to us or to use our electronic ticketing system.</p> -->
-                        <ul class="list-unstyled text-sm">
-                            <li><strong><a href="mailto:">contact@xemaydhcv.com</a></strong></li>
-
-                        </ul>
+                    <div class="col-md-6 col-12">
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
         </section>
-     
+    </div>
+</div>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        // This example displays a marker at the center of Australia.
+        // When the user clicks the marker, an info window opens.10.85524289259457, 106.78536226833974
+        function initMap() {
+            const uluru = { lat: 10.85524289259457, lng: 106.78536226833974 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: uluru,
+            });
+            const contentString = 'Đại Học Hutech Khu E, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam&amp;daddr=Đại Học Hutech Khu E, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam&amp;t=&amp;z=20&amp;ie=UTF8&amp;iwloc=B&amp;output=embed';
 
-
-
-                <!--<div class="col-md-6 col-12 ">-->
-                @*<div class="container mb-3 border border-1 shadow rounded rounded-3" style="width:auto;">*@
-                @*<h3 class="text-center">Địa chỉ</h3>*@
-                <!--<div class="mapouter">
-        <div class="gmap_canvas"><iframe class="gmap_iframe" style="width:100%;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=631&amp;height=665&amp;hl=en&amp;saddr=Đại Học Hutech Khu E, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam&amp;daddr=Đại Học Hutech Khu E, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam&amp;t=&amp;z=20&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://piratebayproxy.net/">pirate bay proxy</a></div>
-        <style>
-            .mapouter {
-                position: relative;
-                text-align: right;
-                width: 100%;
-                height: 665px;
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map,
+                title: "Địa chỉ",
+            });
+            marker.addListener("click", () => {
+                infowindow.open({
+                    anchor: marker,
+                    map,
+                    shouldFocus: false,
+                });
             }
+            );
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            text-align: right;
+            width: 100%;
+            height: 430px;
+        }
 
-            .gmap_canvas {
-                overflow: hidden;
-                background: none !important;
-                width: 100%;
-                height: 665px;
-            }
-
-            .gmap_iframe {
-                height: 665px !important;
-            }
-        </style>
-    </div>-->
-                @*</div>*@
-                <!--</div>
-    </div>-->
-
-            </div>
-        </div>
-
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>

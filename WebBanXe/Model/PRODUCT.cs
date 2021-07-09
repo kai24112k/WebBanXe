@@ -23,9 +23,14 @@ namespace WebBanXe.Model
         }
     
         public int IdProduct { get; set; }
+
+        [Display(Name = "Tên xe")]
         public string NameProduct { get; set; }
+        [Display(Name = "Giá tiền")]
         public int Price { get; set; }
+        [Display(Name = "Mô tả")]
         public string Description { get; set; }
+        [Display(Name = "Tình trạng")]
         public int Status { get; set; }
         public int IdBrand { get; set; }
         public int IdType { get; set; }
