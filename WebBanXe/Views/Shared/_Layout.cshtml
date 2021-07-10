@@ -23,7 +23,9 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="~/Public/css/style.default.css" id="theme-stylesheet">
     <link rel="shortcut icon" href="~/Public/img/favicon.ico" />
-
+    <style>
+  
+    </style>
 
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
@@ -31,6 +33,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <title>@ViewBag.Title</title>
     @RenderSection("head", required: false)
+
 </head>
 <body>
     <div id="fb-root"></div>
@@ -51,17 +54,17 @@
                             </ul>
                             @if (Session["userID"] != null)
                             {
-                        <div class="login">
-                            <a class="login-btn"> <span class="d-none d-md-inline-block"> Xin chào: @Session["fullName"] </span></a>
+                                <div class="login">
+                                    <a class="login-btn"> <span class="d-none d-md-inline-block"> Xin chào: @Session["fullName"] </span></a>
 
 
-                            <a href="@Url.Action("Logout", "Customer")" class="login-btn">
-                                <i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Đăng xuất</span>
-                            </a>
-                            <a>
-                                @Html.Action("CartPartial", "Cart")
-                            </a>
-                        </div>
+                                    <a href="@Url.Action("Logout", "Customer")" class="login-btn">
+                                        <i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Đăng xuất</span>
+                                    </a>
+                                    <a>
+                                        @Html.Action("CartPartial", "Cart")
+                                    </a>
+                                </div>
                             }
                             else
                             {
@@ -300,7 +303,7 @@
                                 <a href="javascript: void(0)" data-toggle="dropdown"
                                    class="dropdown-toggle">Thuê xe<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
+
                                     <li class="dropdown-item"><a href="index2.html" class="nav-link">xe tay ga</a></li>
                                     <li class="dropdown-item"><a href="index3.html" class="nav-link">xe số</a></li>
                                     <li class="dropdown-item"><a href="index4.html" class="nav-link">xe côn tay</a></li>
@@ -347,9 +350,9 @@
         <!-- Navbar End-->
 
     </div>
+    <a id="backtotop"></a>
     <!-- Javascript files-->
-    <footer class="main-footer" style="background: url('/Public/img/footer-bg.jpg') center center repeat; background-size: cover;"
-            >
+    <footer class="main-footer" style="background: url('/Public/img/footer-bg.jpg') center center repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -357,10 +360,10 @@
                     <br>
                     <p class="text-left">
                         @*XemayDHCV là đơn vị thu mua,
-                        rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
-                        cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
-                        máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
-                        trường.*@
+                            rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
+                            cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
+                            máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
+                            trường.*@
                     </p>
                     <!-- <hr> -->
                     <!-- <h4 class="h6">Join Our Monthly Newsletter</h4> -->

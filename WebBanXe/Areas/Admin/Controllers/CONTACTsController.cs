@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBanXe.Model;
+using WebBanXe.Service;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
     public class CONTACTsController : Controller
     {
         private DBBanXeEntities db = new DBBanXeEntities();
+        EmailService emailService = new EmailService();
 
         // GET: Admin/CONTACTs
         public ActionResult Index()
@@ -111,6 +113,23 @@ namespace WebBanXe.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpGet]
+        public ActionResult Feedback(int id)
+        {
+            var contact = db.CONTACTs.Find(id);
+            return View(contact);
+        }
+
+        [HttpPost]
+        public ActionResult Feedback(FormCollection frm)
+        {
+            string Address = frm["address"];
+            string Title = frm["title"];
+            string Message = frm["message"];
+            emailService.sendEmail(Address, Title, Message);      
+            return RedirectToAction("index", "CONTACTS"); 
+
         }
     }
 }

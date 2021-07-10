@@ -17,6 +17,10 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/PRODUCTs
         public ActionResult Index()
         {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             var pRODUCTs = db.PRODUCTs.Include(p => p.BRAND).Include(p => p.TYPECAR);
             return View(pRODUCTs.ToList());
         }
@@ -24,6 +28,10 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/PRODUCTs/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
