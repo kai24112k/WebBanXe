@@ -51,11 +51,18 @@
     </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -99,28 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Content\assets\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Content\assets\bootstrap\css\bootstrap.css" />
-    <Content Include="Content\assets\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\assets\bootstrap\js\bootstrap.js" />
-    <Content Include="Content\assets\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\assets\bootstrap\js\npm.js" />
-    <Content Include="Content\assets\css\form-elements.css" />
-    <Content Include="Content\assets\css\style.css" />
-    <Content Include="Content\assets\font-awesome\css\font-awesome.css" />
-    <Content Include="Content\assets\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\assets\js\jquery-1.11.1.js" />
-    <Content Include="Content\assets\js\jquery-1.11.1.min.js" />
-    <Content Include="Content\assets\js\jquery.backstretch.js" />
-    <Content Include="Content\assets\js\jquery.backstretch.min.js" />
-    <Content Include="Content\assets\js\placeholder.js" />
-    <Content Include="Content\assets\js\scripts.js" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\fontastic.css" />
     <Content Include="Content\css\grasp_mobile_progress_circle-1.0.0.min.css" />
+    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\style.blue.css" />
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\style.green.css" />
@@ -128,11 +117,35 @@
     <Content Include="Content\css\style.red.css" />
     <Content Include="Content\css\style.sea.css" />
     <Content Include="Content\css\style.violet.css" />
+    <Content Include="Content\css\util.css" />
     <Content Include="Content\fonts\dashboard.svg" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="Content\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
     <Content Include="Content\js\charts-custom.js" />
     <Content Include="Content\js\charts-home.js" />
     <Content Include="Content\js\front.js" />
     <Content Include="Content\js\grasp_mobile_progress_circle-1.0.0.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\vendor\animate\animate.css" />
+    <Content Include="Content\vendor\animsition\css\animsition.css" />
+    <Content Include="Content\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Content\vendor\animsition\js\animsition.js" />
+    <Content Include="Content\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-grid.css" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-grid.min.css" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-reboot.css" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap.css" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstraplogin\js\bootstrap.js" />
+    <Content Include="Content\vendor\bootstraplogin\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\bootstraplogin\js\popper.js" />
+    <Content Include="Content\vendor\bootstraplogin\js\popper.min.js" />
+    <Content Include="Content\vendor\bootstraplogin\js\tooltip.js" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -149,6 +162,11 @@
     <Content Include="Content\vendor\chart.js\Chart.js" />
     <Content Include="Content\vendor\chart.js\Chart.min.css" />
     <Content Include="Content\vendor\chart.js\Chart.min.js" />
+    <Content Include="Content\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Content\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Content\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Content\vendor\daterangepicker\moment.js" />
+    <Content Include="Content\vendor\daterangepicker\moment.min.js" />
     <Content Include="Content\vendor\font-awesome\css\font-awesome.css" />
     <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -283,6 +301,7 @@
     <Content Include="Content\vendor\jquery-validation\localization\methods_pt.min.js" />
     <Content Include="Content\vendor\jquery.cookie\jquery.cookie.js" />
     <Content Include="Content\vendor\jquery.cookie\MIT-LICENSE.txt" />
+    <Content Include="Content\vendor\jquerylogin\jquery-3.2.1.min.js" />
     <Content Include="Content\vendor\jquery\jquery.js" />
     <Content Include="Content\vendor\jquery\jquery.min.js" />
     <Content Include="Content\vendor\jquery\jquery.slim.js" />
@@ -291,7 +310,13 @@
     <Content Include="Content\vendor\malihu-custom-scrollbar-plugin\jquery.mCustomScrollbar.css" />
     <Content Include="Content\vendor\malihu-custom-scrollbar-plugin\jquery.mCustomScrollbar.js" />
     <Content Include="Content\vendor\malihu-custom-scrollbar-plugin\mCSB_buttons.png" />
+    <Content Include="Content\vendor\select2\select2.css" />
+    <Content Include="Content\vendor\select2\select2.js" />
+    <Content Include="Content\vendor\select2\select2.min.css" />
+    <Content Include="Content\vendor\select2\select2.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Lib\log4net.dll" />
+    <Content Include="Lib\Newtonsoft.Json.dll" />
     <Content Include="Model\DBBanXe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBBanXe.edmx</DependentUpon>
@@ -313,6 +338,7 @@
     <Content Include="Public\img\bannervespa.png" />
     <Content Include="Public\img\bao-duong.png" />
     <Content Include="Public\img\bao-hanh.svg" />
+    <Content Include="Public\img\bgxe.jpg" />
     <Content Include="Public\img\cd-top-arrow.svg" />
     <Content Include="Public\img\cub-125_2.png" />
     <Content Include="Public\img\Ducati.jpg" />
@@ -534,13 +560,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Momo\MomoHelper.cs" />
+    <Compile Include="Helpers\Momo\MoMoSecurity.cs" />
+    <Compile Include="Helpers\Momo\MomoSetting.cs" />
+    <Compile Include="Helpers\Momo\PaymentRequest.cs" />
+    <Compile Include="Helpers\Security\Auth.cs" />
     <Compile Include="Model\BLOG.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BRAND.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\CartModel.cs" />
+    <Compile Include="Model\ProductModel.cs" />
     <Compile Include="Model\CATEGORY_BLOG.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
@@ -610,43 +642,6 @@
     <Content Include="Model\DBBanXe.edmx.diagram">
       <DependentUpon>DBBanXe.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\assets\bootstrap\css\bootstrap-theme.css.map" />
-    <Content Include="Content\assets\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\assets\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\assets\font-awesome\less\animated.less" />
-    <Content Include="Content\assets\font-awesome\less\bordered-pulled.less" />
-    <Content Include="Content\assets\font-awesome\less\core.less" />
-    <Content Include="Content\assets\font-awesome\less\fixed-width.less" />
-    <Content Include="Content\assets\font-awesome\less\font-awesome.less" />
-    <Content Include="Content\assets\font-awesome\less\icons.less" />
-    <Content Include="Content\assets\font-awesome\less\larger.less" />
-    <Content Include="Content\assets\font-awesome\less\list.less" />
-    <Content Include="Content\assets\font-awesome\less\mixins.less" />
-    <Content Include="Content\assets\font-awesome\less\path.less" />
-    <Content Include="Content\assets\font-awesome\less\rotated-flipped.less" />
-    <Content Include="Content\assets\font-awesome\less\stacked.less" />
-    <Content Include="Content\assets\font-awesome\less\variables.less" />
-    <Content Include="Content\assets\font-awesome\scss\font-awesome.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_animated.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_core.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_icons.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_larger.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_list.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_mixins.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_path.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_stacked.scss" />
-    <Content Include="Content\assets\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
@@ -705,7 +700,49 @@
     <Content Include="Areas\Admin\Views\TYPECARs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\TYPECARs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TYPECARs\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CONTACTs\Feedback.cshtml" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-grid.css.map" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap.css.map" />
+    <Content Include="Content\vendor\bootstraplogin\css\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="Content\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="Content\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="Content\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="vendor\.DS_Store" />
@@ -726,6 +763,7 @@
     <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Product\StatusCar.cshtml" />
+    <Content Include="Views\Cart\OrderCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -739,7 +777,6 @@
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Content\vendor\font-awesome\less\" />
     <Folder Include="Content\vendor\font-awesome\scss\" />
-    <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

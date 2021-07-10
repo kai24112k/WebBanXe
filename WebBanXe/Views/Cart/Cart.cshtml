@@ -1,5 +1,5 @@
 ﻿@using WebBanXe.Model
-@model List<Cart>
+@model CartModel
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -48,7 +48,7 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach (var item in Model)
+                                        @foreach (var item in Model.ListProduct)
                                         {
                                             <tr>
                                                 <td><a href="#"><img src="~/Public/img/@item.sLinkImg"></a></td>
@@ -68,8 +68,9 @@
                                     <tfoot>
                                         <tr style="border-bottom: none">
                                             <th colspan="5">Giảm giá</th>
-                                            <th colspan="2">@if (ViewBag.iReduceMoney != null)
-                                            {@String.Format("{0:0,0}", ViewBag.iReduceMoney)} VNĐ </th>
+                                            <th colspan="2">
+                                                @String.Format("{0:0,0}", Model.DiscountAmount) VNĐ
+                                            </th>
                                         </tr>
                                         <tr>
 
@@ -81,12 +82,31 @@
                                 </table>
                             </div>
 
+                            <div>
+                                <h5>Hình thức thanh toán</h5>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hinhthucthanhtoan" id="hinhthucthanhtoan1" value="0" checked>
+                                    <label class="form-check-label" for="hinhthucthanhtoan1">
+                                        <img src="https://static.mservice.io/img/logo-momo.png" alt="Momo" style="width: 50px; height: 50px" />
+                                        Thanh toán online qua momo
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hinhthucthanhtoan" id="hinhthucthanhtoan2" value="1">
+                                    <label class="form-check-label" for="hinhthucthanhtoan2">
+                                        <img src="https://image.flaticon.com/icons/png/512/2898/2898030.png" alt="COD" style="width: 50px; height: 50px" />
+                                        Thanh toán tại nhà
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="box-footer d-flex justify-content-between align-items-center">
                                 <div class="left-col"><a href="@Url.Action("Index","Product")" class="btn btn-secondary mt-0"><i class="fa fa-chevron-left"></i> Quay lại cửa hàng</a></div>
                                 <div class="right-col">
                                     <button type="submit" value="Xóa tất cả" class="btn btn-secondary" formaction="DeleteAllCart"> Xoá tất cả</button>
                                     <button type="submit" value="Cập Nhật" class="btn btn-secondary" formaction="UpdateCart"><i class="fa fa-refresh"></i> Cập nhật</button>
-                                    <button type="submit" class="btn btn-template-outlined">Đi đến đặt hàng <i class="fa fa-chevron-right"></i></button>
+                                    <button type="submit" class="btn btn-template-outlined" formaction="dat-hang">Đi đến đặt hàng <i class="fa fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -94,7 +114,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div id="order-summary" class="box mt-0 mb-4 p-0">
+                @*<div id="order-summary" class="box mt-0 mb-4 p-0">
                     <div class="box-header mt-0">
                         <h3>Tóm tắt đơn hàng</h3>
                     </div>
@@ -102,7 +122,7 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.ListProduct)
                                 {
                                     <tr>
                                         <td>Đơn hàng</td>
@@ -111,38 +131,44 @@
                                     <tr>
                                         <td>Giảm giá</td>
                                         <th>
-                                            @if (ViewBag.iReduceMoney != null)
-                                            {@String.Format("{0:0,0}", ViewBag.iReduceMoney)} VNĐ
-                                    </th>
-                                </tr>
+                                            @String.Format("{0:0,0}", Model.DiscountAmount) VNĐ
+                                        </th>
+                                    </tr>
 
-                                <tr class="total">
-                                    <td>Tổng</td>
-                                    <th>@String.Format("{0:0,0}", ViewBag.FinalMoney) VNĐ </th>
-                                </tr>
-                            }
+                                    <tr class="total">
+                                        <td>Tổng</td>
+                                        <th>@String.Format("{0:0,0}", ViewBag.FinalMoney) VNĐ </th>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div>*@
                 <div class="box box mt-0 mb-4 p-0">
                     <div class="box-header mt-0">
                         <h4>Mã giảm giá</h4>
                     </div>
                     <p class="text-muted">Nếu bạn có mã phiếu giảm giá, vui lòng nhập mã đó vào ô bên dưới.</p>
-                    <form>
-                        @using (Html.BeginForm("Discount", "Cart"))
-                        {
+                    @using (Html.BeginForm("Discount", "Cart"))
+                    {
                         <div class="input-group">
-                            @Html.TextBox("txtDiscount")
+                            @Html.TextBox("txtDiscount", Model.DiscountCode, new { @class = "form-control" })
                             <button type="submit" class="btn btn-template-main" formaction="Discount"><i class="fa fa-gift"></i></button>
                         </div>
-                            <p>
+                        <p>
 
-                            </p>}
-                    </form>
+                        </p>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+@if (ViewBag.Error != null)
+{
+    <script>
+        alert('@Html.Raw(ViewBag.Error)');
+    </script>
+}
