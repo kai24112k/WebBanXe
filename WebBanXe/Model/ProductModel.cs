@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebBanXe.Model
 {
-    public class Cart
+    public class ProductModel
     {
         //Tao doi tuong data chua dữ liệu từ model dbBansach đã tạo. 
         DBBanXeEntities db = new DBBanXeEntities();
@@ -21,7 +21,7 @@ namespace WebBanXe.Model
 
         }
         //Khoi tao gio hàng theo Masach duoc truyen vao voi Soluong mac dinh la 1
-        public Cart(int IdProduct)
+        public ProductModel(int IdProduct)
         {
 
             iMaProduct = IdProduct;
