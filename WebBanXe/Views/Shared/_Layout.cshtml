@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <meta property="fb:app_id" content="839637330260635" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -51,17 +51,17 @@
                             </ul>
                             @if (Session["userID"] != null)
                             {
-                        <div class="login">
-                            <a class="login-btn"> <span class="d-none d-md-inline-block"> Xin chào: @Session["fullName"] </span></a>
+                                <div class="login">
+                                    <a class="login-btn"> <span class="d-none d-md-inline-block"> Xin chào: @Session["fullName"] </span></a>
 
 
-                            <a href="@Url.Action("Logout", "Customer")" class="login-btn">
-                                <i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Đăng xuất</span>
-                            </a>
-                            <a>
-                                @Html.Action("CartPartial", "Cart")
-                            </a>
-                        </div>
+                                    <a href="@Url.Action("Logout", "Customer")" class="login-btn">
+                                        <i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Đăng xuất</span>
+                                    </a>
+                                    <a>
+                                        @Html.Action("CartPartial", "Cart")
+                                    </a>
+                                </div>
                             }
                             else
                             {
@@ -265,8 +265,7 @@
 
     </div>
     <!-- Javascript files-->
-    <footer class="main-footer" style="background: url('/Public/img/footer-bg.jpg') center center repeat; background-size: cover;"
-            >
+    <footer class="main-footer" style="background: url('/Public/img/footer-bg.jpg') center center repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -274,10 +273,10 @@
                     <br>
                     <p class="text-left">
                         @*XemayDHCV là đơn vị thu mua,
-                        rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
-                        cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
-                        máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
-                        trường.*@
+                            rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
+                            cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
+                            máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
+                            trường.*@
                     </p>
                     <!-- <hr> -->
                     <!-- <h4 class="h6">Join Our Monthly Newsletter</h4> -->
@@ -362,5 +361,32 @@
     <script src="~/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script src="~/vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
     <script src="~/Public/js/front.js"></script>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "1218323374931741");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v11.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 </html>

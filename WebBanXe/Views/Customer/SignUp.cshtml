@@ -30,6 +30,12 @@
                 <div class="col-md-12">
                     @using (Html.BeginForm())
                     {
+                        if (ViewBag.Error != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Error
+                            </div>
+                        }
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -37,7 +43,6 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control" id="fullname" placeholder="Họ tên" style="width: 100%" name="Hoten">
-                            <span>@ViewData["Loi1"]</span>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -46,7 +51,6 @@
                                 </span>
                             </div>
                             <input type="email" class="form-control" id="email" placeholder="Email" style="width: 100%" name="Email">
-                            <span>@ViewData["Loi2"]</span>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -55,7 +59,6 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control" id="username" placeholder="Tên tài khoản" style="width: 100%" name="TaiKhoan">
-                            <span>@ViewData["Loi3"]</span>
                         </div>
 
                         <div class="input-group mb-3">
@@ -65,7 +68,6 @@
                                 </span>
                             </div>
                             <input type="password" class="form-control" id="password" placeholder="Mật khẩu" style="width: 100%" name="MatKhau">
-                            <span>@ViewData["Loi4"]</span>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -74,29 +76,22 @@
                                 </span>
                             </div>
                             <input type="password" class="form-control" id="passwordconfirm" placeholder="Xác nhận mật khẩu" style="width: 100%" name="XacNhanMatKhau">
-                            <span>@ViewData["Loi4"]</span>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-envelope text-muted"></i>
+                                    <i class="fas fa-location-arrow"></i>
                                 </span>
                             </div>
-                            <input required type="text" class="form-control" id="address" placeholder="Địa chỉ" style="width: 100%" name="DiaChi">
-                            <span>@ViewData["Loi5"]</span>
+                            <input type="text" class="form-control" id="address" placeholder="Địa chỉ" style="width: 100%" name="DiaChi">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-phone-square text-muted"></i>
                                 </span>
-                            </div>
-                            <select id="countryCode" name="countryCode" style="max-width: 80px" class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
-                                <option value="">+84</option>
-
-                            </select>
+                            </div>  
                             <input type="tel" class="form-control" id="phone" placeholder="Điện thoại" style="width: 100%" name="Sdt">
-                            <span>@ViewData["Loi6"]</span>
                         </div>
 
                         <div class="mb-2 text-center">
@@ -110,13 +105,9 @@
                     </div>
                     <!-- Social Login -->
                     <div class="form-group col-lg-12 mx-auto ">
-                        <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
+                        <a href="@Url.Action("LoginFacebook","Customer")" class="btn btn-primary btn-block py-2 btn-facebook">
                             <i class="fab fa-facebook-f"></i>
                             <span class="font-weight-bold">Đăng ký bằng Facebook</span>
-                        </a>
-                        <a href="#" class="btn btn-primary btn-block py-2 btn-google_customer">
-                            <i class="fab fa-google"></i>
-                            <span class="font-weight-bold">Đăng ký bằng Google</span>
                         </a>
                     </div>
                     <!-- Already Registered -->

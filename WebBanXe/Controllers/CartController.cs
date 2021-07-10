@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebBanXe.Helpers.Email;
 using WebBanXe.Helpers.Momo;
 using WebBanXe.Model;
 using static WebBanXe.Helpers.Security.Authen;
 
 namespace WebBanXe.Controllers
 {
+    //[Auth(new int[] { (int)Role.Admin })]
     [Auth]
     public class CartController : Controller
     {
@@ -103,7 +105,9 @@ namespace WebBanXe.Controllers
             ViewBag.FinalMoney = FinalMoney();
             return PartialView();
         }
+
         //Cap nhat Giỏ hàng
+        [Route("cap-nhat-gio-hang")]
         public ActionResult UpdateCart(FormCollection f)
         {
 
@@ -139,6 +143,8 @@ namespace WebBanXe.Controllers
             return RedirectToAction("Cart");
         }
         //Xoa tat ca thong tin trong Gio hang
+
+        [Route("xoa-gio-hang")]
         public ActionResult DeleteAllCart()
         {
             //Lay gio hang tu Session
@@ -241,8 +247,30 @@ namespace WebBanXe.Controllers
                         orderDetail.Quantity = product.iQuantity;
                         order.ORDER_DETAIL.Add(orderDetail);
                     }
-                }
 
+                    // Order success
+                    try
+                    {
+                        int idUser = int.Parse(Session["userID"].ToString());
+                        var userDB = db.USERs.Find(idUser);
+                        if (userDB != null && !string.IsNullOrEmpty(userDB.Email))
+                        {
+                            var paymentName = paymentMethod.Equals("0") ? "MOMO" : "COD";
+                            var body = $@"Kính chào anh/chị <b>{userDB.FullName}</b>,<br><br>
+                        Đơn hàng số {idOrder} đã được đặt thành công.<br>
+                        Phương thức thanh toán: {paymentName}<br><br>
+                        Cám ơn anh chị đã đặt hàng.
+                        ";
+
+                            EmailHelper.SendMail(userDB.Email, "ĐẶT HÀNG THÀNH CÔNG ĐƠN HÀNG SỐ " + idOrder, body);
+                        }
+                    }
+                    catch
+                    {
+                        // Send mail là optional nên nếu error thì bỏ qua
+                    }
+
+                }
 
                 // Add payment method
                 if (paymentMethod.Equals("0"))
@@ -288,7 +316,7 @@ namespace WebBanXe.Controllers
             if (string.IsNullOrEmpty(urlPaymentMomo)) return RedirectToAction("Index", "Home");
             return Redirect(urlPaymentMomo);
         }
-             
+
         /// <summary>
         /// Trang hiển thị thanh toán thành công
         /// </summary>
@@ -313,10 +341,31 @@ namespace WebBanXe.Controllers
                     ViewBag.Title = "Xác nhận thanh toán thành công";
                     ViewBag.Success = $"Thanh toán thành công, đơn hàng của bạn có mã số là {orderID}, chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất";
 
+                    // Send mail là optional
+                    try
+                    {
+                        int idUser = int.Parse(Session["userID"].ToString());
+                        var userDB = db.USERs.Find(idUser);
+                        if (userDB != null && !string.IsNullOrEmpty(userDB.Email))
+                        {
+                            var body = $@"Kính chào anh/chị <b>{userDB.FullName}</b>,<br><br>
+                        Đơn hàng số {orderID} đã được thanh toán thành công.<br>
+                        Chúng tôi sẽ liên hệ với bạn để giao hàng trong thời gian sớm nhất<br><br>
+                        Cám ơn anh chị đã đặt hàng.
+                        ";
+
+                            EmailHelper.SendMail(userDB.Email, "THANH TOÁN THÀNH CÔNG ĐƠN HÀNG SỐ " + orderID, body);
+                        }
+                    }
+                    catch
+                    {
+                        // Ko làm gì cả vì send mail là optional
+                    }
+
                 }
                 else
                 {
-                    // Thanh toán tất bại
+                    // Thanh toán thất bại
                     ViewBag.Title = "Thanh toán chưa hoàn tất";
                     ViewBag.Error = "Đơn hàng này chưa thanh toán thành công, nếu bạn đã thanh toán, xin vui lòng liên hệ với chúng tôi để kiểm tra biên nhận";
                 }
