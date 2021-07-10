@@ -1,87 +1,88 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS -->
-   
-    <link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/assets/css/form-elements.css" rel="stylesheet" />
-    <link href="~/Content/assets/css/style.css" rel="stylesheet" />
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  
-   
-
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/bootstraplogin/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/main.css">
+    <!--===============================================================================================-->
 </head>
+<body style="background-color: #666666;">
 
-<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-43">
+                        ĐĂNG NHẬP ADMIN
+                    </span>
 
-    <!-- Top content -->
-    <div class="top-content" style="background-image: url('/Content/img/bgxe.jpg');">
-        <div class="inner-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 text">
-                        <h1>ĐĂNG NHẬP HỆ THỐNG QUẢN TRỊ</h1>                  
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Tài khoản</span>
                     </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="pass">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Mật khẩu</span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            ĐĂNG NHẬP
+                        </button>
+                    </div>                 
+                </form>
+
+                <div class="login100-more" style="background-image: url('/Public/img/bgxe.jpg');">
                 </div>
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3 form-box">
-                        <div class="form-top">
-                            <div class="form-top-left">
-                                <h3>Để truy cập vào Admin</h3>
-                                <p>Xin vui lòng nhập thông tin vào bên dưới:</p>
-                            </div>
-                            <div class="form-top-right">
-                                <i class="fa fa-key"></i>
-                            </div>
-                        </div>
-                        <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form">
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-username">Username</label>
-                                    <input type="text" name="form-username" placeholder="Tài khoản..." class="form-username form-control" id="form-username">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-password">Password</label>
-                                    <input type="password" name="form-password" placeholder="Mật khẩu..." class="form-password form-control" id="form-password">
-                                </div>
-                                <button type="submit" class="btn">Đăng nhập</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>      
             </div>
         </div>
     </div>
 
 
-    <!-- Javascript -->
-    <script src="~/Content/assets/js/jquery-1.11.1.min.js"></script>
-    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Content/assets/js/jquery.backstretch.min.js"></script>
-    <script src="~/Content/assets/js/scripts.js"></script>
-    <!--[if lt IE 10]>
-        <script src="assets/js/placeholder.js"></script>
-    <![endif]-->
+
+
+
+    <!--===============================================================================================-->
+    <script src="/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Content/vendor/bootstrap/js/popper.js"></script>
+    <script src="/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Content/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Content/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/Content/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Content/js/main.js"></script>
 
 </body>
-
 </html>
