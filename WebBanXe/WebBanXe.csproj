@@ -342,6 +342,10 @@
     <Content Include="Public\img\bgxe.jpg" />
     <Content Include="Public\img\cd-top-arrow.svg" />
     <Content Include="Public\img\cub-125_2.png" />
+    <Content Include="Public\img\customer1.png" />
+    <Content Include="Public\img\customer2.png" />
+    <Content Include="Public\img\customer3.png" />
+    <Content Include="Public\img\customer4.png" />
     <Content Include="Public\img\Ducati.jpg" />
     <Content Include="Public\img\favicon.ico" />
     <Content Include="Public\img\footer-bg.jpg" />
@@ -363,6 +367,7 @@
     <Content Include="Public\img\payment.png" />
     <Content Include="Public\img\photogrid.jpg" />
     <Content Include="Public\img\piaggio-vespa.svg" />
+    <Content Include="Public\img\raobanxe.png" />
     <Content Include="Public\img\rebel-300_1.png" />
     <Content Include="Public\img\right-arrow.png" />
     <Content Include="Public\img\sua-chua.png" />
@@ -381,6 +386,7 @@
     <Content Include="Public\img\winner-x-v10-phien-ban-camo.png" />
     <Content Include="Public\img\winner-x-v10-phien-ban-den-mo_1.png" />
     <Content Include="Public\img\xe-con-tay-tu-25-trieu-xemayz.png" />
+    <Content Include="Public\img\xega.png" />
     <Content Include="Public\img\xemaydhvc.png" />
     <Content Include="Public\img\yamaha.svg" />
     <Content Include="Public\js\bootstrap-hover-dropdown.js" />
@@ -557,6 +563,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntroduceController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -771,6 +778,7 @@
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Product\StatusCar.cshtml" />
     <Content Include="Views\Cart\OrderCart.cshtml" />
+    <Content Include="Views\Introduce\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
