@@ -579,6 +579,7 @@
       <DependentUpon>DBBanXe.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CartModel.cs" />
+    <Compile Include="Model\ProductDB.cs" />
     <Compile Include="Model\ProductModel.cs" />
     <Compile Include="Model\CATEGORY_BLOG.cs">
       <DependentUpon>DBBanXe.tt</DependentUpon>

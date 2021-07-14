@@ -11,8 +11,7 @@ namespace WebBanXe.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class USER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,17 +26,11 @@ namespace WebBanXe.Model
         public int IdUser { get; set; }
         public int IdRole { get; set; }
         public string FullName { get; set; }
-        [Display(Name = "Địa chỉ Email")]
         public string Email { get; set; }
-        [Display(Name = "Tên người dùng")]
         public string Username { get; set; }
-        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
-        [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
-        [Display(Name = "SĐT")]
         public string Phone { get; set; }
-        [Display(Name = "Ngày tạo")]
         public Nullable<System.DateTime> DayCreate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -48,7 +41,6 @@ namespace WebBanXe.Model
         public virtual ICollection<ORDER> ORDERs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENT> RENTs { get; set; }
-       
         public virtual USER_ROLE USER_ROLE { get; set; }
     }
 }

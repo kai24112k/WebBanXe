@@ -208,7 +208,7 @@ namespace WebBanXe.Controllers
                         if(userDB != null)
                         {
                             ViewBag.Error = "Đã có tài khoản, vui lòng kiểm tra lại thông tin!";
-                            return this.SignUp();
+                            return View();
                         }
                         else
                         {
@@ -225,9 +225,9 @@ namespace WebBanXe.Controllers
                     ViewBag.Error = " Vui lòng xác nhận lại mật khẩu";
                 }
 
-                return this.SignUp();
+                return View();
             }
-            return this.View();
+            return View();
         }
 
        
