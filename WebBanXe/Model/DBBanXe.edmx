@@ -13,6 +13,7 @@
           <Property Name="IdCate" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Content" Type="ntext" Nullable="false" />
           <Property Name="DateCreate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -403,7 +404,7 @@
           <NavigationProperty Name="CATEGORY_BLOG" Relationship="Self.FK__BLOG__IdCate__4D94879B" FromRole="BLOG" ToRole="CATEGORY_BLOG" />
           <NavigationProperty Name="USER" Relationship="Self.FK__BLOG__IdUser__4316F928" FromRole="BLOG" ToRole="USER" />
           <NavigationProperty Name="IMG_BLOG" Relationship="Self.FK__IMG_BLOG__IdBlog__4CA06362" FromRole="BLOG" ToRole="IMG_BLOG" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BRAND">
           <Key>

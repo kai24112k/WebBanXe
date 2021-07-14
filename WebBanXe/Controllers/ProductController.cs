@@ -11,6 +11,8 @@ namespace WebBanXe.Controllers
     public class ProductController : Controller
     {
         DBBanXeEntities db = new DBBanXeEntities();
+
+        [Route("san-pham")]
         // GET: Product
 
      
@@ -32,13 +34,21 @@ namespace WebBanXe.Controllers
 
         }
 
-
-        public ActionResult Detail(int id)
+        [Route("san-pham/{url}")]
+        public ActionResult Detail(string url)
         {
+            int id = PRODUCT.GetIDFromURL(url) ?? 0;
             PRODUCT product = new PRODUCT();
             product = db.PRODUCTs.Where(p => p.IdProduct == id).SingleOrDefault();
+            if (product is null) return RedirectToAction("Index", "Home");
+
             var request = HttpContext.Request.Url.AbsoluteUri;
             ViewBag.Url = request;
+            ViewBag.Title = product.NameProduct;
+
+            var imgDB = product.IMG_PRODUCT.FirstOrDefault();
+            if (imgDB != null) ViewBag.MetaIMG = "/Public/img/" + imgDB.LinkImg;
+
             return View(product);
         }
 
