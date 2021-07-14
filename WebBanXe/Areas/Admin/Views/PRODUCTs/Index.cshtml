@@ -1,5 +1,16 @@
 ﻿@model IEnumerable<WebBanXe.Model.PRODUCT>
 
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)
+    }
+}
 @{
     ViewBag.Title = "PRODUCT";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -8,13 +19,13 @@
 <p style="text-align:right;margin:20px;">
     <a href="@Url.Action("Create","PRODUCTs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table class="table" id="myTable">
+<table id="myTable">
     <thead>
         <tr>
-            <th>
+            <th width="80">
                 @Html.DisplayNameFor(model => model.NameProduct)
             </th>
-            <th>
+            <th width="80">
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
@@ -29,7 +40,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TYPECAR.NameType)
             </th>
-            <th></th>
+            <th width="100">Chức năng</th>
         </tr>
     </thead>
     <tbody>
@@ -43,7 +54,7 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Truncate(item.Description, 100)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
@@ -69,6 +80,10 @@
         }
     </tbody>
 </table>
+
+
+
+
 <script>
     jQuery(document).ready(function () {
         $('#myTable').DataTable({

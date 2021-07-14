@@ -1,14 +1,14 @@
-﻿
+﻿@using WebBanXe.Model
+@using PagedList.Mvc;
+@model PagedList.PagedList<BLOG>  
+
 @{
     ViewBag.Title = "BlogHome";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-@{
-    ViewBag.Title = "Blog";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+
 
 
 <section style="background: url('/Public/img/photogrid.jpg') center center repeat; background-size: cover;"
@@ -75,75 +75,71 @@
             <div id="blog-listing-medium" class="col-md-9">
                 <section class="post">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="image"><a href="blog-post.html"><img src="img/blog-medium.jpg" alt="Example blog post alt" class="img-fluid"></a></div>
-                        </div>
-                        <div class="col-md-8">
-                            <h2 class="h3 mt-0"><a href="post.htmls">Fashion now</a></h2>
-                            <div class="d-flex flex-wrap justify-content-between text-xs">
-                                <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                                <p class="date-comments"><a href="blog-post.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>
+                        @foreach (var blog in Model)
+                        {
+
+
+                            <div class="col-md-4">
+                              
+                                @foreach (var item in blog.IMG_BLOG)
+                                {
+
+                                    if (item.IdBlog == blog.IdBlog && item.AltImg == item.IdBlog + "_1")
+                                    {
+                                        <div class="image"><a href="~/Public/img/@item.LinkImg"></a></div>
+                                    }
+                                }
                             </div>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more text-right"><a href="blog-post.html" class="btn btn-template-outlined">Continue reading</a></p>
-                        </div>
-                    </div>
-                </section>
-                <section class="post">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="video">
-                                <div class="embed-responsive embed-responsive-4by3">
-                                    <iframe src="//www.youtube.com/embed/upZJpGrppJA" class="embed-responsive-item"></iframe>
+                            <div class="col-md-8">
+                                <h2 class="h3 mt-0">@blog.Title</h2>
+                                <div class="d-flex flex-wrap justify-content-between text-xs">
+                                    <p class="author-category">By @blog.USER.FullName <span>in</span> XEMAYDHCV</p>
+                                    <p class="date-comments"><a href="#"><i class="fa fa-calendar-o"></i>@blog.DateCreate</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>
                                 </div>
+                                <p class="card-title text-dark" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></p>
+                                <p class="read-more text-right"><a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)" class="btn btn-template-outlined">đọc thêm</a></p>
                             </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h2 class="h3 mt-0"><a href="post.htmls">Post with video</a></h2>
-                            <div class="d-flex flex-wrap justify-content-between text-xs">
-                                <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                                <p class="date-comments"><a href="blog-post.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>
-                            </div>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more text-right"><a href="blog-post.html" class="btn btn-template-outlined">Continue reading</a></p>
-                        </div>
+                        }
+                        <ul class="pager d-flex align-items-center justify-content-between list-unstyled" style="position: absolute; width: 100%; padding-right: 15px; bottom: 10px; ">
+                            <li class="previous"><a href="#" class="btn btn-template-outlined">← Older</a></li>
+                            <li class="next disabled"><a href="#" class="btn btn-template-outlined">Newer →</a></li>
+                        </ul>
                     </div>
+
+                  
                 </section>
-                <section class="post">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="image"><a href="blog-post.html"><img src="img/blog-medium.jpg" alt="Example blog post alt" class="img-fluid"></a></div>
-                        </div>
-                        <div class="col-md-8">
-                            <h2 class="h3 mt-0"><a href="post.htmls">Fashion now</a></h2>
-                            <div class="d-flex flex-wrap justify-content-between text-xs">
-                                <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                                <p class="date-comments"><a href="blog-post.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>
-                            </div>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more text-right"><a href="blog-post.html" class="btn btn-template-outlined">Continue reading</a></p>
-                        </div>
-                    </div>
-                </section>
-                <ul class="pager d-flex align-items-center justify-content-between list-unstyled">
-                    <li class="previous"><a href="#" class="btn btn-template-outlined">← Older</a></li>
-                    <li class="next disabled"><a href="#" class="btn btn-template-outlined">Newer →</a></li>
-                </ul>
+             
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
-                        <h3 class="h4 panel-title">Text widget</h3>
+                        <h3 class="h4 panel-title">Thể loại</h3>
                     </div>
-                    <div class="panel-body text-widget">
-                        <p>Improved own provided blessing may peculiar domestic. Sight house has never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case.</p>
+                    <div class="panel-body">
+                        @Html.Action("CategoryBlog", "Blog")
                     </div>
                 </div>
                 <div class="panel panel-default sidebar-menu">
+                    <div class="">
+                        <div class="heading">
+                            <h2><a href="@Url.Action("Index", "Product")">SẢN PHẨM</a></h2>
+                        </div>
+                    </div>
+                    <div class="card mb-3" style="width: 100%;">
+                        @Html.Action("Brand", "Product")
+                    </div>
+                    <div class="card mb-3 mt-3" style="width: 100%;">
+                        @Html.Action("TypeCar", "Product")
+
+                    </div>
+                  
+
+                </div>
+                @*<div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
                         <h3 class="h4 panel-title">Search</h3>
-                    </div>
-                    <div class="panel-body">
+                    </div>*@
+                    @*<div class="panel-body">
                         <form role="search">
                             <div class="input-group">
                                 <input type="text" placeholder="Search" class="form-control"><span class="input-group-btn">
@@ -153,35 +149,28 @@
                         </form>
                     </div>
                 </div>
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading">
-                        <h3 class="h4 panel-title">Categories</h3>
-                    </div>
-                    <div class="panel-body">
-                        @Html.Action("CategoryBlog", "Blog")
-                    </div>
-                </div>
+
                 <div class="panel sidebar-menu">
                     <div class="panel-heading">
                         <h3 class="h4 panel-title">Tags</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="tag-cloud list-inline">
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> html5</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> css3</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> jquery</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> ajax</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> php</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> responsive</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> visio</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> bootstrap</a></li>
-                        </ul>
-                    </div>
+                    </div>*@
+                    @*<div class="panel-body">
+                <ul class="tag-cloud list-inline">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> html5</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> css3</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> jquery</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> ajax</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> php</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> responsive</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> visio</a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> bootstrap</a></li>
+                </ul>
+            </div>*@
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 
 

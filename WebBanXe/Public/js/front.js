@@ -225,7 +225,10 @@ $(function () {
         smartSpeed: 1000,
         addClassActive: true,
         lazyload: true,
-        navText: ["<img src='/img/left-arrow.png'>", "<img src='/img/right-arrow.png'>"],
+        navText: [
+            "<i class='fa fa-angle-left' style='font-size: 30px;'></i>",
+            "<i class='fa fa-angle-right' style='font-size: 30px;'></i>"
+        ],
         responsiveClass: true,
         responsive: {
             0: {

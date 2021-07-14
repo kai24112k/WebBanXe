@@ -1,1 +1,11 @@
-/* your styles go here */
+#myTable_wrapper{
+ margin: 0 20px;
+}
+#myTable > thead {
+    background-color: lightskyblue;
+    color: ghostwhite;
+}
+ #myTable, th, td {
+    border: 1px solid #000000 ;
+   
+}

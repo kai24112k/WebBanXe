@@ -12,8 +12,13 @@ namespace WebBanXe.Controllers
     {
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Product
-        public ActionResult Index(int? idBrand, int? idType, int? idStatus)
+
+     
+        public ActionResult Index(int? idBrand, int? idType, int? idStatus, int? page)
         {
+            //int pageSize = 6;
+            //int pageNum = (page ?? 1);
+            //var xemoi = 
             List<PRODUCT> listproduct = new List<PRODUCT>();
             if (idBrand != null || idType != null || idStatus != null)
             {

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanXe.Model;
+using static WebBanXe.Helpers.Security.Authen;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
+  
     public class AuthController : Controller
     {
         DBBanXeEntities db = new DBBanXeEntities();
@@ -33,15 +35,15 @@ namespace WebBanXe.Areas.Admin.Controllers
             }
             else
             {
-                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole == 2 );
+                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole < 3 );
                 if (user != null)
                 {
                     Session["userID"] = user.IdUser;
                     Session["fullName"] = user.FullName;
+                    Session["Role"] = user.USER_ROLE.RoleName;
                     return RedirectToAction("Index", "PRODUCTS");
                 }
                 else
-
                     ViewBag.ThongBao = "Sai tài khoản hoặc mật khẩu";
             }
             return View();

@@ -1,5 +1,17 @@
 ﻿@model IEnumerable<WebBanXe.Model.BLOG>
 
+
+@helper Truncate (string input, int length)
+    {
+    if(input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length) <text>...</text>
+    }
+    }
 @{
     ViewBag.Title = "BLOG";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -10,10 +22,13 @@
 <p style="text-align:right;margin:20px;">
     <a href="@Url.Action("Create","BLOGs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table class="table" id="myTable">
+<table id="myTable">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th width="350">
                 @Html.DisplayNameFor(model => model.Content)
             </th>
             <th>
@@ -25,7 +40,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.USER.FullName)
             </th>
-            <th></th>
+            <th>Chỉnh sửa</th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +48,12 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Content)
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <textarea rows="4" cols="50" style="resize: none;">@Truncate(item.Content, 100)</textarea>
+                   
+                  
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateCreate)

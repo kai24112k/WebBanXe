@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,10 +18,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/PRODUCTs
         public ActionResult Index()
         {
-            if (Session["userID"] == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+           
             var pRODUCTs = db.PRODUCTs.Include(p => p.BRAND).Include(p => p.TYPECAR);
             return View(pRODUCTs.ToList());
         }
@@ -28,10 +26,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/PRODUCTs/Details/5
         public ActionResult Details(int? id)
         {
-            if (Session["userID"] == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -70,6 +65,8 @@ namespace WebBanXe.Areas.Admin.Controllers
             ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
             ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
             return View(pRODUCT);
+        
+     
         }
 
         // GET: Admin/PRODUCTs/Edit/5

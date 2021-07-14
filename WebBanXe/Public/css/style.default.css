@@ -339,6 +339,12 @@ p.lead {
         .owl-carousel .owl-dots .owl-dot.active span {
             background: #fff
         }
+        .owl-carousel .owl-dots .owl-dot:focus {
+            outline: 0;
+        }
+        .owl-carousel .owl-dots .owl-dot.active:focus {
+            outline: 0;
+        }
 
         .owl-carousel .owl-dots .owl-dot span {
             display: block;
@@ -1037,40 +1043,49 @@ header.nav-holder.sticky {
     right: 0;
     left: auto;
     bottom: auto;
-    width: 100%;
+    width: 90%;
     padding: 30px;
     text-align: center
 }
 
     .project .owl-nav .owl-prev {
         width: 70px;
-        height: 70px;
+        height: 200px;
         line-height: 30px;
         text-align: left;
         border-radius: 50%;
         display: inline-block;
-        margin: 50px 5px;
+        margin: 0 5px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
-        margin-left: -50px;
-        outline: none;
         position: absolute;
-        left: -10%
+        left: -20%;
+        padding: 0;
+       
     }
+
+        .project .owl-nav .owl-prev:focus {
+            outline: 0;
+        }
 
     .project .owl-nav .owl-next {
         width: 70px;
-        height: 70px;
+        height: 200px;
         line-height: 30px;
         text-align: right;
         border-radius: 50%;
         display: inline-block;
-        margin: 50px 5px;
+        margin: 0 5px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
         position: absolute;
-        left: 105%
+        left: 100%;
+        
     }
+
+        .project .owl-nav .owl-next:focus {
+            outline: 0;
+        }
 
 .product .owl-nav .owl-prev:hover, .product .owl-nav .owl-next:hover {
     background: #000;
@@ -1089,7 +1104,7 @@ header.nav-holder.sticky {
 }
 
 .product .owl-dot.active span {
-    background: #c22026 !important
+    background: #c22026 !important;
 }
 
 .product .owl-nav {
@@ -3825,7 +3840,7 @@ a > code {
         color: #fff;
     }
 
-   #backtotop:hover {
+    #backtotop:hover {
         cursor: pointer;
         background-color: #333;
     }
