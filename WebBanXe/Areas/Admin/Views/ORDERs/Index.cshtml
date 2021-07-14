@@ -61,12 +61,6 @@
                     @Html.DisplayFor(modelItem => item.USER.FullName)
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","ORDERs",new { @id = item.IdOrder })">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","ORDERs",new { @id = item.IdOrder })">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
                     <a class="btn btn-sm btn-info" href="@Url.Action("Details","ORDERs",new { @id = item.IdOrder })">
                         <i class="fas fa-info-circle"></i>
                     </a>

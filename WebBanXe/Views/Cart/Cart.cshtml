@@ -51,7 +51,7 @@
                                         @foreach (var item in Model.ListProduct)
                                         {
                                             <tr>
-                                                <td><a href="#"><img src="~/Public/img/@item.sLinkImg"></a></td>
+                                                <td><a href="#"><img src="@item.sLinkImg"></a></td>
                                                 <td><a href="#">@item.sNameProduct</a></td>
                                                 <td> <a href="@Url.Action("Detail", "Product", new { id = item.iMaProduct })">Chi tiết</a></td>
                                                 <td>

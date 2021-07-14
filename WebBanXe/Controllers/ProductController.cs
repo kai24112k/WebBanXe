@@ -42,7 +42,7 @@ namespace WebBanXe.Controllers
             ViewBag.Title = product.NameProduct;
 
             var imgDB = product.IMG_PRODUCT.FirstOrDefault();
-            if (imgDB != null) ViewBag.MetaIMG = "/Public/img/" + imgDB.LinkImg;
+            if (imgDB != null) ViewBag.MetaIMG = imgDB.LinkImg;
 
             return View(product);
         }

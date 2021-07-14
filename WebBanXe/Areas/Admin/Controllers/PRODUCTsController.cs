@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebBanXe.Helpers.Name;
 using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
@@ -50,15 +52,36 @@ namespace WebBanXe.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "IdProduct,NameProduct,Price,Description,Status,IdBrand,IdType")] PRODUCT pRODUCT)
-        {
+        public ActionResult Create(PRODUCT pRODUCT, HttpPostedFileBase fileUpload)
+        { 
             if (ModelState.IsValid)
             {
                 db.PRODUCTs.Add(pRODUCT);
+                if (fileUpload != null)
+                {
+                    var extension = Path.GetExtension(fileUpload.FileName);
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower())+"-anh-bia"+extension);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/products/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    var img = new IMG_PRODUCT();
+                    img.AltImg = fileName;
+                    img.LinkImg = fileName;
+                    img.IdProduct = pRODUCT.IdProduct;
+                    db.IMG_PRODUCT.Add(img);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
             ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
             return View(pRODUCT);
@@ -105,6 +128,11 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             PRODUCT pRODUCT = db.PRODUCTs.Find(id);
             db.PRODUCTs.Remove(pRODUCT);
+            var listImg = db.IMG_PRODUCT.Where(p => p.IdProduct == id).ToList();
+            foreach(var item in listImg)
+            {
+                db.IMG_PRODUCT.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -573,10 +573,12 @@
     <Compile Include="Helpers\Facebook\FacebookHelper.cs" />
     <Compile Include="Helpers\Facebook\FacebookSetting.cs" />
     <Compile Include="Helpers\Facebook\FacebookUserModel.cs" />
+    <Compile Include="Helpers\MD5\MD5Helper.cs" />
     <Compile Include="Helpers\Momo\MomoHelper.cs" />
     <Compile Include="Helpers\Momo\MoMoSecurity.cs" />
     <Compile Include="Helpers\Momo\MomoSetting.cs" />
     <Compile Include="Helpers\Momo\PaymentRequest.cs" />
+    <Compile Include="Helpers\Name\RemoveVietnamese.cs" />
     <Compile Include="Helpers\Security\Auth.cs" />
     <Compile Include="Helpers\ValidateHelper.cs" />
     <Compile Include="Model\BLOG.cs">
@@ -702,9 +704,7 @@
     <Content Include="Areas\Admin\Views\DISCOUNTs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DISCOUNTs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DISCOUNTs\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ORDERs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ORDERs\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\ORDERs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ORDERs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RENTs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\RENTs\Details.cshtml" />
@@ -792,6 +792,7 @@
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Content\vendor\font-awesome\less\" />
     <Folder Include="Content\vendor\font-awesome\scss\" />
+    <Folder Include="Public\img\products\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
