@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanXe.Helpers;
 using WebBanXe.Helpers.Facebook;
+using WebBanXe.Helpers.MD5;
 using WebBanXe.Model;
 
 namespace WebBanXe.Controllers
@@ -26,7 +27,7 @@ namespace WebBanXe.Controllers
         public ActionResult Login(FormCollection frm)
         {
             var userName = frm["userName"];
-            var password = frm["password"];
+            var password = MD5Helper.MD5Hash(frm["password"]);
 
             if (String.IsNullOrEmpty(userName))
             {
@@ -44,7 +45,7 @@ namespace WebBanXe.Controllers
                 {
                     SaveSession(user);
 
-                    if (string.IsNullOrEmpty(Request.QueryString["returnURL"]))
+                    if (!string.IsNullOrEmpty(Request.QueryString["returnURL"]))
                     {
                         return Redirect(Request.QueryString["returnURL"].ToString());
                     }
@@ -169,11 +170,14 @@ namespace WebBanXe.Controllers
             user.FullName = collection["HoTen"];
             user.Email = collection["Email"];
             user.Username = collection["TaiKhoan"];
-            user.Password = collection["MatKhau"];
+            user.Password = MD5Helper.MD5Hash(collection["MatKhau"]);
             user.Address = collection["DiaChi"];
             user.Phone = collection["Sdt"];
             user.DayCreate = DateTime.Now;
-           
+            if (String.IsNullOrEmpty(user.Address))
+            {
+                user.Address = string.Empty;
+            }
             if (String.IsNullOrEmpty(user.FullName))
             {
                 ViewBag.Error = "Họ tên không được để trống";
@@ -189,10 +193,6 @@ namespace WebBanXe.Controllers
             else if (!ValidateHelper.ValidatePassword(user.Password))
             {
                 ViewBag.Error = "Mật khẩu không được chứa ký tự đặc biệt";
-            }
-            else if (!ValidateHelper.IsValidAdress(user.Address))
-            {
-                ViewBag.Error = "Địa chỉ không được để trống";
             }
             else if (!ValidateHelper.IsPhone(user.Phone))
             {

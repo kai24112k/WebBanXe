@@ -14,6 +14,7 @@ namespace WebBanXe.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+
             context.MapRoute(
                    "Admin_Login",
                    "Admin/Login",

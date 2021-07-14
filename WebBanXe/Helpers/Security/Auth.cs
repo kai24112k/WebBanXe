@@ -13,7 +13,8 @@ namespace WebBanXe.Helpers.Security
         public enum Role
         {
             Customer = 3,
-            Admin = 1
+            Staff = 2,
+            Admin = 1,
         }
 
         public class Auth : AuthorizeAttribute
@@ -22,7 +23,7 @@ namespace WebBanXe.Helpers.Security
 
             public Auth()
             {
-                allowRole = new int[] { (int)Role.Admin, (int)Role.Customer };
+                allowRole = new int[] { (int)Role.Admin, (int)Role.Customer, (int)Role.Staff };
             }
 
             public Auth(params int[] role)

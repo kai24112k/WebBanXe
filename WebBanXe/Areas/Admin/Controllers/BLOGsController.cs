@@ -44,12 +44,11 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/BLOGs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdBlog,IdCate,IdUser,Content,DateCreate")] BLOG bLOG)
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "IdBlog,IdCate,IdUser,Title,Content,DateCreate")] BLOG bLOG)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +62,8 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View(bLOG);
         }
 
-        // GET: Admin/BLOGs/Edit/5
+     
+        [ValidateInput(false)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,11 +84,14 @@ namespace WebBanXe.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdBlog,IdCate,IdUser,Content,DateCreate")] BLOG bLOG)
+        [ValidateAntiForgeryToken]  
+        [ValidateInput(false)]
+        public ActionResult Edit (BLOG bLOG)
         {
             if (ModelState.IsValid)
             {
+                bLOG.IdUser = int.Parse(Session["userID"].ToString());
+                bLOG.DateCreate = DateTime.Now;
                 db.Entry(bLOG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

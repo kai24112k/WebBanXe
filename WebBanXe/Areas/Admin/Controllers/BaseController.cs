@@ -15,7 +15,6 @@ namespace WebBanXe.Areas.Admin.Controllers
             {
                 System.Web.HttpContext.Current.Response.Redirect("~/Admin/Login");
             }
-           
         }
     }
 }

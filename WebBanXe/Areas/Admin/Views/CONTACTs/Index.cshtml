@@ -8,22 +8,22 @@
 <p style="text-align:right;margin:20px;">
     <a href="@Url.Action("Create","CONTACTs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table class="table" id="myTable">
+<table id="myTable">
     <thead>
         <tr>
-            <th>
+            <th  width="250">
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th>
+            <th  width="200">
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
+            <th  width="300">
                 @Html.DisplayNameFor(model => model.Content)
             </th>
-            <th>
+            <th  width="100">
                 @Html.DisplayNameFor(model => model.USER.FullName)
             </th>
-            <th></th>
+            <th  width="150">Chỉnh sửa</th>
         </tr>
     </thead>
     <tbody>
@@ -43,8 +43,9 @@
                     @Html.DisplayFor(modelItem => item.USER.FullName)
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","CONTACTs",new { @id = item.IdContact })">
-                        <i class="fas fa-edit"></i>
+
+                    <a class="btn btn-sm btn-success" href="@Url.Action("Feedback","CONTACTs",new { @id = item.IdContact })">
+                        <i class="fas fa-comments"></i>
                     </a>
                     <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","CONTACTs",new { @id = item.IdContact })">
                         <i class="fas fa-trash-alt"></i>
