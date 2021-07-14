@@ -339,6 +339,12 @@ p.lead {
         .owl-carousel .owl-dots .owl-dot.active span {
             background: #fff
         }
+        .owl-carousel .owl-dots .owl-dot:focus {
+            outline: 0;
+        }
+        .owl-carousel .owl-dots .owl-dot.active:focus {
+            outline: 0;
+        }
 
         .owl-carousel .owl-dots .owl-dot span {
             display: block;
@@ -1037,40 +1043,49 @@ header.nav-holder.sticky {
     right: 0;
     left: auto;
     bottom: auto;
-    width: 100%;
+    width: 90%;
     padding: 30px;
     text-align: center
 }
 
     .project .owl-nav .owl-prev {
         width: 70px;
-        height: 70px;
+        height: 200px;
         line-height: 30px;
         text-align: left;
         border-radius: 50%;
         display: inline-block;
-        margin: 50px 5px;
+        margin: 0 5px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
-        margin-left: -50px;
-        outline: none;
         position: absolute;
-        left: -10%
+        left: -20%;
+        padding: 0;
+       
     }
+
+        .project .owl-nav .owl-prev:focus {
+            outline: 0;
+        }
 
     .project .owl-nav .owl-next {
         width: 70px;
-        height: 70px;
+        height: 200px;
         line-height: 30px;
         text-align: right;
         border-radius: 50%;
         display: inline-block;
-        margin: 50px 5px;
+        margin: 0 5px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
         position: absolute;
-        left: 105%
+        left: 100%;
+        
     }
+
+        .project .owl-nav .owl-next:focus {
+            outline: 0;
+        }
 
 .product .owl-nav .owl-prev:hover, .product .owl-nav .owl-next:hover {
     background: #000;
@@ -1089,7 +1104,7 @@ header.nav-holder.sticky {
 }
 
 .product .owl-dot.active span {
-    background: #c22026 !important
+    background: #c22026 !important;
 }
 
 .product .owl-nav {
@@ -3796,3 +3811,77 @@ a > code {
     .text-primary:hover {
         color: #8b0a01 !important
     }
+
+
+
+#backtotop {
+    display: inline-block;
+    background-color: #DA251C;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+    #backtotop::after {
+        content: '^';
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 50px;
+        color: #fff;
+    }
+
+    #backtotop:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+
+    #backtotop:active {
+        background-color: #555;
+    }
+
+    #backtotop.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* Styles for the content section 
+
+.content {
+    width: 77%;
+    margin: 50px auto;
+    font-family: 'Merriweather', serif;
+    font-size: 17px;
+    color: #DA251C;
+    line-height: 1.9;
+}
+
+@media (min-width: 500px) {
+    .content {
+        width: 43%;
+    }
+
+    #backtotop {
+        margin: 30px;
+    }
+}
+
+.content h1 {
+    margin-bottom: -10px;
+    color: #03a9f4;
+    line-height: 1.5;
+}
+
+.content h3 {
+    font-style: italic;
+    color: #96a2a7;
+}*/

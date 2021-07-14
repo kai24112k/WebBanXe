@@ -16,3 +16,14 @@
     display: none;
     width: 100%;
 }
+#myTable_wrapper{
+ margin: 0 20px;
+}
+#myTable > thead {
+    background-color: lightskyblue;
+    color: ghostwhite;
+}
+ #myTable, th, td {
+    border: 1px solid #000000 ;
+   
+}

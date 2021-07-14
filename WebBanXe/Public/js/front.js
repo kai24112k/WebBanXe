@@ -145,7 +145,7 @@ $(function () {
         autoplay: true,
         smartSpeed: 1000,
         addClassActive: true,
-        navText: ["<img src='../Public/img/left-arrow.png'>", "<img src='../Public/img/right-arrow.png'>"],
+       /* navText: ["<img src='../img/left-arrow.png'>", "<img src='~Public/img/left-arrow.png'>"],*/
         responsiveClass: true,
         responsive: {
             0: {
@@ -170,6 +170,21 @@ $(function () {
     });
     $('.dropdown').on('hide.bs.dropdown', function () {
         $(this).find('.dropdown-menu').first().stop(true, true).fadeOut(100);
+    });
+
+    var btn = $('#backtotop');
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, '300');
     });
 
 
@@ -210,7 +225,10 @@ $(function () {
         smartSpeed: 1000,
         addClassActive: true,
         lazyload: true,
-        navText: ["<img src='../Public/img/left-arrow.png'>", "<img src='../Public/img/right-arrow.png'>"],
+        navText: [
+            "<i class='fa fa-angle-left' style='font-size: 30px;'></i>",
+            "<i class='fa fa-angle-right' style='font-size: 30px;'></i>"
+        ],
         responsiveClass: true,
         responsive: {
             0: {
@@ -234,7 +252,7 @@ $(function () {
         smartSpeed: 1000,
         addClassActive: true,
         lazyload: true,
-        navText: ["<img src='../Public/img/left-arrow.png'>", "<img src='../Public/img/right-arrow.png'>"],
+        navText: ["<img src='/img/left-arrow.png'>", "<img src='/img/right-arrow.png'>"],
         responsiveClass: true,
         responsive: {
             0: {
