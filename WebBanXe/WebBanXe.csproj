@@ -1202,7 +1202,6 @@
     <Content Include="Areas\Admin\Views\CLASSes\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CLASSes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CLASSes\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CONTACTs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CONTACTs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CONTACTs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CONTACTs\Index.cshtml" />
@@ -1336,6 +1335,7 @@
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Content\vendor\font-awesome\less\" />
     <Folder Include="Content\vendor\font-awesome\scss\" />
+    <Folder Include="Public\img\blogs\" />
     <Folder Include="Public\img\products\" />
   </ItemGroup>
   <ItemGroup>

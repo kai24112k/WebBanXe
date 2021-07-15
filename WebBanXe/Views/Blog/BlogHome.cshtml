@@ -79,19 +79,22 @@
                         {
 
 
-                            <div class="col-md-4">
-                              
+                        <div class="col-md-4">
+                            <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)">
                                 @foreach (var item in blog.IMG_BLOG)
                                 {
 
-                                    if (item.IdBlog == blog.IdBlog && item.AltImg == item.IdBlog + "_1")
+                                    if (blog.IdBlog == item.IdBlog)
                                     {
-                                        <div class="image"><a href="@item.LinkImg"></a></div>
+                                        <img src="@item.LinkImg" alt="Example blog post alt" class="img-fluid">
                                     }
+
+
                                 }
+                            </a>
                             </div>
                             <div class="col-md-8">
-                                <h2 class="h3 mt-0">@blog.Title</h2>
+                              <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)"><h2 class="h3 mt-0"> @blog.Title</h2></a>  
                                 <div class="d-flex flex-wrap justify-content-between text-xs">
                                     <p class="author-category">By @blog.USER.FullName <span>in</span> XEMAYDHCV</p>
                                     <p class="date-comments"><a href="#"><i class="fa fa-calendar-o"></i>@blog.DateCreate</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>

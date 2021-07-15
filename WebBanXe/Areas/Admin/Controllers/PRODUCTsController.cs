@@ -76,7 +76,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     }
                     fileUpload.SaveAs(path);
                     var img = new IMG_PRODUCT();
-                    img.AltImg = fileName;
+                    img.AltImg = "~/Public/img/products/" + fileName;
                     img.LinkImg = fileName;
                     img.IdProduct = pRODUCT.IdProduct;
                     db.IMG_PRODUCT.Add(img);

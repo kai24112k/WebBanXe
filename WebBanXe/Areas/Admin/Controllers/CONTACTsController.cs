@@ -39,30 +39,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         }
 
         // GET: Admin/CONTACTs/Create
-        public ActionResult Create()
-        {
-            ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName");
-            return View();
-        }
-
-        // POST: Admin/CONTACTs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdContact,IdUser,Title,Email,Content")] CONTACT cONTACT)
-        {
-            if (ModelState.IsValid)
-            {
-                db.CONTACTs.Add(cONTACT);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", cONTACT.IdUser);
-            return View(cONTACT);
-        }
-
+      
         // GET: Admin/CONTACTs/Edit/5
         public ActionResult Edit(int? id)
         {
