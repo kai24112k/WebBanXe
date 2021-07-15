@@ -5,10 +5,22 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>BLOG</h4>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">XEM CHI TIẾT</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
+                    @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdBlog }) |
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,7 +28,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Content)
+            <textarea rows="15" cols="125">@Html.DisplayFor(model => model.Content)</textarea>
         </dd>
 
         <dt>
@@ -45,7 +57,3 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdBlog }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

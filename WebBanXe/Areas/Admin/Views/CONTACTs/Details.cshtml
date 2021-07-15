@@ -5,47 +5,86 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>CONTACT</h4>
+@*<div>
+        <h4>CONTACT</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Content)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.USER.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.USER.FullName)
+            </dd>
+
+        </dl>
+    </div>*@
+
+
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">CHI TIẾT LIÊN HỆ</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
+                    @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdContact }) |
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    <hr />
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Feedback", "CONTACTs", FormMethod.Post))
+            {
+                <input name="id" value="@Model.IdContact" hidden />
+                <div class="mb-3">
+                    <label class="form-label">Gửi đến:</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.Email" readonly>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                <div class="mb-3">
+                    <label class="form-label">Tiêu đề:</label>
+                    <input type="text" name="title" class="form-control" value="@Model.Title" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nội dung:</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Content" readonly>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USER.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USER.FullName)
-        </dd>
-
-    </dl>
+                </div>
+                @*<script>CKEDITOR.replace("message");</script>*@
+                <button type="submit" class="btn btn-primary">Gửi phản hồi</button>
+            }
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdContact }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

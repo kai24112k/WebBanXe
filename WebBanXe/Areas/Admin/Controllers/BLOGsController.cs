@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebBanXe.Helpers.Name;
 using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
@@ -48,21 +50,44 @@ namespace WebBanXe.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "IdBlog,IdCate,IdUser,Title,Content,DateCreate")] BLOG bLOG)
+      
+        public ActionResult Create(BLOG bLOG, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
                 db.BLOGs.Add(bLOG);
+                if (fileUpload != null)
+                {
+                    var extension = Path.GetExtension(fileUpload.FileName);
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia" + extension);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/blogs/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    var img = new IMG_BLOG();
+                    img.AltImg = fileName;
+                    img.LinkImg = fileName;
+                    img.IdBlog = bLOG.IdBlog;
+                    db.IMG_BLOG.Add(img);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
             ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
             return View(bLOG);
+
+
         }
 
-     
         [ValidateInput(false)]
         public ActionResult Edit(int? id)
         {

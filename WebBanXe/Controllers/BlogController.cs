@@ -13,7 +13,7 @@ namespace WebBanXe.Controllers
     {
         // GET: Blog
         DBBanXeEntities db = new DBBanXeEntities();
-
+    
         private List<BLOG> GetBlog (int count)
         {
             return db.BLOGs.OrderByDescending(a => a.DateCreate).Take(count).ToList();
