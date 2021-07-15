@@ -16,7 +16,9 @@ namespace WebBanXe.Controllers
         {
             List<PRODUCT> listProduct = new List<PRODUCT>();
             listProduct = db.PRODUCTs.ToList();
+            ViewBag.BRAND = db.BRANDs.ToList();
             return View(listProduct);
+
         }
     }
 }

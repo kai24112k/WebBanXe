@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebBanXe.Helpers.Name;
 using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
@@ -46,15 +48,33 @@ namespace WebBanXe.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdBrand,NameBrand,ImgBrand")] BRAND bRAND)
+        public ActionResult Create(BRAND bRAND , HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
-                db.BRANDs.Add(bRAND);
+                if (fileUpload != null)
+                {
+                    var extension = Path.GetExtension(fileUpload.FileName);
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bRAND.NameBrand.ToLower()) + "-anh-bia" + extension);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/brands/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    bRAND.ImgBrand = "/Public/img/brands/" + fileName;
+
+                    db.BRANDs.Add(bRAND);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(bRAND);
         }
 
@@ -78,10 +98,30 @@ namespace WebBanXe.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdBrand,NameBrand,ImgBrand")] BRAND bRAND)
-        {
+        public ActionResult Edit(BRAND bRAND, HttpPostedFileBase fileUpload)
+        {   
             if (ModelState.IsValid)
             {
+                if (fileUpload != null)
+                {
+                    var extension = Path.GetExtension(fileUpload.FileName);
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bRAND.NameBrand.ToLower()) + "-anh-bia" + extension);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/brands/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    bRAND.ImgBrand = "/Public/img/brands/" + fileName;
+
+                    db.BRANDs.Add(bRAND);
+                }
                 db.Entry(bRAND).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

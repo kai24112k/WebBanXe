@@ -114,10 +114,32 @@ namespace WebBanXe.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "IdProduct,NameProduct,Price,Description,Status,IdBrand,IdType")] PRODUCT pRODUCT)
+        public ActionResult Edit(PRODUCT pRODUCT, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
+                if (fileUpload != null)
+                {
+                    var extension = Path.GetExtension(fileUpload.FileName);
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia" + extension);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/brands/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    var img = new IMG_PRODUCT();
+                    img.AltImg = "~/Public/img/products/" + fileName;
+                    img.LinkImg = fileName;
+                    img.IdProduct = pRODUCT.IdProduct;
+                    db.IMG_PRODUCT.Add(img);
+                }
                 db.Entry(pRODUCT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
