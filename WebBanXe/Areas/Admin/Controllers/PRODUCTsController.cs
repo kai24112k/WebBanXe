@@ -76,8 +76,8 @@ namespace WebBanXe.Areas.Admin.Controllers
                     }
                     fileUpload.SaveAs(path);
                     var img = new IMG_PRODUCT();
-                    img.AltImg = "~/Public/img/products/" + fileName;
-                    img.LinkImg = fileName;
+                    img.AltImg = fileName;
+                    img.LinkImg = "/Public/img/products/" + fileName;
                     img.IdProduct = pRODUCT.IdProduct;
                     db.IMG_PRODUCT.Add(img);
                 }
@@ -124,7 +124,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
                     var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia" + extension);
-                    var path = Path.Combine(Server.MapPath("~/Public/img/brands/"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/products/"), fileName);
                     try
                     {
                         if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
@@ -135,8 +135,8 @@ namespace WebBanXe.Areas.Admin.Controllers
                     }
                     fileUpload.SaveAs(path);
                     var img = new IMG_PRODUCT();
-                    img.AltImg = "~/Public/img/products/" + fileName;
-                    img.LinkImg = fileName;
+                    img.AltImg = fileName;
+                    img.LinkImg = "/Public/img/products/" + fileName;
                     img.IdProduct = pRODUCT.IdProduct;
                     db.IMG_PRODUCT.Add(img);
                 }
