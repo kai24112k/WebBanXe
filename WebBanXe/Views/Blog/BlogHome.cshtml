@@ -96,7 +96,16 @@
                             <div class="col-md-8">
                               <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)"><h2 class="h3 mt-0"> @blog.Title</h2></a>  
                                 <div class="d-flex flex-wrap justify-content-between text-xs">
-                                    <p class="author-category">By @blog.USER.FullName <span>in</span> XEMAYDHCV</p>
+                                    <p class="author-category">
+                                        @if (Session["userID"] != null)
+                                        {
+                                            @blog.USER.FullName
+                                        }
+                                        else
+                                        {
+                                            @blog.Title;
+                                        }<span>in</span> XEMAYDHCV
+                                    </p>
                                     <p class="date-comments"><a href="#"><i class="fa fa-calendar-o"></i>@blog.DateCreate</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>
                                 </div>
                                 <p class="card-title text-dark" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></p>

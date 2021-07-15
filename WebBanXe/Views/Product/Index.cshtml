@@ -48,10 +48,10 @@
                             <div class="col-md-4">
                                 <div class="box-image card">
                                     <div class="image">
-                                        <a href="@Url.Action("Detail","Product", new { url = product.ToURL() },null)">
+                                        <a href="@Url.Action("Detail","Product", new { id = product.IdProduct }, null)">
                                             @foreach (var item in product.IMG_PRODUCT)
                                             {
-                                                if (item.IdProduct == product.IdProduct && item.AltImg == item.IdProduct + "_1")
+                                                if (item.IdProduct == product.IdProduct)
                                                 {
                                                     <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                                 }

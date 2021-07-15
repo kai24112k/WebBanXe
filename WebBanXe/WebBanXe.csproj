@@ -1335,6 +1335,7 @@
     <Folder Include="Content\vendor\font-awesome\scss\" />
     <Folder Include="Public\img\blogs\" />
     <Folder Include="Public\img\products\" />
+    <Folder Include="Public\img\typecars\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

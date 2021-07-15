@@ -97,7 +97,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/EMPLOYEEs/Delete/5
        
         public ActionResult Delete(int id)
-        {
+        {   
             USER uSER = db.USERs.Find(id);
             db.USERs.Remove(uSER);
             db.SaveChanges();

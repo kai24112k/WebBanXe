@@ -26,7 +26,11 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/BLOGs/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["userID"] != null)
+            {
+                
+            }
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

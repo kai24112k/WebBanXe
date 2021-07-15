@@ -58,6 +58,8 @@ namespace WebBanXe.Areas.Admin.Controllers
         { 
             if (ModelState.IsValid)
             {
+               
+               
                 db.PRODUCTs.Add(pRODUCT);
                 if (fileUpload != null)
                 {
@@ -76,8 +78,8 @@ namespace WebBanXe.Areas.Admin.Controllers
                     }
                     fileUpload.SaveAs(path);
                     var img = new IMG_PRODUCT();
-                    img.AltImg = "~/Public/img/products/" + fileName;
-                    img.LinkImg = fileName;
+                    img.AltImg = fileName;
+                    img.LinkImg = "/Public/img/products/" + fileName;
                     img.IdProduct = pRODUCT.IdProduct;
                     db.IMG_PRODUCT.Add(img);
                 }

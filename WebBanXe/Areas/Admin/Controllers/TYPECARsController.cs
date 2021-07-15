@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebBanXe.Helpers.Name;
 using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
@@ -44,18 +46,57 @@ namespace WebBanXe.Areas.Admin.Controllers
         // POST: Admin/TYPECARs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "IdType,NameType,ImgType")] TYPECAR tYPECAR)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.TYPECARs.Add(tYPECAR);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(tYPECAR);
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdType,NameType,ImgType")] TYPECAR tYPECAR)
+        [ValidateInput(false)]
+
+        public ActionResult Create(TYPECAR tYPECAR, HttpPostedFileBase fileUpload)
         {
-            if (ModelState.IsValid)
+          
+            if (fileUpload != null)
             {
+                var extension = Path.GetExtension(fileUpload.FileName);
+                if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(tYPECAR.NameType.ToLower()) + "-anh-bia" + extension);
+                tYPECAR.ImgType = "~/Public/img/typecars/" + fileName;
+                var path = Path.Combine(Server.MapPath("~/Public/img/typecars/"), fileName);
+                fileUpload.SaveAs(path);
+              
+                db.TYPECARs.Add(tYPECAR);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+                try
+                {
+                    if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                }
+                catch
+                {
+
+                }
+            }
+            else
+            {
+                tYPECAR.ImgType = "~/Public/img/typecars/none.png";
                 db.TYPECARs.Add(tYPECAR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(tYPECAR);
+
         }
 
         // GET: Admin/TYPECARs/Edit/5

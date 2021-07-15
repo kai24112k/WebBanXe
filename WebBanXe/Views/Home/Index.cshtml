@@ -4,8 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section
-         class="relative-positioned">
+<section class="relative-positioned">
     <!-- Carousel Start-->
     <div class="home-carousel">
         <div class="dark-mask mask-primary"></div>
@@ -148,7 +147,6 @@
                     <h4><span class="h1 counter">10232</span><br>Đơn hàng</h4>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -172,9 +170,9 @@
                                                     <a href="@Url.Action("Detail","Product", new { id = product.IdProduct },null)">
                                                         @foreach (var item in product.IMG_PRODUCT)
                                                         {
-                                                            if (item.IdProduct == product.IdProduct && item.AltImg == item.IdProduct + "_1")
+                                                            if (item.IdProduct == product.IdProduct)
                                                             {
-                                                                <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                                <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                                             }
                                                         }
                                                         <div class="overlay d-flex align-items-center justify-content-center">
@@ -198,29 +196,12 @@
                                                     </a>
                                                 </div>
                                             </div>
-
                                         </div>
-
-
                                     }
-
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="owl-controls">
-                          <div class="owl-nav">
-                            <div class="owl-prev">prev</div>
-                            <div class="owl-next">next</div>
-                          </div>
-                          <div class="owl-dots">
-                            <div class="owl-dot active"><span></span></div>
-                            <div class="owl-dot"><span></span></div>
-                            <div class="owl-dot"><span></span></div>
-                          </div>
-                        </div> -->
                     </div>
-
-
                     <div class="see-more text-center">
                         <p></p><a href="portfolio-4.html" class="btn btn-template-outlined">Xem thêm</a>
                     </div>
@@ -304,9 +285,8 @@
                                                                     malesuada
                                                                 </p>
                                                                 <p class="buttons">
-                                                                    <a href="portfolio-detail.html"
-                                                                       class="btn btn-template-outlined-white">View</a><a href="#"
-                                                                                                                          class="btn btn-template-outlined-white">Mua ngay</a>
+                                                                    <a href="portfolio-detail.html" class="btn btn-template-outlined-white">View</a>
+                                                                    <a href="#" class="btn btn-template-outlined-white">Mua ngay</a>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -319,20 +299,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="owl-controls">
-                      <div class="owl-nav">
-                        <div class="owl-prev">prev</div>
-                        <div class="owl-next">next</div>
-                      </div>
-                      <div class="owl-dots">
-                        <div class="owl-dot active"><span></span></div>
-                        <div class="owl-dot"><span></span></div>
-                        <div class="owl-dot"><span></span></div>
-                      </div>
-                    </div> -->
                 </div>
-
-
                 <div class="see-more text-center">
                     <p></p><a href="portfolio-4.html" class="btn btn-template-outlined">Xem thêm</a>
                 </div>
@@ -346,7 +313,6 @@
             <div class="heading text-center">
                 <h2>Tạp chí xe</h2>
             </div>
-            <!-- <p class="lead">Bạn là người đam mê thế giới xe? Khám phá ngay những tin tức mới nhất về thị trường xe Việt Nam, đánh giá xe, lời khuyên tư vấn, bảng giá xe từ DHVT </p> -->
             <div class="row">
                 <div class="col-lg-3">
                     <div class="home-blog-post">
