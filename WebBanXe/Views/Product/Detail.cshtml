@@ -25,7 +25,7 @@
                         <div class="item">
                             @foreach (var item in Model.IMG_PRODUCT)
                             {
-                                <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                             }
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <div class="image">
                                 @foreach (var item in Model.IMG_PRODUCT)
                                 {
-                                    <img src="~/Public/img/@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                    <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                 }
                                 <div class="overlay d-flex align-items-center justify-content-center">
                                     <div class="content">

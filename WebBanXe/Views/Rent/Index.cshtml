@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section style="background: url('img/photogrid.jpg') center center repeat; background-size: cover;"
+         class="relative-positioned">
+    <!-- Carousel Start-->
+    <div class="home-carousel">
+        <div class="dark-mask mask-primary"></div>
+        <div class="container">
+            <div class="row py-5 mt-1 align-items-center">
+                <!-- For Demo Purpose -->
+                <div class="col-md-6 pr-lg-5 mb-5 mb-md-0">
+                    <h1>Dịch vụ thuê xe máy</h1>
+                    <p class="font-italic text-muted mb-0"></p>XEMAYDHCV - tiên phong trở thành thành đơn vị
+                    số 1 về cung cấp dịch vụ thuê xe máy tự lái tại Việt Nam.</p>
+                    </p>
+                </div>
+                <!-- Registeration Form -->
+                <div class="col-md-6 col-lg-6 ml-auto">
+                    <form action="#">
+                        <div class="row">
+                            <div class="heading col-lg-12 text-left">
+                                <h2>Ngày nhận xe</h2>
+                            </div>
+                            <!-- họ -->
+                            <!-- <div class="input-group col-lg-12 mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                      <i class="fas fa-compass"></i>
+                                    </span>
+                                </div>
+                                <input id="Address " type="Address" name="Address" placeholder="Địa chỉ nhận xe" class="form-control bg-white border-left-0 border-md">
+                            </div> -->
+                            <div class="input-group col-lg-12 mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="far fa-calendar-minus"></i>
+                                    </span>
+                                </div>
+                                <input id="datetime" type="datetime-local" name="datetime" placeholder="Ngày nhận xe" class="form-control bg-white border-left-0 border-md">
+                            </div>
+                            <!-- Password -->
+                            <div class="heading col-lg-12 text-left">
+                                <h2>Ngày trả xe</h2>
+                            </div>
+                            <!-- <div class="input-group col-lg-12 mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                      <i class="fas fa-compass"></i>
+                                    </span>
+                                </div>
+
+                                <input id="Address " type="Address" name="Address" placeholder="Địa chỉ trả xe" class="form-control bg-white border-left-0 border-md">
+                            </div> -->
+                            <div class="input-group col-lg-12 mb-4">
+                                <div class="input-group-prepend">
+
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="far fa-calendar-minus"></i>
+                                    </span>
+                                </div>
+                                <input id="datetime" type="datetime-local" name="datetime" placeholder="Ngày trả xe" class="form-control bg-white border-left-0 border-md">
+                            </div>
+
+                            <div class="form-group col-lg-12 mx-auto mb-0">
+                                <a href="@Url.Action("Index","Product")" class="btn btn btn-template-outlined-white btn-block py-2">
+                                    <span class="font-weight-bold">Tìm kiếm</span>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End-->
+</section>
+<section class="bar">
+    <div class="container text-center">
+        <div class="col-md-12">
+            <div class="heading text-center">
+                <h2>Dịch vụ của chúng tôi</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="box-simple">
+                        <div class="icon-outlined"><i class="fas fa-biking"></i></div>
+                        <h3 class="h4">Giao xe tận nhà</h3>
+                        <p>Miễn phí nội thành thành phố Hồ Chí Minh </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box-simple">
+                        <div class="icon-outlined"><i class="fas fa-tools"></i></div>
+                        <h3 class="h4">Bảo dưỡng</h3>
+                        <p>Xe mua trong vòng 2 tháng đầu sử dụng được bảo hành miễn phí</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box-simple">
+                        <div class="icon-outlined"><i class="fas fa-signature"></i></div>
+                        <h3 class="h4">Thủ tục nhanh chóng</h3>
+                        <p> Sang tên nhanh chóng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="box-simple">
+                        <div class="icon-outlined"><i class="fa fa-users"></i></div>
+                        <h3 class="h4">Tận tình</h3>
+                        <p>Khách hàng là niềm tin của chúng tôi</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box-simple">
+                        <div class="icon-outlined"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3 class="h4">Chuyên nghiệp</h3>
+                        <p>Phân tích, làm việc tập trung</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box-simple">
+                        <div class="icon-outlined"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3 class="h4">Ưu đãi</h3>
+                        <p>Nhiều ưu đãi hấp dẫn bất ngờ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="background: url(/Public/img/bannervespa.png) center top no-repeat; background-size: cover;"
+         class="bar no-mb color-white text-center bg-fixed relative-positioned">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="icon-outlined"><i class="fa fa-phone"></i></div>
+        <h1 class="text-uppercase">bạn cần tìm một chiếc xe mới cho mình?</h1>
+        <p class="lead">Chúng tôi là đơn vị hàng đầu cung cấp nhiều dòng xe dành cho mọi đối tượng sử dụng</p>
+        <p class="text-center">
+            <a href="@Url.Action("ContactPage","Contact")" class="btn btn-template-outlined-white btn-lg">
+                Liên hệ ngay với
+                chúng tôi
+            </a>
+        </p>
+    </div>
+</section>
+<section class="bar bg-gray no-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading text-center">
+                    <h3>Các hãng xe</h3>
+                </div>
+                <ul class="list-unstyled owl-carousel brand no-mb">
+                    <li class="item"><img src="/Public/img/yamaha.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/piaggio-vespa.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/kymco.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/yamaha.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/piaggio-vespa.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/kymco.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/yamaha.svg" alt="" class="img-fluid"></li>
+                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
