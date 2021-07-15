@@ -11,7 +11,6 @@
           </Key>
           <Property Name="IdBlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCate" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Content" Type="ntext" Nullable="false" />
@@ -29,14 +28,14 @@
           <Key>
             <PropertyRef Name="IdCate" />
           </Key>
-          <Property Name="IdCate" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdCate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameCate" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CLASS">
           <Key>
             <PropertyRef Name="IdClass" />
           </Key>
-          <Property Name="IdClass" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdClass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameClass" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CONTACT">
@@ -53,7 +52,7 @@
           <Key>
             <PropertyRef Name="IdDiscount" />
           </Key>
-          <Property Name="IdDiscount" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdDiscount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeDiscount" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Value" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
@@ -62,7 +61,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClass" Type="int" Nullable="false" />
           <Property Name="AltImg" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
@@ -71,7 +70,7 @@
           <Key>
             <PropertyRef Name="IdImg" />
           </Key>
-          <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdBlog" Type="int" />
           <Property Name="AltImg" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
@@ -89,7 +88,7 @@
           <Key>
             <PropertyRef Name="IdOrder" />
           </Key>
-          <Property Name="IdOrder" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="IdDiscount" Type="int" />
           <Property Name="TotalMoney" Type="int" Nullable="false" />
@@ -104,7 +103,7 @@
             <PropertyRef Name="IdOrder" />
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -116,7 +115,7 @@
           <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="IdBrand" Type="int" Nullable="false" />
           <Property Name="IdType" Type="int" Nullable="false" />
@@ -125,7 +124,7 @@
           <Key>
             <PropertyRef Name="IdRent" />
           </Key>
-          <Property Name="IdRent" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdRent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateRent" Type="datetime" Nullable="false" />
           <Property Name="DateBack" Type="datetime" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -159,9 +158,33 @@
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
-          <Property Name="IdRole" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK__BLOG__IdCate__4D94879B">
+          <End Role="CATEGORY_BLOG" Type="Self.CATEGORY_BLOG" Multiplicity="1" />
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_BLOG">
+              <PropertyRef Name="IdCate" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="IdCate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BLOG__IdUser__4316F928">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="BLOG">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CONTACT__IdUser__4222D4EF">
           <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
           <End Role="CONTACT" Type="Self.CONTACT" Multiplicity="*" />
@@ -335,6 +358,14 @@
           <EntitySet Name="TYPECAR" EntityType="Self.TYPECAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BLOG__IdCate__4D94879B" Association="Self.FK__BLOG__IdCate__4D94879B">
+            <End Role="CATEGORY_BLOG" EntitySet="CATEGORY_BLOG" />
+            <End Role="BLOG" EntitySet="BLOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BLOG__IdUser__4316F928" Association="Self.FK__BLOG__IdUser__4316F928">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="BLOG" EntitySet="BLOG" />
+          </AssociationSet>
           <AssociationSet Name="FK__CONTACT__IdUser__4222D4EF" Association="Self.FK__CONTACT__IdUser__4222D4EF">
             <End Role="USER" EntitySet="USER" />
             <End Role="CONTACT" EntitySet="CONTACT" />

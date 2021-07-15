@@ -13,6 +13,8 @@ namespace WebBanXe.Helpers.Name
         {
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
             string temp = s.Normalize(NormalizationForm.FormD);
+            temp = temp.Replace(" ", "-");
+            temp = temp.Replace("--", "-");
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
     }
