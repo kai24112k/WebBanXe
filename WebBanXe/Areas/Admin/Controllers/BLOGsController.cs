@@ -55,6 +55,9 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                bLOG.DateCreate = DateTime.Now;
+                bLOG.IdUser = int.Parse( Session["userID"].ToString());
                 db.BLOGs.Add(bLOG);
                 if (fileUpload != null)
                 {
@@ -74,8 +77,9 @@ namespace WebBanXe.Areas.Admin.Controllers
                     fileUpload.SaveAs(path);
                     var img = new IMG_BLOG();
                     img.AltImg = fileName;
-                    img.LinkImg = fileName;
+                    img.LinkImg = "/Public/img/blogs/"+ fileName;
                     img.IdBlog = bLOG.IdBlog;
+                   
                     db.IMG_BLOG.Add(img);
                 }
                 db.SaveChanges();
@@ -131,8 +135,14 @@ namespace WebBanXe.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
+
             BLOG bLOG = db.BLOGs.Find(id);
             db.BLOGs.Remove(bLOG);
+            var listImg = db.IMG_BLOG.Where(p => p.IdBlog == id).ToList();
+            foreach (var item in listImg)
+            {
+                db.IMG_BLOG.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
