@@ -32,9 +32,12 @@ namespace WebBanXe.Areas.Admin.Controllers
             }
             CONTACT cONTACT = db.CONTACTs.Find(id);
             if (cONTACT == null)
+
             {
                 return HttpNotFound();
             }
+            cONTACT.Status = true;
+            db.SaveChanges();
             return View(cONTACT);
         }
 

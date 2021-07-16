@@ -28,7 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th width="350">
+            <th width="300">
                 @Html.DisplayNameFor(model => model.Content)
             </th>
             <th>
@@ -51,7 +51,7 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    <textarea rows="4" cols="50" style="resize: none;">@Truncate(item.Content, 100)</textarea>
+                    <textarea rows="4" cols="40" style="resize: none;">@Truncate(item.Content, 100)</textarea>
                    
                   
                 </td>

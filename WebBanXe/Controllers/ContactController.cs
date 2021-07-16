@@ -23,10 +23,12 @@ namespace WebBanXe.Controllers
             var content = contactForm["content"];
            
             var detail = contactForm["noidung"];
+            
             contact.Title = title;
             contact.Email = email;
             contact.Content = content;
-           
+            contact.IdUser = int.Parse(Session["userID"].ToString());
+            contact.Status = false;
             db.CONTACTs.Add(contact);
             db.SaveChanges();
             ViewBag.Notice = "<div class='alert alert-success text-center text-dark' role='alert'>Gửi liên hệ thành công</div>";

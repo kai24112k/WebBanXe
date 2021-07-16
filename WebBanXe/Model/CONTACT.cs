@@ -19,6 +19,7 @@ namespace WebBanXe.Model
         public string Title { get; set; }
         public string Email { get; set; }
         public string Content { get; set; }
+        public Nullable<bool> Status { get; set; }
     
         public virtual USER USER { get; set; }
     }

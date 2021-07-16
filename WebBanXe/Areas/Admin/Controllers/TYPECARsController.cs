@@ -65,38 +65,31 @@ namespace WebBanXe.Areas.Admin.Controllers
 
         public ActionResult Create(TYPECAR tYPECAR, HttpPostedFileBase fileUpload)
         {
-          
-            if (fileUpload != null)
-            {
-                var extension = Path.GetExtension(fileUpload.FileName);
-                if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
-                if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(tYPECAR.NameType.ToLower()) + "-anh-bia" + extension);
-                tYPECAR.ImgType = "~/Public/img/typecars/" + fileName;
-                var path = Path.Combine(Server.MapPath("~/Public/img/typecars/"), fileName);
-                fileUpload.SaveAs(path);
-              
-                db.TYPECARs.Add(tYPECAR);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-                try
+            if (ModelState.IsValid)
+            { 
+                if (fileUpload != null)
                 {
-                    if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
-                }
-                catch
-                {
+                    var extension = Path.GetExtension(fileUpload.FileName);
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(tYPECAR.NameType.ToLower()) + "-anh-bia" + extension);
+                    var path = Path.Combine(Server.MapPath("~/Public/img/typecars/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
 
+                    }
+                    fileUpload.SaveAs(path);
+                    tYPECAR.ImgType = "/Public/img/typecars/" + fileName;
+                    db.TYPECARs.Add(tYPECAR);
                 }
-            }
-            else
-            {
-                tYPECAR.ImgType = "~/Public/img/typecars/none.png";
-                db.TYPECARs.Add(tYPECAR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            }         
             return View(tYPECAR);
-
         }
 
         // GET: Admin/TYPECARs/Edit/5

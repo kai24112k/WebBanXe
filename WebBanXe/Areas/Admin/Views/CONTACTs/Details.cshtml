@@ -5,47 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
-@*<div>
-        <h4>CONTACT</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Content)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Content)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.USER.FullName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.USER.FullName)
-            </dd>
-
-        </dl>
-    </div>*@
-
-
 <div class="container">
     <hr />
     <div class="form-group">
@@ -55,7 +14,7 @@
                     <h2 class="h2">CHI TIẾT LIÊN HỆ</h2>
                 </div>
                 <div class="col-md-3" style="text-align:right;">
-                    @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdContact }) |
+                   
                     @Html.ActionLink("QUAY LẠI", "Index")
                 </div>
             </div>
@@ -80,10 +39,8 @@
                 <div class="mb-3">
                     <label class="form-label">Nội dung:</label>
                     <input name="message" class="form-control" rows="7" value="@Model.Content" readonly>
-
                 </div>
-              
-                <button type="submit" class="btn btn-primary">Gửi phản hồi</button>
+                <a href="@Url.Action("Feedback", "CONTACTs", new { id = Model.IdContact } )" class="btn btn-primary form-control">Gửi phản hồi</a>
             }
         </div>
     </div>

@@ -92,8 +92,6 @@ namespace WebBanXe.Areas.Admin.Controllers
             ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
             ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
             return View(bLOG);
-
-
         }
 
         [ValidateInput(false)]

@@ -5,63 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
-    <div>
-        <h4>PRODUCT</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.NameProduct)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NameProduct)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Status)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Status)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.BRAND.NameBrand)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.BRAND.NameBrand)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TYPECAR.NameType)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TYPECAR.NameType)
-            </dd>
-    
-        </dl>
+<div class="container">
+    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">CHI TIẾT SẢN PHẨM</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
+                    @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdProduct }) |
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdProduct }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label class="form-label">Tên sản phẩm</label>
+                <input type="text" name="address" class="form-control" required value="@Model.NameProduct" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Giá bán</label>
+                <input type="text" name="title" class="form-control" value="@Model.Price" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tình trạng</label>
+                <input name="message" class="form-control" rows="7" value="@Model.Status" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tên hãng</label>
+                <input name="message" class="form-control" rows="7" value="@Model.BRAND.NameBrand" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Loại xe</label>
+                <input name="message" class="form-control" rows="7" value="@Model.TYPECAR.NameType" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nội dung:</label>
+                <input name="message" class="form-control" rows="7" value="  @Model.Description" readonly>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
 

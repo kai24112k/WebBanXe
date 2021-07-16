@@ -48,7 +48,7 @@
                             <div class="col-md-4">
                                 <div class="box-image card">
                                     <div class="image">
-                                        <a href="@Url.Action("Detail","Product", new { id = product.IdProduct }, null)">
+                                        <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
                                             @foreach (var item in product.IMG_PRODUCT)
                                             {
                                                 if (item.IdProduct == product.IdProduct)

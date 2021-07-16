@@ -56,20 +56,20 @@
                         <div class="d-flex justify-content-md-end justify-content-between">
                             @if (Session["userID"] != null)
                             {
-                            <ul>
-                                <li class="dropdown" style=" cursor: pointer; list-style: none;">
-                                    <a data-toggle="dropdown" class="dropdown-toggle login-btn">@Session["fullName"] </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a href="#">Thông tin cá nhân</a></li>
-                                        <li class="dropdown-item"><a href="#">Lịch sử mua hàng</a></li>
-                                        <li class="dropdown-item"><a href="@Url.Action("Logout", "Customer")">Đăng xuất</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <div class="login">
-                                @Html.Action("CartPartial", "Cart")
-                                  
-                            </div>
+                                <ul>
+                                    <li class="dropdown" style=" cursor: pointer; list-style: none;">
+                                        <a data-toggle="dropdown" class="dropdown-toggle login-btn">@Session["fullName"] </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a href="#">Thông tin cá nhân</a></li>
+                                            <li class="dropdown-item"><a href="#">Lịch sử mua hàng</a></li>
+                                            <li class="dropdown-item"><a href="@Url.Action("Logout", "Customer")">Đăng xuất</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="login">
+                                    @Html.Action("CartPartial", "Cart")
+
+                                </div>
                             }
                             else
                             {
@@ -83,7 +83,7 @@
                                 </div>
                             }
 
-                     
+
                         </div>
                     </div>
                 </div>
@@ -173,21 +173,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <h4 class="h4">Về chúng tôi</h4>
-                    <hr class="d-block d-lg-none">
-                    <p class="text-left">
-                        <div class="fb-page"
-                             data-href="https://www.facebook.com/xemaydhcv"
-                             data-width="340"
-                             data-hide-cover="true"
-                             data-show-facepile="true"></div>
-                        @*XemayDHCV là đơn vị thu mua,
-                            rao bán xe máy cũ uy tín tại thành phố Hồ Chí Minh. Với nhiều năm lăn lộn, va đập trong thị trường xe máy
-                            cũ, chúng tôi đảm bảo cung cấp phương tiện di chuyển giá cả hợp lý. Với các chủ xe muốn bán lại chiếc xe
-                            máy của mình, XemayDHCV sẽ tiến hành các thủ tục đổi tên nhanh gọn với mức giá cực kì cạnh tranh trên thị
-                            trường.*@
+                    <h4 class="h4">Thông tin liên hệ</h4>
+                    <br>
+
+                    <p class="text-lowercase">
+                        Địa chỉ: 32 Hai bà Trưng, phường 12,<br>Quận 10,
+                        TP. Hồ Chí Minh<br>
                     </p>
 
+                    <p class="text-lowercase">
+                        <strong>Email: </strong>contact@xemaydhcv.com<br>
+                        <br>Thời gian làm việc: 8:00-21:00<br>
+                    </p>
                     <hr class="d-block d-lg-none">
                 </div>
                 <div class="col-lg-4">
@@ -215,28 +212,17 @@
                     </ul>
                     <hr class="d-block d-lg-none">
                 </div>
+
+
                 <div class="col-lg-4">
-                    <h4 class="h4">Thông tin liên hệ</h4>
-                    <br>
-                    <p class="text-lowercase">
-                        Địa chỉ: 32 Hai bà Trưng, phường 12,<br>Quận 10,
-                        TP. Hồ Chí Minh<br>
-                    </p>
-                    <hr>
-                    <p class="text-lowercase">
-                        <strong>Email: </strong>contact@xemaydhcv.com<br>Website:https://www.facebook.com/hutechuniversity
-                        <br>Thời gian làm việc: 8:00-21:00<br>
-                    </p>
-                    <hr class="d-block d-lg-none">
-                </div>
-                @*<div class="col-lg-3">
                     <h4 class="h4">Facebook fanpage</h4>
                     <br>
-                    <p class="text-uppercase">Fanpage XemayDHCV</p>
-                    <a href="contact.html" class="btn btn-template-main">Go to contact page</a>
-                    <hr class="d-block d-lg-none">
-                   
-                </div>*@
+
+                    <p class="text-left">
+                        <div class="fb-page" data-href="https://www.facebook.com/xemaydhcv" data-tabs="timeline" data-width="290px" data-height="250px" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/xemaydhcv" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/xemaydhcv">Xemay DHCV</a></blockquote></div>
+                    </p>
+
+                </div>
             </div>
         </div>
         <div class="copyrights">
@@ -250,6 +236,7 @@
         </div>
     </footer>
 
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=333443471649605&autoLogAppEvents=1" nonce="65W80paA"></script>
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/popper.js/umd/popper.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>

@@ -47,12 +47,13 @@
           <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Content" Type="ntext" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="DISCOUNT">
           <Key>
             <PropertyRef Name="IdDiscount" />
           </Key>
-          <Property Name="IdDiscount" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdDiscount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeDiscount" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Value" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
@@ -138,7 +139,7 @@
           </Key>
           <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameType" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ImgType" Type="varchar" MaxLength="50" />
+          <Property Name="ImgType" Type="varchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -440,6 +441,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="USER" Relationship="Self.FK__CONTACT__IdUser__4222D4EF" FromRole="CONTACT" ToRole="USER" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="DISCOUNT">
           <Key>
@@ -547,7 +549,7 @@
           </Key>
           <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImgType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImgType" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdType__49C3F6B7" FromRole="TYPECAR" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="USER">
@@ -881,6 +883,7 @@
           <EntitySetMapping Name="CONTACTs">
             <EntityTypeMapping TypeName="DBBanXeModel.CONTACT">
               <MappingFragment StoreEntitySet="CONTACT">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="IdContact" ColumnName="IdContact" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

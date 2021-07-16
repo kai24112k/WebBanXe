@@ -5,39 +5,40 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container">
+    <div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="row ">
+                    <div class="col-md-9 ">
+                        <h2 class="h2">CHI TIẾT SẢN PHẨM</h2>
+                    </div>
+                    <div class="col-md-3" style="text-align:right;">
+                        @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdDiscount }) |
+                        @Html.ActionLink("QUAY LẠI", "Index")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border border-2 border-dark rounded-3 py-3">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Mã giảm giá</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.CodeDiscount" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Giá trị</label>
+                    <input type="text" name="title" class="form-control" value="@Model.Value" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tình trạng</label>
+                    <input type="text" name="text" class="form-control" rows="7" value="@Model.Status" readonly>
+                </div>
+             
 
-<div>
-    <h4>DISCOUNT</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CodeDiscount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CodeDiscount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Value)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Value)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDiscount }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </div>
+            </div>
+         
+        </div>
+    </div>

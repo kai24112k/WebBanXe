@@ -23,6 +23,9 @@
             <th  width="100">
                 @Html.DisplayNameFor(model => model.USER.FullName)
             </th>
+            <th>
+                Trạng thái
+            </th>
             <th  width="150">Chỉnh sửa</th>
         </tr>
     </thead>
@@ -41,6 +44,16 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.USER.FullName)
+                </td>
+                <td>
+                    @if (item.Status == false)
+                    {
+                        <span style="color:darkorange;">Chưa xem</span>
+                    }
+                    else
+                    {
+                        <span style="color:cornflowerblue;">Đã xem</span>
+                    }
                 </td>
                 <td>
 
