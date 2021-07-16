@@ -1,4 +1,4 @@
-﻿
+﻿@using WebBanXe.Model
 @{
     ViewBag.Title = "DHCV Motobikes";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -233,17 +233,11 @@
                     <h3>Các hãng xe</h3>
                 </div>
                 <ul class="list-unstyled owl-carousel brand no-mb">
-                    <li class="item"><img src="/Public/img/yamaha.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/piaggio-vespa.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/kymco.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/yamaha.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/piaggio-vespa.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/kymco.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/yamaha.svg" alt="" class="img-fluid"></li>
-                    <li class="item"><img src="/Public/img/honda.svg" alt="" class="img-fluid"></li>
+                   @foreach( var item in (List<BRAND>)ViewBag.BRAND)
+                     {
+                    <li class="item"><img src="@item.ImgBrand" alt="" class="img-fluid"></li>
+                    }
+                    
                 </ul>
             </div>
         </div>
@@ -269,7 +263,7 @@
                                                     <a href="@Url.Action("Detail","Product", new { id = product.IdProduct },null)">
                                                         @foreach (var item in product.IMG_PRODUCT)
                                                         {
-                                                            if (item.IdProduct == product.IdProduct && item.AltImg == item.IdProduct + "_1")
+                                                            if (item.IdProduct == product.IdProduct)
                                                             {
                                                                 <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                                             }
