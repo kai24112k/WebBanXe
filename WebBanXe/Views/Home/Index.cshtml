@@ -167,7 +167,7 @@
                                         <div class="col-md-4">
                                             <div class="box-image">
                                                 <div class="image">
-                                                    <a href="@Url.Action("Detail","Product", new { id = product.IdProduct },null)">
+                                                    <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
                                                         @foreach (var item in product.IMG_PRODUCT)
                                                         {
                                                             if (item.IdProduct == product.IdProduct)
@@ -178,17 +178,13 @@
                                                         <div class="overlay d-flex align-items-center justify-content-center">
                                                             <div class="content">
                                                                 <div class="name">
-                                                                    <h3><a href="portfolio-detail.html" class="color-white">Thông tin chi tiết</a></h3>
+                                                                    <h3>Thông tin chi tiết</h3>
                                                                 </div>
-                                                                <div class="text">
-                                                                    <p class="d-sm-none">
-                                                                        Pellentesque habitant morbi tristique senectus et netus et
-                                                                        malesuada
-                                                                    </p>
+                                                                <div class="text">                                                                
                                                                     <p class="buttons">
-                                                                        <a href="portfolio-detail.html"
-                                                                           class="btn btn-template-outlined-white">View</a>
-                                                                        <a href="#"class="btn btn-template-outlined-white">Mua ngay</a>
+                                                                        <h6 class="btn btn-template-outlined-white">
+                                                                            Xem chi tiết
+                                                                        </h6>                                                                 
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -260,7 +256,7 @@
                                         <div class="col-md-4">
                                             <div class="box-image">
                                                 <div class="image">
-                                                    <a href="@Url.Action("Detail","Product", new { id = product.IdProduct },null)">
+                                                    <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
                                                         @foreach (var item in product.IMG_PRODUCT)
                                                         {
                                                             if (item.IdProduct == product.IdProduct)
@@ -271,16 +267,13 @@
                                                     <div class="overlay d-flex align-items-center justify-content-center">
                                                         <div class="content">
                                                             <div class="name">
-                                                                <h3><a href="portfolio-detail.html" class="color-white">Thông tin chi tiết</a></h3>
+                                                                <h3>Thông tin chi tiết</h3>
                                                             </div>
                                                             <div class="text">
-                                                                <p class="d-sm-none">
-                                                                    Pellentesque habitant morbi tristique senectus et netus et
-                                                                    malesuada
-                                                                </p>
                                                                 <p class="buttons">
-                                                                    <a href="portfolio-detail.html" class="btn btn-template-outlined-white">View</a>
-                                                                    <a href="#" class="btn btn-template-outlined-white">Mua ngay</a>
+                                                                    <h6 class="btn btn-template-outlined-white">
+                                                                        Xem chi tiết
+                                                                    </h6>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -295,7 +288,7 @@
                     </div>
                 </div>
                 <div class="see-more text-center">
-                    <p></p><a href="portfolio-4.html" class="btn btn-template-outlined">Xem thêm</a>
+                    <a href="@Url.Action("Index","Product")" class="btn btn-template-outlined">Xem thêm</a>
                 </div>
             </div>
         </div>
