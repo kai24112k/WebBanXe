@@ -19,18 +19,22 @@
 <p style="text-align:right;margin:20px;">
     <a href="@Url.Action("Create","PRODUCTs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table id="myTable">
+<table class="table" id="myTable">
     <thead>
         <tr>
-            <th width="80">
+            <th width="100">
+                Hình ảnh
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NameProduct)
             </th>
-            <th width="80">
+            <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
+        
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
@@ -40,7 +44,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TYPECAR.NameType)
             </th>
-            <th width="100">Chức năng</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -48,13 +52,23 @@
         {
             <tr>
                 <td>
+                    @foreach (var picture in item.IMG_PRODUCT)
+                    {
+                        if (item.IdProduct == picture.IdProduct)
+                        {
+                            <img src="@picture.LinkImg" alt="Example blog post alt" class="img-fluid admin_img" >
+                        }
+
+                    }
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.NameProduct)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Truncate(item.Description, 100)
+                     @Truncate(item.Description, 100)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)

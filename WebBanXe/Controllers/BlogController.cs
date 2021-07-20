@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,35 @@ namespace WebBanXe.Controllers
     {
         // GET: Blog
         DBBanXeEntities db = new DBBanXeEntities();
-       
+     
         private List<BLOG> GetBlog (int count)
         {
             return db.BLOGs.OrderByDescending(a => a.DateCreate).Take(count).ToList();
         }
-        public ActionResult BlogHome(int ? page)
+        [Route("tap-chi-xe")]
+        public ActionResult BlogHome(int? IdCate/*, int? page*/)
         {
-            int pageSize = 5;
-            int pageNum = (page ?? 1);
-            var NewBlog = GetBlog(5);
+            //int pageSize = 3;
+            //int pageNum = (page ?? 1);
+            //var NewBlog = GetBlog(5);
+            //return View(NewBlog.ToPagedList(pageNum, pageSize));
 
-            //List<BLOG> listBlog = new List<BLOG>();
-            //listBlog = db.BLOGs.ToList();
-            return View(NewBlog.ToPagedList(pageNum, pageSize));
+            List<BLOG> listBlog = new List<BLOG>();
+            listBlog = db.BLOGs.ToList();
+
+      
+            if (IdCate != null)
+            {
+                listBlog = db.BLOGs.Where(p => p.IdCate == IdCate).ToList();
+            }
+            else
+            {
+                listBlog = db.BLOGs.ToList();
+            }
+            return View(listBlog);
         }
+       
+
         // GET: Product
         public ActionResult CategoryBlog()
         {
@@ -35,7 +50,7 @@ namespace WebBanXe.Controllers
             category_Blog = db.CATEGORY_BLOG.ToList();
             return View(category_Blog);
         }
-    
+        [Route("tap-chi-xe/{id}")]
         public ActionResult Detail(int id)
         {
             BLOG blog = new BLOG();

@@ -1,9 +1,8 @@
 ﻿@using WebBanXe.Model
 @using PagedList.Mvc;
-@model PagedList.PagedList<BLOG>  
-
+@model List<WebBanXe.Model.BLOG>
+@*@model PagedList.PagedList<BLOG>*@
 @{
-    ViewBag.Title = "BlogHome";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -79,40 +78,47 @@
                         {
 
 
-                        <div class="col-md-4">
-                            <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)">
-                                @foreach (var item in blog.IMG_BLOG)
-                                {
-
-                                    if (blog.IdBlog == item.IdBlog)
+                            <div class="col-md-4">
+                                <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)">
+                                    @foreach (var item in blog.IMG_BLOG)
                                     {
-                                        <img src="@item.LinkImg" alt="Example blog post alt" class="img-fluid">
+
+                                        if (blog.IdBlog == item.IdBlog)
+                                        {
+                                            <img src="@item.LinkImg" alt="Example blog post alt" class="img-fluid">
+                                        }
+
+
                                     }
-
-
-                                }
-                            </a>
+                                </a>
                             </div>
                             <div class="col-md-8">
-                              <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)"><h2 class="h3 mt-0"> @blog.Title</h2></a>  
+                                <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)"><h2 class="h3 mt-0"> @blog.Title</h2></a>
                                 <div class="d-flex flex-wrap justify-content-between text-xs">
-                                    <p class="author-category">@*@blog.USER.FullName*@<span>in</span> XEMAYDHCV
+                                    <p class="author-category">
+                                        @*@blog.USER.FullName*@<span>in</span> XEMAYDHCV
                                     </p>
-                                    <p class="date-comments"><a href="#"><i class="fa fa-calendar-o"></i>@blog.DateCreate</a><a href="blog-post.html"><i class="fa fa-comment-o"></i> 8 Comments</a></p>
+                                    <p class="date-comments"><a href="#"><i class="fa fa-calendar-o"></i>@blog.DateCreate</a></p>
                                 </div>
                                 <p class="card-title text-dark" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></p>
                                 <p class="read-more text-right"><a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)" class="btn btn-template-outlined">đọc thêm</a></p>
                             </div>
                         }
                         <ul class="pager d-flex align-items-center justify-content-between list-unstyled" style="position: absolute; width: 100%; padding-right: 15px; bottom: -80px; ">
+                            @*<li class="MenuPage">
+                                @Html.PagedListPager(Model, Page => Url.Action("BlogHome", new { Page = Page }))
+                            </li>*@
+
+
                             <li class="previous"><a href="#" class="btn btn-template-outlined">← Older</a></li>
-                            <li class="next disabled"><a href="#" class="btn btn-template-outlined">Newer →</a></li>
+                            <li class="next disabled"><a href="" class="btn btn-template-outlined">Newer →</a></li>
                         </ul>
                     </div>
+                    @* @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;*@
 
-                  
                 </section>
-             
+
+
             </div>
             <div class="col-md-3">
                 <div class="panel panel-default sidebar-menu">
@@ -124,56 +130,56 @@
                     </div>
                 </div>
                 @*<div class="panel panel-default sidebar-menu">
-                    <div class="">
-                        <div class="heading">
-                            <h2><a href="@Url.Action("Index", "Product")">SẢN PHẨM</a></h2>
+                        <div class="">
+                            <div class="heading">
+                                <h2><a href="@Url.Action("Index", "Product")">SẢN PHẨM</a></h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-3" style="width: 100%;">
-                        @Html.Action("Brand", "Product")
-                    </div>
-                    <div class="card mb-3 mt-3" style="width: 100%;">
-                        @Html.Action("TypeCar", "Product")
+                        <div class="card mb-3" style="width: 100%;">
+                            @Html.Action("Brand", "Product")
+                        </div>
+                        <div class="card mb-3 mt-3" style="width: 100%;">
+                            @Html.Action("TypeCar", "Product")
 
-                    </div>
-                  
+                        </div>
 
-                </div>*@
+
+                    </div>*@
                 @*<div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
                         <h3 class="h4 panel-title">Search</h3>
                     </div>*@
-                    @*<div class="panel-body">
-                        <form role="search">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control"><span class="input-group-btn">
-                                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </form>
+                @*<div class="panel-body">
+                            <form role="search">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Search" class="form-control"><span class="input-group-btn">
+                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
-                <div class="panel sidebar-menu">
-                    <div class="panel-heading">
-                        <h3 class="h4 panel-title">Tags</h3>
+                    <div class="panel sidebar-menu">
+                        <div class="panel-heading">
+                            <h3 class="h4 panel-title">Tags</h3>
+                        </div>*@
+                @*<div class="panel-body">
+                        <ul class="tag-cloud list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> html5</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> css3</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> jquery</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> ajax</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> php</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> responsive</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> visio</a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> bootstrap</a></li>
+                        </ul>
                     </div>*@
-                    @*<div class="panel-body">
-                <ul class="tag-cloud list-inline">
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> html5</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> css3</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> jquery</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> ajax</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> php</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> responsive</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> visio</a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> bootstrap</a></li>
-                </ul>
-            </div>*@
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 
 

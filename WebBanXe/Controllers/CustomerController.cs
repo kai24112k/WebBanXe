@@ -229,7 +229,6 @@ namespace WebBanXe.Controllers
             }
             return View();
         }
-
-       
+      
     }
 }

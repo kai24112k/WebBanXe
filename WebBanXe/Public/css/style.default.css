@@ -387,7 +387,8 @@ p.lead {
     }
 
     .icon-outlined:hover {
-        background: #fff;
+        background: #AE0201;
+        background-color: #fff;
         color: #5C1D17 !important
     }
 

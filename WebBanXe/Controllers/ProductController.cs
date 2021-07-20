@@ -22,6 +22,7 @@ namespace WebBanXe.Controllers
             //int pageNum = (page ?? 1);
             //var xemoi = 
             List<PRODUCT> listproduct = new List<PRODUCT>();
+            ViewBag.BRAND = db.BRANDs.ToList();
             if (idBrand != null || idType != null || idStatus != null)
             {
                 listproduct = db.PRODUCTs.Where(p => p.IdBrand == idBrand || p.IdType == idType || p.Status == idStatus).ToList();

@@ -23,7 +23,19 @@
     background-color: lightskyblue;
     color: ghostwhite;
 }
+  /*  #myTable > thead > tr > th {
+        width: 20%;
+        max-width: 70px;
+        height: auto;
+    }*/
  #myTable, th, td {
     border: 1px solid #000000 ;
 }
-    
+    #myTable > tbody > tr > td > img {
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+    }
+#myTable > tbody{
+    text-align: left;
+}

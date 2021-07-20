@@ -50,8 +50,10 @@ namespace WebBanXe.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdUser,IdRole,FullName,Email,Username,Password,Address,Phone,DayCreate")] USER uSER)
         {
+            uSER.DayCreate = DateTime.Now;
             if (ModelState.IsValid)
             {
+               
                 db.USERs.Add(uSER);
                 db.SaveChanges();
                 return RedirectToAction("Index");

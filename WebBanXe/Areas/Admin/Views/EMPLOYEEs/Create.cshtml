@@ -83,18 +83,9 @@
             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DayCreate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="date" name="DateCreate" class="form-control" />
-            @Html.ValidationMessageFor(model => model.DayCreate)
-        </div>
-    </div>
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Thêm" class="btn btn-default form-control" />
+            <input type="submit" value="Thêm" class="btn btn-success form-control" />
         </div>
     </div>
 </div>

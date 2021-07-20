@@ -22,33 +22,47 @@
     </div>
     <div class="row border border-2 border-dark rounded-3 py-3">
         <div class="col-md-12">
-            <div class="mb-3">
-                <label class="form-label">Tên sản phẩm</label>
-                <input type="text" name="address" class="form-control" required value="@Model.NameProduct" readonly>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Giá bán</label>
-                <input type="text" name="title" class="form-control" value="@Model.Price" readonly>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Tình trạng</label>
-                <input name="message" class="form-control" rows="7" value="@Model.Status" readonly>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Tên hãng</label>
-                <input name="message" class="form-control" rows="7" value="@Model.BRAND.NameBrand" readonly>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Loại xe</label>
-                <input name="message" class="form-control" rows="7" value="@Model.TYPECAR.NameType" readonly>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Nội dung:</label>
-                <input name="message" class="form-control" rows="7" value="  @Model.Description" readonly>
-            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="mb-3">
+                        <label class="form-label">Tên sản phẩm</label>
+                        <input type="text" name="address" class="form-control" required value="@Model.NameProduct" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Giá bán</label>
+                        <input type="text" name="title" class="form-control" value="@Model.Price" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tình trạng</label>
+                        <input name="message" class="form-control" rows="7" value="@Model.Status" readonly>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Hình ảnh</label>
+                    @foreach (var picture in Model.IMG_PRODUCT)
+                    {
+                        if (picture.IdProduct == picture.IdProduct)
+                        {
+                            <img src="@picture.LinkImg" alt="Example blog post alt"  class="row border border-2 border-dark rounded-3 my-1 py-4 img-fluid shadow"  >
+                        }
+                    }
+                </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên hãng</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.BRAND.NameBrand" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Loại xe</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.TYPECAR.NameType" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nội dung:</label>
+                    <textarea rows="4" cols="50" class="form-control" readonly> @Model.Description</textarea>
+                    
 
+            </div>
         </div>
-    </div>
     </div>
 
 

@@ -22,13 +22,16 @@
 <p style="text-align:right;margin:20px;">
     <a href="@Url.Action("Create","BLOGs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table id="myTable">
+<table class="table" id="myTable">
     <thead>
         <tr>
-            <th>
+            <th width="100">
+                Hình ảnh
+            </th>
+            <th width="200">
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th width="300">
+            <th width="200">
                 @Html.DisplayNameFor(model => model.Content)
             </th>
             <th>
@@ -37,45 +40,55 @@
             <th>
                 @Html.DisplayNameFor(model => model.CATEGORY_BLOG.NameCate)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.USER.FullName)
-            </th>
+            </th>*@
             <th>Chỉnh sửa</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    <textarea rows="4" cols="40" style="resize: none;">@Truncate(item.Content, 100)</textarea>
-                   
-                  
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateCreate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CATEGORY_BLOG.NameCate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.USER.FullName)
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","BLOGs",new { @id = item.IdBlog })">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","BLOGs",new { @id = item.IdBlog })">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","BLOGs",new { @id = item.IdBlog })">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @foreach (var picture in item.IMG_BLOG)
+                {
+                    if (item.IdBlog == picture.IdBlog)
+                    {
+                        <img src="@picture.LinkImg" alt="Example blog post alt" class="img-fluid admin_img">
+                    }
+
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                <textarea rows="4" cols="40" style="resize: none;" required>@Truncate(item.Content, 100)</textarea>
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CATEGORY_BLOG.NameCate)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.USER.FullName)
+            </td>*@
+            <td>
+                <a class="btn btn-sm btn-success" href="@Url.Action("Edit","BLOGs",new { @id = item.IdBlog })">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","BLOGs",new { @id = item.IdBlog })">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+                <a class="btn btn-sm btn-info" href="@Url.Action("Details","BLOGs",new { @id = item.IdBlog })">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

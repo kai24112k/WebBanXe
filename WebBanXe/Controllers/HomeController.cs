@@ -9,6 +9,7 @@ namespace WebBanXe.Controllers
 {
     public class HomeController : Controller
     {
+    
         // GET: Home
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Product

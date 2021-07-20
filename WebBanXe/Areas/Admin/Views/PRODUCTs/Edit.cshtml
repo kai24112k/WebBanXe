@@ -49,18 +49,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <lable class="control-label col-md-2">Hình ảnh</lable>
-                            <div class="col-md-12">
-                                <input type="file" name="fileUpload" id="fileUpload">
-                                <div class="image-preview" id="imagePreview">
-                                    <img src="" alt="Image Preview" class="image-preview-img " />
-                                    <span class="image-preview-text">Image Preview</span>
+                    @foreach (var picture in Model.IMG_PRODUCT)
+                    {
+                        if (picture.IdProduct == picture.IdProduct)
+                        {
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <lable class="control-label col-md-2">Hình ảnh</lable>
+                                    <div class="col-md-12">
+                                        <input type="file" name="fileUpload" id="fileUpload">
+                                        <div class="image-preview" id="imagePreview">
+                                            <img src="@Url.Content(picture.LinkImg)" alt="Image Preview" class="image-preview-img " />
+                                            <span class="image-preview-text">Image Preview</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -115,7 +121,7 @@
 
     fileUpload.addEventListener("change", function () {
         var file = this.files[0];
-    <script>
+   
     var fileUpload = document.getElementById("fileUpload");
     var previewContainer = document.getElementById("imagePreview");
     var previewImage = previewContainer.querySelector(".image-preview-img");

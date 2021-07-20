@@ -8,7 +8,9 @@ namespace WebBanXe.Controllers
 {
     public class IntroduceController : Controller
     {
+
         // GET: Introduce
+        [Route("gioi-thieu")]
         public ActionResult Index()
         {
             return View();

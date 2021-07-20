@@ -912,6 +912,14 @@
     <Content Include="Public\img\bao-duong.png" />
     <Content Include="Public\img\bao-hanh.svg" />
     <Content Include="Public\img\bgxe.jpg" />
+    <Content Include="Public\img\brands\air-blade-superman-anh-bia.jpg" />
+    <Content Include="Public\img\brands\honda-anh-bia.svg" />
+    <Content Include="Public\img\brands\kymco-anh-bia.svg" />
+    <Content Include="Public\img\brands\piaggio-anh-bia.svg" />
+    <Content Include="Public\img\brands\suzuki-anh-bia.svg" />
+    <Content Include="Public\img\brands\thanh-vu-anh-bia.png" />
+    <Content Include="Public\img\brands\vespa-anh-bia.svg" />
+    <Content Include="Public\img\brands\yamaha-anh-bia.svg" />
     <Content Include="Public\img\cd-top-arrow.svg" />
     <Content Include="Public\img\cub-125_2.png" />
     <Content Include="Public\img\customer1.png" />
@@ -951,6 +959,7 @@
     <Content Include="Public\img\texture-bw.png" />
     <Content Include="Public\img\texture-turquoise.png" />
     <Content Include="Public\img\texture-violet.png" />
+    <Content Include="Public\img\typecars\xe-buyt-anh-bia.jpg" />
     <Content Include="Public\img\TạpchixeDUCATI.jpg" />
     <Content Include="Public\img\tạpchixeHusqvarna.jpg" />
     <Content Include="Public\img\tạpchixeyamaha.jpg" />
@@ -1416,7 +1425,6 @@
     <Folder Include="Content\vendor\font-awesome\scss\" />
     <Folder Include="Public\img\blogs\" />
     <Folder Include="Public\img\products\" />
-    <Folder Include="Public\img\typecars\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
