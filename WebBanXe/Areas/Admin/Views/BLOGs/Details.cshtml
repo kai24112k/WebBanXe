@@ -43,10 +43,9 @@
                     <label class="form-label">Hình ảnh</label>
                     @foreach (var picture in Model.IMG_BLOG)
                     {
-                        if (picture.IdBlog == picture.IdBlog)
-                        {
+                        
                             <img src="@picture.LinkImg" alt="Example blog post alt" class="row border border-2 border-dark rounded-3 my-1 py-4 img-fluid shadow">
-                        }
+                        
                     }
                 </div>
                 <div class="col-md-12">

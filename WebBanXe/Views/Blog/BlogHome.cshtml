@@ -3,6 +3,7 @@
 @model List<WebBanXe.Model.BLOG>
 @*@model PagedList.PagedList<BLOG>*@
 @{
+    ViewBag.Title = "Tạp chí xe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -78,21 +79,21 @@
                         {
 
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 my-2">
                                 <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)">
                                     @foreach (var item in blog.IMG_BLOG)
                                     {
 
                                         if (blog.IdBlog == item.IdBlog)
                                         {
-                                            <img src="@item.LinkImg" alt="Example blog post alt" class="img-fluid">
+                                            <img src="@item.LinkImg" alt="Example blog post alt" class="img-fluid shadow">
                                         }
 
 
                                     }
                                 </a>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 my-2">
                                 <a href="@Url.Action("Detail", "Blog", new { id = blog.IdBlog }, null)"><h2 class="h3 mt-0"> @blog.Title</h2></a>
                                 <div class="d-flex flex-wrap justify-content-between text-xs">
                                     <p class="author-category">
@@ -164,18 +165,7 @@
                         <div class="panel-heading">
                             <h3 class="h4 panel-title">Tags</h3>
                         </div>*@
-                @*<div class="panel-body">
-                        <ul class="tag-cloud list-inline">
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> html5</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> css3</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> jquery</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> ajax</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> php</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> responsive</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> visio</a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-tags"></i> bootstrap</a></li>
-                        </ul>
-                    </div>*@
+                @*>*@
             </div>
         </div>
     </div>

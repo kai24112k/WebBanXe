@@ -122,10 +122,10 @@ namespace WebBanXe.Areas.Admin.Controllers
             {
                 if (fileUpload != null)
                 {
-                    var extension = Path.GetExtension(fileUpload.FileName);
+                   
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia" + extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia.png");
                     var path = Path.Combine(Server.MapPath("~/Public/img/products/"), fileName);
                     try
                     {
@@ -140,6 +140,8 @@ namespace WebBanXe.Areas.Admin.Controllers
                     img.AltImg = fileName;
                     img.LinkImg = "/Public/img/products/" + fileName;
                     img.IdProduct = pRODUCT.IdProduct;
+                    var imgold = db.IMG_PRODUCT.Where(x => x.LinkImg == img.LinkImg).SingleOrDefault();
+                    db.IMG_PRODUCT.Remove(imgold);
                     db.IMG_PRODUCT.Add(img);
                 }
                 db.Entry(pRODUCT).State = EntityState.Modified;

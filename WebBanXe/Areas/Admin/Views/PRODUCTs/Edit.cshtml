@@ -7,7 +7,7 @@
 
 <script src="~/Areas/Admin/Helpers/ckeditor/ckeditor.js"></script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PRODUCTs", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -51,22 +51,21 @@
                     </div>
                     @foreach (var picture in Model.IMG_PRODUCT)
                     {
-                        if (picture.IdProduct == picture.IdProduct)
-                        {
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <lable class="control-label col-md-2">Hình ảnh</lable>
-                                    <div class="col-md-12">
-                                        <input type="file" name="fileUpload" id="fileUpload">
-                                        <div class="image-preview" id="imagePreview">
-                                            <img src="@Url.Content(picture.LinkImg)" alt="Image Preview" class="image-preview-img " />
-                                            <span class="image-preview-text">Image Preview</span>
-                                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <lable class="control-label col-md-2">Hình ảnh</lable>
+                                <div class="col-md-12">
+                                    <input type="file" name="fileUpload" id="fileUpload">
+                                    <div class="image-preview" id="imagePreview">
+                                        <img src="@picture.LinkImg" alt="Image Preview" class="image-preview-img " style="display:block;" />
+
                                     </div>
                                 </div>
                             </div>
-                        }
+                        </div>
                     }
+
                 </div>
             </div>
         </div>
@@ -113,25 +112,18 @@
 
 
 
+
 <script>
     var fileUpload = document.getElementById("fileUpload");
     var previewContainer = document.getElementById("imagePreview");
     var previewImage = previewContainer.querySelector(".image-preview-img");
-    var previewText = previewContainer.querySelector(".image-preview-text");
+
 
     fileUpload.addEventListener("change", function () {
         var file = this.files[0];
-   
-    var fileUpload = document.getElementById("fileUpload");
-    var previewContainer = document.getElementById("imagePreview");
-    var previewImage = previewContainer.querySelector(".image-preview-img");
-    var previewText = previewContainer.querySelector(".image-preview-text");
-
-    fileUpload.addEventListener("change", function () {
-        var file = this.files[0] ;
         if (file) {
             var reader = new FileReader();
-            previewText.style.display = "none";
+
             previewImage.style.display = "block";
             reader.readAsDataURL(file);
             reader.addEventListener("load", function () {
@@ -139,7 +131,7 @@
             });
         }
         else {
-            previewText.style.display = null;
+
             previewImage.style.display = null;
             previewImage.setAttribute("src", this.result);
         }

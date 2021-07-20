@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <textarea rows="4" cols="40" style="resize: none;" required>@Truncate(item.Content, 100)</textarea>
+               @Truncate(item.Content, 80)
 
 
             </td>
