@@ -1,6 +1,9 @@
-﻿﻿﻿
+﻿
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
@@ -40,7 +43,7 @@
                             Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
                                              class="form-control" style="width: 250px; ">
                         </h4>
-                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })" 
+                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })"
                            class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
                             THÊM VÀO GIỎ HÀNG
                         </a>
@@ -109,3 +112,4 @@
         </div>
     </div>
 </div>
+
