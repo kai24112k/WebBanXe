@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2"> Chi tiết sản phẩm</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"> Chi tiết sản phẩm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <section class="bar">
+            <div class="row portfolio-product">
+                <div class="col-sm-6 card">
+                    <div class=" owl-carouse mb-4">
+                        <div class="item ">
+                            @foreach (var item in Model.IMG_PRODUCT)
+                            {
+                                <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 card">
+                    <div class="product-more">
+
+                        <h1 class="my-4 text-center card-footer"> @Model.NameProduct</h1>
+                        <h2 class="my-4">Giá tiền: @string.Format("{0:#,##0}", @Model.Price) đ</h2>
+                        <h7 class="my-4">Tình trạng: <b>Còn hàng</b></h7>
+                        <h4 class="my-4">
+                            Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
+                                             class="form-control" style="width: 250px; ">
+                        </h4>
+                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })"
+                           class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
+                            THÊM VÀO GIỎ HÀNG
+                        </a>
+                        <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
+                        <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
+                        <h4 style="color: brown;">CHIA SẺ NGAY</h4>
+                        <div class="fb-share-button" data-href="@ViewBag.Url" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.Url" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-2 card">
+
+                    <div class="card">
+                        <h3 class="my-4 text-center card-footer"> Thông tin nổi bật</h3>
+                        <ul>
+                            <li>Dành cho lứa tuổi từ 15 trở lên</li>
+                            <li>Không còn nỗi lo lên về số, chỉ cần kéo ga nhẹ nhàng lướt nhanh</li>
+                            <li>Cốp rộng chứa đồ và sàn để chân thoải mái</li>
+                            <li>Bảo hành 2 năm động cơ và 3 năm khung sườn</li>
+                            <li>Đổi mới trong 3 ngày đầu tiên</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="fb-comments" data-href="@ViewBag.Url" data-width="1100" data-numposts="5"></div>
+        </section>
+        <div class="col-sm-12">
+            <div class="heading">
+                <h3>Mô tả sản phẩm</h3>
+            </div>
+            @Html.Raw(Model.Description)
+            <section>
+                <div class="row portfolio">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h3>Sản phẩm liên quan</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="box-image">
+                            <div class="image">
+                                @foreach (var item in Model.IMG_PRODUCT)
+                                {
+                                    <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                }
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name no-mb">
+                                            <h3><a href="@Url.Action("Detail","Product", new { id = 2 },null)" class="color-white"></a></h3>
+                                        </div>
+                                        <div class="text">
+
+                                            <p class="buttons">
+                                                <a href="@Url.Action("Detail","Product", new { id = 2 },null)"
+                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

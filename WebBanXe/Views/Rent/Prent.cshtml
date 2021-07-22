@@ -1,0 +1,133 @@
+﻿@model List<WebBanXe.Model.PRODUCT>
+
+@using WebBanXe.Model
+
+@{
+    ViewBag.Title = "Prent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">THUÊ XE</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">TRANG CHỦ</a></li>
+                    <li class="breadcrumb-item active">THUÊ XE</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <section class="bar">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h2><a href="@Url.Action("Prent", "Rent")">SẢN PHẨM</a></h2>
+                    </div>
+                </div>
+                <div class="col-md-3 py-3">
+                    <div class="card mb-3" style="width: 100%;">
+                        @Html.Action("Brand", "Rent")
+                    </div>
+                    <div class="card mb-3 mt-3" style="width: 100%;">
+                        @Html.Action("TypeCar", "Rent")
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row portfolio text-center">
+                        @foreach (var product in Model)
+                        {
+                            <div class="col-md-4">
+                                <div class="box-image card">
+                                    <div class="image">
+                                        <a href="@Url.Action("Detail","Rent", new { url = product.ToURL() }, null)">
+                                            @foreach (var item in product.IMG_PRODUCT)
+                                            {
+                                                if (item.IdProduct == product.IdProduct)
+                                                {
+                                                    <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                }
+                                            }
+                                            <div style="text-align:center;">@product.NameProduct</div>
+                                            <div style="text-align:center;">Giá : @string.Format("{0:#,##0}", @product.Price) đ</div>
+                                            <div class="overlay d-flex align-items-center justify-content-center">
+                                                <div class="content">
+                                                    <div class="text">
+                                                        <p class="buttons">
+                                                            <h6 class="btn btn-template-outlined-white">
+                                                                Xem chi tiết
+                                                            </h6>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<section class="bar background-pentagon no-mb">
+    <div class="container">
+        <div class="row showcase text-center">
+            <div class="col-md-3 col-sm-6">
+                <div class="item">
+                    <div class="icon-outlined icon-sm icon-thin"><i class="fa fa-align-justify"></i></div>
+                    <h4><span class="h1 counter">3</span><br> Kinh nghiệm</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="item">
+                    <div class="icon-outlined icon-sm icon-thin"><i class="fa fa-align-justify"></i></div>
+                    <h4><span class="h1 counter">90</span><Span class="h1">%</Span><br>Khách hàng hài lòng</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="item">
+                    <div class="icon-outlined icon-sm icon-thin"><i class="fa fa-users"></i></div>
+                    <h4><span class="h1 counter">7567</span><br>Khách hàng</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="item">
+                    <div class="icon-outlined icon-sm icon-thin"><i class="fa fa-copy"></i></div>
+                    <h4><span class="h1 counter">10232</span><br>Đơn hàng</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
+<section class="bar bg-gray no-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading text-center">
+                    <h3>Các hãng xe</h3>
+                </div>
+                <ul class="list-unstyled owl-carousel brand no-mb">
+                    @foreach (var item in (List<BRAND>)ViewBag.BRAND)
+                    {
+                        <li class="item"><img src="@item.ImgBrand" alt="" class="img-fluid"></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
