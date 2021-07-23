@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using WebBanXe.Helpers.Name;
 using WebBanXe.Model;
 
@@ -112,10 +113,32 @@ namespace WebBanXe.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdType,NameType,ImgType")] TYPECAR tYPECAR)
+        [ValidateInput(false)]
+        public ActionResult Edit(TYPECAR tYPECAR, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
+                if (fileUpload != null)
+                {
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(tYPECAR.NameType.ToLower()) + "-anh-bia.png");
+                    var path = Path.Combine(Server.MapPath("~/Public/img/typecars/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+
+                    tYPECAR.ImgType = "/Public/img/typecars/" + fileName;
+                    UpdateModel(tYPECAR);
+
+                    db.SaveChanges();
+                }
                 db.Entry(tYPECAR).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -65,10 +65,10 @@ namespace WebBanXe.Areas.Admin.Controllers
                 db.BLOGs.Add(bLOG);
                 if (fileUpload != null)
                 {
-                    var extension = Path.GetExtension(fileUpload.FileName);
+                    
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia" + extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia.png");
                     var path = Path.Combine(Server.MapPath("~/Public/img/blogs/"), fileName);
                     try
                     {
@@ -117,12 +117,43 @@ namespace WebBanXe.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]  
         [ValidateInput(false)]
-        public ActionResult Edit (BLOG bLOG)
+        public ActionResult Edit (BLOG bLOG, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
-                bLOG.IdUser = int.Parse(Session["userID"].ToString());
+
                 bLOG.DateCreate = DateTime.Now;
+                bLOG.IdUser = int.Parse(Session["userID"].ToString());
+
+                if (fileUpload != null)
+                {             
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia.png");
+                    var path = Path.Combine(Server.MapPath("~/Public/img/blogs/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    var img = new IMG_BLOG();
+                    img.AltImg = fileName;
+                    img.LinkImg = "/Public/img/blogs/" + fileName;
+                    img.IdBlog = bLOG.IdBlog;
+                    var imgageold = db.IMG_BLOG.Where(x => x.LinkImg == img.LinkImg).SingleOrDefault();
+                    if(imgageold != null)
+                    {
+                        db.IMG_BLOG.Remove(imgageold);
+                    }
+                
+                    db.IMG_BLOG.Add(img);
+                   
+                 
+                }
                 db.Entry(bLOG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

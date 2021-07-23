@@ -5,71 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>ORDER</h4>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalMoney)
-        </dt>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">CHI TIẾT ĐƠN HÀNG</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
 
-        <dd>
-            @Html.DisplayFor(model => model.TotalMoney)
-        </dd>
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReduceMoney)
-        </dt>
+    <hr />
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+           
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <label class="form-label">Họ tên</label>
+                        <input name="message" class="form-control" rows="7" value="@Model.USER.FullName" readonly>
+                    </div>
+                    <label class="form-label">Tổng tiền</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.TotalMoney" readonly>
+                </div>
+              
+                <div class="mb-3">
+                    <label class="form-label">Tiền giảm</label>
+                    <input type="text" name="title" class="form-control" value="@Model.ReduceMoney" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày mua</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.DayCreate" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Thành tiền</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.FinalMoney" readonly>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReduceMoney)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FinalMoney)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FinalMoney)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DayCreate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DayCreate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DISCOUNT.CodeDiscount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DISCOUNT.CodeDiscount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USER.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USER.FullName)
-        </dd>
-
-    </dl>
+            
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOrder }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

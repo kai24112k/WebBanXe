@@ -98,16 +98,17 @@ namespace WebBanXe.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(BRAND bRAND, HttpPostedFileBase fileUpload)
         {   
             if (ModelState.IsValid)
             {
                 if (fileUpload != null)
                 {
-                    var extension = Path.GetExtension(fileUpload.FileName);
+               
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bRAND.NameBrand.ToLower()) + "-anh-bia" + extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bRAND.NameBrand.ToLower()) + "-anh-bia.png");
                     var path = Path.Combine(Server.MapPath("~/Public/img/brands/"), fileName);
                     try
                     {
@@ -118,9 +119,11 @@ namespace WebBanXe.Areas.Admin.Controllers
 
                     }
                     fileUpload.SaveAs(path);
+                   
                     bRAND.ImgBrand = "/Public/img/brands/" + fileName;
-
-                    db.BRANDs.Add(bRAND);
+                    UpdateModel(bRAND);
+                  
+                    db.SaveChanges();
                 }
                 db.Entry(bRAND).State = EntityState.Modified;
                 db.SaveChanges();

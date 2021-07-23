@@ -19,7 +19,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/PRODUCTs
         public ActionResult Index()
         {
-           
+            ViewBag.BRAND = db.BRANDs.ToList();
             var pRODUCTs = db.PRODUCTs.Include(p => p.BRAND).Include(p => p.TYPECAR);
             return View(pRODUCTs.ToList());
         }
@@ -121,8 +121,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 if (fileUpload != null)
-                {
-                   
+                {                 
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
                     var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia.png");
@@ -152,7 +151,6 @@ namespace WebBanXe.Areas.Admin.Controllers
             ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
             return View(pRODUCT);
         }
-
         // POST: Admin/PRODUCTs/Delete/5
         public ActionResult Delete(int id)
         {

@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-12">
                     <label class="form-label">Nội dung bài viết</label>
-                    <textarea rows="10" class="form-control" readonly> @Model.Content</textarea>
+                    <textarea rows="10" class="form-control" readonly>@Html.Raw(Model.Content)</textarea>
                 </div>
             </div>
         </div>

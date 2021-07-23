@@ -15,25 +15,25 @@ namespace WebBanXe.Controllers
         // GET: Blog
         DBBanXeEntities db = new DBBanXeEntities();
      
-        private List<BLOG> GetBlog (int count)
-        {
-            return db.BLOGs.OrderByDescending(a => a.DateCreate).Take(count).ToList();
-        }
+        //private List<BLOG> GetBlog (int count)
+        //{
+        //    return db.BLOGs.OrderByDescending(a => a.IdBlog).Take(count).ToList();
+        //}
         [Route("tap-chi-xe")]
-        public ActionResult BlogHome(int? IdCate/*, int? page*/)
+        public ActionResult BlogHome(int? IdCate/*, int? page*/, int? IdUser)
         {
             //int pageSize = 3;
             //int pageNum = (page ?? 1);
-            //var NewBlog = GetBlog(5);
+            //var NewBlog = GetBlog(4);
             //return View(NewBlog.ToPagedList(pageNum, pageSize));
 
             List<BLOG> listBlog = new List<BLOG>();
             listBlog = db.BLOGs.ToList();
-
-      
-            if (IdCate != null)
+            ViewBag.FULLNAME = db.USERs.ToList();
+            if (IdCate != null || IdUser != null )
             {
-                listBlog = db.BLOGs.Where(p => p.IdCate == IdCate).ToList();
+                listBlog = db.BLOGs.Where(p => p.IdCate == IdCate || p.IdUser == IdUser).ToList();
+              
             }
             else
             {
@@ -57,6 +57,12 @@ namespace WebBanXe.Controllers
             blog = db.BLOGs.Where(p => p.IdBlog == id).SingleOrDefault();
             
             return View(blog);
+        }
+        public ActionResult Author()
+        {
+            List<USER> author_Blog = new List<USER>();
+            author_Blog = db.USERs.ToList();
+            return View(author_Blog);
         }
     }
 }

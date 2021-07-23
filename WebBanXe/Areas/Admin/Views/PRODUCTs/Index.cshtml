@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<WebBanXe.Model.PRODUCT>
-
+@using System.Globalization
 @helper Truncate(string input, int length)
 {
     if (input.Length < length)
@@ -34,7 +34,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-        
+
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
@@ -56,7 +56,7 @@
                     {
                         if (item.IdProduct == picture.IdProduct)
                         {
-                            <img src="@picture.LinkImg" alt="Example blog post alt" class="img-fluid admin_img" >
+                            <img src="@picture.LinkImg" alt="Example blog post alt" class="img-fluid admin_img">
                         }
 
                     }
@@ -65,10 +65,11 @@
                     @Html.DisplayFor(modelItem => item.NameProduct)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @*@string.Format(new CultureInfo("vi-VN"), "{0:c}", item.Price)*@
+                    @string.Format("{0:#,##0}", item.Price) đ
                 </td>
                 <td>
-                     @Truncate(item.Description, 80)
+                    @Truncate(item.Description, 80)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)

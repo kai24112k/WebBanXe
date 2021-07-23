@@ -947,6 +947,10 @@
     <Content Include="Public\img\payment.png" />
     <Content Include="Public\img\photogrid.jpg" />
     <Content Include="Public\img\piaggio-vespa.svg" />
+    <Content Include="Public\img\products\air-blade-2018-anh-bia.jpg" />
+    <Content Include="Public\img\products\galaxy-anh-bia.png" />
+    <Content Include="Public\img\products\xe-con-anh-bia.jpg" />
+    <Content Include="Public\img\products\xe-con-anh-bia.png" />
     <Content Include="Public\img\raobanxe.png" />
     <Content Include="Public\img\rebel-300_1.png" />
     <Content Include="Public\img\right-arrow.png" />
@@ -1410,6 +1414,7 @@
     <Content Include="Views\Blog\Detail.cshtml" />
     <Content Include="Views\Introduce\Index.cshtml" />
     <Content Include="Views\Rent\Index.cshtml" />
+    <Content Include="Views\Blog\Author.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1424,7 +1429,6 @@
     <Folder Include="Content\vendor\font-awesome\less\" />
     <Folder Include="Content\vendor\font-awesome\scss\" />
     <Folder Include="Public\img\blogs\" />
-    <Folder Include="Public\img\products\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

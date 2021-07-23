@@ -1,10 +1,30 @@
 ﻿@model IEnumerable<WebBanXe.Model.BRAND>
+
 <div class="card-header ">
     <h3>Hãng xe</h3>
 </div>
 <div class="list-group list-group-flush">
     @foreach (var brand in Model)
     {
-          <a href="@Url.Action("Index","Product", new { idBrand = brand.IdBrand },null)" class="list-group-item">@brand.NameBrand</a>     
+        <a href="@Url.Action("Index", "Product", new { idBrand = brand.IdBrand }, null)" class="list-group-item">@brand.NameBrand</a>
     }
-</div>
+    </div>
+        @*<div class="container">
+            <section class="bar">
+                <div class="row">
+
+
+                    <div class="col-md-5">
+                        <img src="@Url.Content(brand.ImgBrand)" alt="@Url.Content(brand.ImgBrand)" class="img-fluid  admin-img" />
+                    </div>
+
+                        <div class="col-md-7">
+                            
+                        </div>
+                    }
+                    </div>
+            </section>
+        </div>*@
+
+    
+

@@ -13,13 +13,28 @@ namespace WebBanXe.Controllers
         // GET: Home
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Product
+
+        private List<PRODUCT> GetNewProduct(int count)
+        {
+            return db.PRODUCTs.OrderByDescending(a => a.IdProduct).Take(count).ToList();
+        }
+        private List<BLOG> GetBlog(int count)
+        {
+            return db.BLOGs.OrderByDescending(a => a.IdBlog).Take(count).ToList();
+        }
         public ActionResult Index()
         {
-            List<PRODUCT> listProduct = new List<PRODUCT>();
-            listProduct = db.PRODUCTs.ToList();
+            //List<PRODUCT> listProduct = new List<PRODUCT>();
+            //listProduct = db.PRODUCTs.ToList();
+            var newproduct = GetNewProduct(3);
+           
             ViewBag.BRAND = db.BRANDs.ToList();
-            return View(listProduct);
+            ViewBag.BLOG = db.BLOGs.ToList();
+            var NewBlog = GetBlog(4);
+            return View(newproduct);
 
         }
+        
+
     }
 }
