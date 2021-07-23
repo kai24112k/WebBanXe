@@ -21,13 +21,20 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             ViewBag.BRAND = db.BRANDs.ToList();
             var pRODUCTs = db.PRODUCTs.Include(p => p.BRAND).Include(p => p.TYPECAR);
+            foreach(var item in pRODUCTs)
+            {
+                if (item.Description.Length > 100)
+                {
+                    item.Description.Substring(0, 100);
+                }
+            }
             return View(pRODUCTs.ToList());
         }
 
         // GET: Admin/PRODUCTs/Details/5
         public ActionResult Details(int? id)
         {
-           
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -55,18 +62,24 @@ namespace WebBanXe.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult Create(PRODUCT pRODUCT, HttpPostedFileBase fileUpload)
-        { 
+        {
             if (ModelState.IsValid)
             {
-               
-               
+                var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower()).SingleOrDefault();
+               if (product!=null)
+                {
+                    ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
+                    ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
+                    ViewBag.Error = "Sản phẩm đã tồn tại";
+                    return View(pRODUCT);
+                }
                 db.PRODUCTs.Add(pRODUCT);
                 if (fileUpload != null)
                 {
                     var extension = Path.GetExtension(fileUpload.FileName);
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower())+"-anh-bia"+extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia" + extension);
                     var path = Path.Combine(Server.MapPath("~/Public/img/products/"), fileName);
                     try
                     {
@@ -89,8 +102,8 @@ namespace WebBanXe.Areas.Admin.Controllers
             ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
             ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
             return View(pRODUCT);
-        
-     
+
+
         }
 
         // GET: Admin/PRODUCTs/Edit/5
@@ -143,6 +156,14 @@ namespace WebBanXe.Areas.Admin.Controllers
                     db.IMG_PRODUCT.Remove(imgold);
                     db.IMG_PRODUCT.Add(img);
                 }
+                var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower()).SingleOrDefault();
+                if (product != null)
+                {
+                    ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
+                    ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
+                    ViewBag.Error = "Sản phẩm đã tồn tại";
+                    return View(pRODUCT);
+                }
                 db.Entry(pRODUCT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -157,7 +178,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             PRODUCT pRODUCT = db.PRODUCTs.Find(id);
             db.PRODUCTs.Remove(pRODUCT);
             var listImg = db.IMG_PRODUCT.Where(p => p.IdProduct == id).ToList();
-            foreach(var item in listImg)
+            foreach (var item in listImg)
             {
                 db.IMG_PRODUCT.Remove(item);
             }

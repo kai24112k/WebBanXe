@@ -53,7 +53,14 @@ namespace WebBanXe.Areas.Admin.Controllers
             uSER.DayCreate = DateTime.Now;
             if (ModelState.IsValid)
             {
-               
+                var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower() 
+                || p.Phone == uSER.Phone).SingleOrDefault();
+                if (user != null)
+                {
+                    ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+                    ViewBag.Error = "Người dùng đã tồn tại";
+                    return View(uSER);
+                }
                 db.USERs.Add(uSER);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,6 +95,14 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower()
+               || p.Phone == uSER.Phone).SingleOrDefault();
+                if (user != null)
+                {
+                    ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+                    ViewBag.Error = "Người dùng đã tồn tại";
+                    return View(uSER);
+                }
                 db.Entry(uSER).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
