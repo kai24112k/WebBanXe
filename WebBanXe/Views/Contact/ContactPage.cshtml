@@ -1,6 +1,5 @@
-﻿
+﻿@model WebBanXe.Model.USER
 @{
-    ViewBag.Title = "ContactPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -72,17 +71,23 @@
                         {
 
                             @Html.Raw(ViewBag.Notice)
-                            <div class="container mb-3 border border-1 shadow rounded rounded-3" style="padding: 30px">
-                                <label class="mb-0" for="tieude"><b>Tiêu đề</b></label>
-                                <input name="title" class="form-control mb-2" style="width:100%" placeholder="Xin chào!" required />
-
-                                <label class="mb-0" for="email"><b>Email</b></label>
+                        <div class="container mb-3 border border-1 shadow rounded rounded-3" style="padding: 30px">
+                            <label class="mb-0" for="tieude"><b>Tiêu đề</b></label>
+                            <input name="title" class="form-control mb-2" style="width:100%" placeholder="Xin chào!" required />
+                            <label class="mb-0" for="email"><b>Email</b></label>
+                            @if (Model != null)
+                            {
+                                <input id="iduser" name="iduser" type="hidden" value="@Model.IdUser">
+                                <input name="email" class="form-control mb-2" style="width:100%" value="@Model.Email" readonly />
+                            }
+                            else
+                            {
                                 <input name="email" class="form-control mb-2" style="width:100%" placeholder="xemaydhcv@gmail.com" required />
-
-                                <label class="mb-0" for="noidung"><b>Nội dung</b></label>
-                                <textarea name="content" class="form-control mb-2" style="width:100%" rows="6" placeholder="Viết nội dung" required></textarea>
-                                <button on type="submit" class="btn btn-template-outlined" style="width:100%"><b>Gửi</b></button>
-                            </div>
+                            }
+                            <label class="mb-0" for="noidung"><b>Nội dung</b></label>
+                            <textarea name="content" class="form-control mb-2" style="width:100%" rows="6" placeholder="Viết nội dung" required></textarea>
+                            <button on type="submit" class="btn btn-template-outlined" style="width:100%"><b>Gửi</b></button>
+                        </div>
                         }
                     </div>
                     <div class="col-md-6 col-12">

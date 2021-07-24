@@ -10,18 +10,18 @@ using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class EMPLOYEEsController : Controller
+    public class CUSTOMERsController : Controller
     {
         private DBBanXeEntities db = new DBBanXeEntities();
 
-        // GET: Admin/EMPLOYEEs
+        // GET: Admin/CUSTOMERs
         public ActionResult Index()
         {
-            var uSERs = db.USERs.Include(u => u.USER_ROLE).Where(u => u.IdRole!=3);
+            var uSERs = db.USERs.Include(u => u.USER_ROLE).Where(u => u.IdRole==3);
             return View(uSERs.ToList());
         }
 
-        // GET: Admin/EMPLOYEEs/Details/5
+        // GET: Admin/CUSTOMERs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,20 +36,19 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View(uSER);
         }
 
-        // GET: Admin/EMPLOYEEs/Create
+        // GET: Admin/CUSTOMERs/Create
         public ActionResult Create()
         {
-            var listRole = db.USER_ROLE.Where(u => u.IdRole != 1 && u.IdRole != 3);
-            ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName");
+            ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName");
             return View();
         }
 
-        // POST: Admin/EMPLOYEEs/Create
+        // POST: Admin/CUSTOMERs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(USER uSER)
+        public ActionResult Create([Bind(Include = "IdUser,IdRole,FullName,Email,Username,Password,Address,Phone,DayCreate")] USER uSER)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +61,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View(uSER);
         }
 
-        // GET: Admin/EMPLOYEEs/Edit/5
+        // GET: Admin/CUSTOMERs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,7 +77,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View(uSER);
         }
 
-        // POST: Admin/EMPLOYEEs/Edit/5
+        // POST: Admin/CUSTOMERs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -95,10 +94,26 @@ namespace WebBanXe.Areas.Admin.Controllers
             return View(uSER);
         }
 
-        // GET: Admin/EMPLOYEEs/Delete/5
-       
-        public ActionResult Delete(int id)
-        {   
+        // GET: Admin/CUSTOMERs/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            USER uSER = db.USERs.Find(id);
+            if (uSER == null)
+            {
+                return HttpNotFound();
+            }
+            return View(uSER);
+        }
+
+        // POST: Admin/CUSTOMERs/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
             USER uSER = db.USERs.Find(id);
             db.USERs.Remove(uSER);
             db.SaveChanges();

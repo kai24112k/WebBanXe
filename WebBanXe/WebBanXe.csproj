@@ -1124,6 +1124,7 @@
     <Compile Include="Areas\Admin\Controllers\CATEGORY_BLOGController.cs" />
     <Compile Include="Areas\Admin\Controllers\CLASSesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CONTACTsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CUSTOMERsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DISCOUNTsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EMPLOYEEsController.cs" />
@@ -1377,6 +1378,11 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\WebBanXe.dll.config" />
+    <Content Include="Areas\Admin\Views\CUSTOMERs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CUSTOMERs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CUSTOMERs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CUSTOMERs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CUSTOMERs\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="vendor\.DS_Store" />
@@ -1401,6 +1407,9 @@
     <Content Include="Views\Blog\Detail.cshtml" />
     <Content Include="Views\Introduce\Index.cshtml" />
     <Content Include="Views\Rent\Index.cshtml" />
+    <Content Include="Views\Customer\Info.cshtml" />
+    <Content Include="Views\Customer\HistoryOrder.cshtml" />
+    <Content Include="Views\Rent\CuaHang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

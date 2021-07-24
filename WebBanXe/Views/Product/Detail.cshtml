@@ -40,11 +40,14 @@
                             Số lượng: <input name="sl" value="1" min="0" step="1" type="number"
                                              class="form-control" style="width: 250px; ">
                         </h4>
-                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })" 
+                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })"
                            class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
                             THÊM VÀO GIỎ HÀNG
                         </a>
-                        <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
+                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })"
+                           class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
+                            MUA NGAY
+                        </a>
                         <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
                         <h4 style="color: brown;">CHIA SẺ NGAY</h4>
                         <div class="fb-share-button" data-href="@ViewBag.Url" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.Url" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>

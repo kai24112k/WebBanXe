@@ -235,7 +235,6 @@ namespace WebBanXe.Controllers
                     // Add order vào db
                     db.ORDERs.Add(order);
                     db.SaveChanges();
-
                     // Get id order
                     idOrder = order.IdOrder;
                     foreach (var product in cart.ListProduct)

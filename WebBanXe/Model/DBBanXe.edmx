@@ -22,7 +22,7 @@
           </Key>
           <Property Name="IdBrand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ImgBrand" Type="varchar" MaxLength="50" />
+          <Property Name="ImgBrand" Type="varchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="CATEGORY_BLOG">
           <Key>
@@ -64,8 +64,8 @@
           </Key>
           <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdClass" Type="int" Nullable="false" />
-          <Property Name="AltImg" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="LinkImg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AltImg" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="LinkImg" Type="varchar" MaxLength="400" Nullable="false" />
         </EntityType>
         <EntityType Name="IMG_BLOG">
           <Key>
@@ -81,8 +81,8 @@
             <PropertyRef Name="IdImg" />
           </Key>
           <Property Name="IdImg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AltImg" Type="varchar" MaxLength="255" />
-          <Property Name="LinkImg" Type="varchar" MaxLength="255" />
+          <Property Name="AltImg" Type="varchar" MaxLength="400" />
+          <Property Name="LinkImg" Type="varchar" MaxLength="400" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ORDER">
@@ -412,7 +412,7 @@
           </Key>
           <Property Name="IdBrand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImgBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImgBrand" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IdBrand__48CFD27E" FromRole="BRAND" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="CATEGORY_BLOG">
@@ -459,8 +459,8 @@
           </Key>
           <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClass" Type="Int32" Nullable="false" />
-          <Property Name="AltImg" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LinkImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AltImg" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkImg" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CLASS" Relationship="Self.FK__IMAGE_CON__IdCla__4E88ABD4" FromRole="IMAGE_CONTENT" ToRole="CLASS" />
         </EntityType>
         <EntityType Name="IMG_BLOG">

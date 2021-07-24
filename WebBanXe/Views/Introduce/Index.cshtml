@@ -1,6 +1,5 @@
 ﻿
 @{
-    ViewBag.Title = "Introduce";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +11,7 @@
             </div>
             <div class="col-md-5">
                 <ul class="breadcrumb d-flex justify-content-end">
-                    <li class="breadcrumb-item"><a href="index.html">TRANG CHỦ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">TRANG CHỦ</a></li>
                     <li class="breadcrumb-item active">GIỚI THIỆU</li>
                 </ul>
             </div>

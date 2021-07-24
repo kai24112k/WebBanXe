@@ -23,6 +23,7 @@ namespace WebBanXe.Model
         }
     
         public int IdProduct { get; set; }
+
         public string NameProduct { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }

@@ -34,7 +34,7 @@ namespace WebBanXe.Controllers
             }
             else
             {
-                listproduct = db.PRODUCTs.Where(s=>s.Status == 0).ToList();
+                listproduct = db.PRODUCTs.Where(s => s.Status == 0).ToList();
             }
             return View(listproduct);
 
@@ -69,6 +69,6 @@ namespace WebBanXe.Controllers
             List<TYPECAR> listtypecar = new List<TYPECAR>();
             listtypecar = db.TYPECARs.ToList();
             return View(listtypecar);
-        } 
+        }
     }
 }
