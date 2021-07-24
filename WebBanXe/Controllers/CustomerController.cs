@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBanXe.Helpers;
 using WebBanXe.Helpers.Facebook;
 using WebBanXe.Helpers.MD5;
 using WebBanXe.Model;
+using static WebBanXe.Helpers.Security.Authen;
 
 namespace WebBanXe.Controllers
 {
@@ -40,7 +43,7 @@ namespace WebBanXe.Controllers
             }
             else
             {
-                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole == 3);
+                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password);
                 if (user != null)
                 {
                     SaveSession(user);
@@ -202,13 +205,13 @@ namespace WebBanXe.Controllers
             {
                 if (collection["XacNhanMatKhau"] == collection["MatKhau"])
                 {
-                    using(DBBanXeEntities db = new DBBanXeEntities())
+                    using (DBBanXeEntities db = new DBBanXeEntities())
                     {
                         var userDB = db.USERs.Where(u => u.Email == user.Email || u.Username == user.Username || u.Phone == user.Phone).FirstOrDefault();
-                        if(userDB != null)
+                        if (userDB != null)
                         {
                             ViewBag.Error = "Đã có tài khoản, vui lòng kiểm tra lại thông tin!";
-                            return View();
+                            return View(collection);
                         }
                         else
                         {
@@ -224,11 +227,77 @@ namespace WebBanXe.Controllers
                 {
                     ViewBag.Error = " Vui lòng xác nhận lại mật khẩu";
                 }
-
-                return View();
+                return View(collection);
             }
-            return View();
+            return View(collection);
         }
-      
+
+        [Auth]
+        public ActionResult Info()
+        {
+            var id = Session["userID"];
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            USER uSER = db.USERs.Find(id);
+            if (uSER == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+            return View(uSER);
+        }
+
+        [HttpPost]
+        public ActionResult Info(USER user)
+        {
+            if (!string.IsNullOrEmpty(user.Password))
+            {
+                if (user.Password != MD5Helper.MD5Hash(Request["oldpassword"]))
+                {
+                    ViewBag.Error = "Mật khẩu cũ không đúng!";
+                    return View(user);
+                }
+            }
+            if(Request["passwordnew"] != Request["passwordconfirm"])
+            {
+                ViewBag.Error = "Mật khẩu xác thực không đúng!";
+                return View(user);
+            }
+            var password = MD5Helper.MD5Hash(Request["passwordnew"].ToString());
+            user.Password = password;
+            if (ModelState.IsValid)
+            {
+                user.IdRole = int.Parse(Session["userID"].ToString());
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        [Auth]
+        public ActionResult HistoryOrder()
+        {
+            var id = 0;
+            if (Session["userID"] != null)
+            {
+                id = int.Parse(Session["userID"].ToString());
+            }
+
+            if(id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var order = new List<ORDER>();
+            order  = db.ORDERs.Where(o => o.IdUser == id).ToList();
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
     }
 }

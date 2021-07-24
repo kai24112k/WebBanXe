@@ -20,7 +20,7 @@ namespace WebBanXe.Model
             get { return iQuantity * sPrice; }
 
         }
-        //Khoi tao gio hàng theo Masach duoc truyen vao voi Soluong mac dinh la 1
+        //Khoi tao gio hàng theo Maxe duoc truyen vao voi Soluong mac dinh la 1
         public ProductModel(int IdProduct)
         {
 

@@ -22,15 +22,26 @@
     <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="~/Public/css/style.default.css" id="theme-stylesheet">
-    <link rel="shortcut icon" href="~/Public/img/favicon.ico" />
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <link rel="shortcut icon" />
     <style>
-  
     </style>
+
+
+
 
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+
+
+
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <title>@ViewBag.Title</title>
 
     @if (ViewBag.MetaIMG != null)
@@ -56,20 +67,20 @@
                         <div class="d-flex justify-content-md-end justify-content-between">
                             @if (Session["userID"] != null)
                             {
-                                <ul>
-                                    <li class="dropdown" style=" cursor: pointer; list-style: none;">
-                                        <a data-toggle="dropdown" class="dropdown-toggle login-btn">@Session["fullName"] </a>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a href="#">Thông tin cá nhân</a></li>
-                                            <li class="dropdown-item"><a href="#">Lịch sử mua hàng</a></li>
-                                            <li class="dropdown-item"><a href="@Url.Action("Logout", "Customer")">Đăng xuất</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <div class="login">
-                                    @Html.Action("CartPartial", "Cart")
-
-                                </div>
+                            <ul>
+                                <li class="dropdown" style=" cursor: pointer; list-style: none;">
+                                    <a data-toggle="dropdown" class="dropdown-toggle login-btn">@Session["fullName"] </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="@Url.Action("Info", "Customer")">Thông tin cá nhân</a></li>
+                                        <li class="dropdown-item"><a href="@Url.Action("HistoryOrder", "Customer")">Lịch sử mua hàng</a></li>
+                                        <li class="dropdown-item"><a href="@Url.Action("Logout", "Customer")">Đăng xuất</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="login">
+                                @Html.Action("CartPartial", "Cart")
+                                  
+                            </div>
                             }
                             else
                             {
@@ -237,7 +248,7 @@
     </footer>
 
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=333443471649605&autoLogAppEvents=1" nonce="65W80paA"></script>
-    <script src="~/vendor/jquery/jquery.min.js"></script>
+
     <script src="~/vendor/popper.js/umd/popper.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/vendor/jquery.cookie/jquery.cookie.js"></script>

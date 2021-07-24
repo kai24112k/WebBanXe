@@ -36,7 +36,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             }
             else
             {
-                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole < 3 );
+                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole != 3 );
                 if (user != null)
                 {
                  
