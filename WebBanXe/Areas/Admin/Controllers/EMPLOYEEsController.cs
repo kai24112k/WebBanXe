@@ -10,7 +10,7 @@ using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class EMPLOYEEsController : Controller
+    public class EMPLOYEEsController : BaseController
     {
         private DBBanXeEntities db = new DBBanXeEntities();
 
@@ -96,7 +96,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower()
-               || p.Phone == uSER.Phone).SingleOrDefault();
+               || p.Phone == uSER.Phone && p.IdUser != uSER.IdUser).SingleOrDefault();
                 if (user != null)
                 {
                     ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);

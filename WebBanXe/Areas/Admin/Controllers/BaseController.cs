@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace WebBanXe.Areas.Admin.Controllers
 {
+   
     public class BaseController : Controller
     {
         // GET: Admin/Base

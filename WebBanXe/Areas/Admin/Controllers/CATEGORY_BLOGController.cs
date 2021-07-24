@@ -10,7 +10,7 @@ using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class CATEGORY_BLOGController : Controller
+    public class CATEGORY_BLOGController : BaseController
     {
         private DBBanXeEntities db = new DBBanXeEntities();
 

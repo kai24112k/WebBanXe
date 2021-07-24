@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebBanXe.Helpers.MD5;
 using WebBanXe.Model;
 using static WebBanXe.Helpers.Security.Authen;
 
@@ -22,7 +23,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         public ActionResult Login(FormCollection frm)
         {
             var userName = frm["userName"];
-            var password = frm["password"];
+            var password = MD5Helper.MD5Hash(frm["password"]);
 
             if (String.IsNullOrEmpty(userName))
             {
@@ -38,10 +39,11 @@ namespace WebBanXe.Areas.Admin.Controllers
                 USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole < 3 );
                 if (user != null)
                 {
-                    Session["userID"] = user.IdUser;
+                 
+                    Session["UserAdmin"] = user.IdUser;
                     Session["fullName"] = user.FullName;
                     Session["Role"] = user.USER_ROLE.RoleName;
-                    return RedirectToAction("Index", "PRODUCTS");
+                    return RedirectToAction("Index", "PRODUCTs");
                 }
                 else
                     ViewBag.ThongBao = "Sai tài khoản hoặc mật khẩu";
@@ -51,10 +53,11 @@ namespace WebBanXe.Areas.Admin.Controllers
         }
         public ActionResult Logout()
         {
-            Session["userID"] = null;
+            Session["UserAdmin"] = "";
             Session["fullName"] = null;
             return RedirectToAction("Login", "Auth");
 
         }
+     
     }
 }

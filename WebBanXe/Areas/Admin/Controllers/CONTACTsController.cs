@@ -11,7 +11,7 @@ using WebBanXe.Service;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class CONTACTsController : Controller
+    public class CONTACTsController : BaseController
     {
         private DBBanXeEntities db = new DBBanXeEntities();
         EmailService emailService = new EmailService();

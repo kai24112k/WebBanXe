@@ -10,7 +10,7 @@ using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class ORDERsController : Controller
+    public class ORDERsController : BaseController
     {
         private DBBanXeEntities db = new DBBanXeEntities();
 

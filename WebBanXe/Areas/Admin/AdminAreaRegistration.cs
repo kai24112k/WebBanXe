@@ -23,7 +23,7 @@ namespace WebBanXe.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { Controller="Dashboard",action = "Index", id = UrlParameter.Optional }
+                new { Controller="PRODUCTs",action = "Index", id = UrlParameter.Optional }
             );
         }
     }

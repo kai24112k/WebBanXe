@@ -13,7 +13,7 @@ using WebBanXe.Model;
 
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class TYPECARsController : Controller
+    public class TYPECARsController : BaseController
     {
         private DBBanXeEntities db = new DBBanXeEntities();
 
