@@ -5,8 +5,6 @@
 <div class="list-group list-group-flush">
     @foreach (var typecar in Model)
     {
-        <a href="@Url.Action("Prent","Rent", new { idType = typecar.IdType },null)" class="list-group-item">@typecar.NameType</a>
+        <a href="@Url.Action("RentProduct","Rent", new { idType = typecar.IdType },null)" class="list-group-item">@typecar.NameType</a>
     }
 </div>
-
-

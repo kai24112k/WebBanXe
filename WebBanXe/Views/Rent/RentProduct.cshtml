@@ -1,9 +1,7 @@
-﻿@model List<WebBanXe.Model.PRODUCT>
-
+﻿@model List<WebBanXe.Model.RENT>
 @using WebBanXe.Model
-
 @{
-    ViewBag.Title = "Prent";
+    ViewBag.Title = "Sản phẩm thuê";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,7 +26,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading">
-                        <h2><a href="@Url.Action("Prent", "Rent")">SẢN PHẨM</a></h2>
+                        <h2><a href="@Url.Action("RentProduct", "Rent")">SẢN PHẨM</a></h2>
                     </div>
                 </div>
                 <div class="col-md-3 py-3">
@@ -37,6 +35,7 @@
                     </div>
                     <div class="card mb-3 mt-3" style="width: 100%;">
                         @Html.Action("TypeCar", "Rent")
+
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -46,22 +45,22 @@
                             <div class="col-md-4">
                                 <div class="box-image card">
                                     <div class="image">
-                                        <a href="@Url.Action("Detail","Rent", new { url = product.ToURL() }, null)">
-                                            @foreach (var item in product.IMG_PRODUCT)
+                                        <a href="@Url.Action("Detail","Product", new { url = product.PRODUCT.ToURL() }, null)">
+                                            @foreach (var item in product.PRODUCT.IMG_PRODUCT)
                                             {
                                                 if (item.IdProduct == product.IdProduct)
                                                 {
                                                     <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                                 }
                                             }
-                                            <div style="text-align:center;">@product.NameProduct</div>
-                                            <div style="text-align:center;">Giá : @string.Format("{0:#,##0}", @product.Price) đ</div>
+                                            <div style="text-align:center;">@product.PRODUCT.NameProduct</div>
+                                            <div style="text-align:center;">Giá : @string.Format("{0:#,##0}", @product.Price) đ/ngày</div>
                                             <div class="overlay d-flex align-items-center justify-content-center">
                                                 <div class="content">
                                                     <div class="text">
                                                         <p class="buttons">
                                                             <h6 class="btn btn-template-outlined-white">
-                                                                Xem chi tiết
+                                                                Thuê Ngay
                                                             </h6>
                                                         </p>
                                                     </div>
@@ -70,6 +69,7 @@
                                         </a>
                                     </div>
                                 </div>
+
                             </div>
                         }
                     </div>
@@ -96,7 +96,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="item">
                     <div class="icon-outlined icon-sm icon-thin"><i class="fa fa-users"></i></div>
-                    <h4><span class="h1 counter">7567</span><br>Khách hàng</h4>
+                    <h4><span class="h1 counter">7321</span><br>Khách hàng</h4>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
@@ -129,5 +129,3 @@
         </div>
     </div>
 </section>
-
-
