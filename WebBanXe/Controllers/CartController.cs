@@ -14,6 +14,7 @@ namespace WebBanXe.Controllers
     [Auth]
     public class CartController : Controller
     {
+   
         // GET: Cart
         DBBanXeEntities db = new DBBanXeEntities();
         //Lay gio hang

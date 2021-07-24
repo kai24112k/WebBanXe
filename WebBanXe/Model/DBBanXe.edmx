@@ -64,7 +64,7 @@
           </Key>
           <Property Name="IdImg" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdClass" Type="int" Nullable="false" />
-          <Property Name="AltImg" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="AltImg" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="LinkImg" Type="varchar" MaxLength="400" Nullable="false" />
         </EntityType>
         <EntityType Name="IMG_BLOG">
@@ -459,7 +459,7 @@
           </Key>
           <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClass" Type="Int32" Nullable="false" />
-          <Property Name="AltImg" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AltImg" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LinkImg" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CLASS" Relationship="Self.FK__IMAGE_CON__IdCla__4E88ABD4" FromRole="IMAGE_CONTENT" ToRole="CLASS" />
         </EntityType>
@@ -478,8 +478,8 @@
             <PropertyRef Name="IdImg" />
           </Key>
           <Property Name="IdImg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AltImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="LinkImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AltImg" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="LinkImg" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PRODUCT" Relationship="Self.FK__IMG_PRODU__IdPro__45F365D3" FromRole="IMG_PRODUCT" ToRole="PRODUCT" />
         </EntityType>

@@ -138,7 +138,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="item">
                     <div class="icon-outlined icon-sm icon-thin"><i class="fa fa-users"></i></div>
-                    <h4><span class="h1 counter">7567</span><br>Khách hàng</h4>
+                    <h4><span class="h1 counter">7321</span><br>Khách hàng</h4>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
@@ -150,6 +150,7 @@
         </div>
     </div>
 </section>
+
 <section class="bar background-white no-mb">
     <div data-animate="fadeInUpBig" class="container">
         <div class="row">
@@ -157,7 +158,7 @@
                 <div class="heading text-center">
                     <h2>Sản phẩm nổi bật</h2>
                 </div>
-                <div class="project owl-carousel">
+                <div class="project-carousel">
                     <div class="container">
                         <div class="project owl-carousel">
                             <div class="item">
@@ -180,11 +181,11 @@
                                                                 <div class="name">
                                                                     <h3>Thông tin chi tiết</h3>
                                                                 </div>
-                                                                <div class="text">                                                                
+                                                                <div class="text">
                                                                     <p class="buttons">
                                                                         <h6 class="btn btn-template-outlined-white">
                                                                             Xem chi tiết
-                                                                        </h6>                                                                 
+                                                                        </h6>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -194,7 +195,113 @@
                                             </div>
                                         </div>
                                     }
+
                                 </div>
+                            </div>
+                            <div class="row portfolio text-center color-white">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <div class="image">
+                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                    @foreach (var item in product.IMG_PRODUCT)
+                                                    {
+                                                        if (item.IdProduct == product.IdProduct)
+                                                        {
+                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                        }
+                                                    }
+                                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                                        <div class="content">
+                                                            <div class="name">
+                                                                <h3>Thông tin chi tiết</h3>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p class="buttons">
+                                                                    <h6 class="btn btn-template-outlined-white">
+                                                                        Xem chi tiết
+                                                                    </h6>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="row portfolio text-center color-white">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <div class="image">
+                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                    @foreach (var item in product.IMG_PRODUCT)
+                                                    {
+                                                        if (item.IdProduct == product.IdProduct)
+                                                        {
+                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                        }
+                                                    }
+                                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                                        <div class="content">
+                                                            <div class="name">
+                                                                <h3>Thông tin chi tiết</h3>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p class="buttons">
+                                                                    <h6 class="btn btn-template-outlined-white">
+                                                                        Xem chi tiết
+                                                                    </h6>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="row portfolio text-center color-white">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <div class="image">
+                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                    @foreach (var item in product.IMG_PRODUCT)
+                                                    {
+                                                        if (item.IdProduct == product.IdProduct)
+                                                        {
+                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                        }
+                                                    }
+                                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                                        <div class="content">
+                                                            <div class="name">
+                                                                <h3>Thông tin chi tiết</h3>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p class="buttons">
+                                                                    <h6 class="btn btn-template-outlined-white">
+                                                                        Xem chi tiết
+                                                                    </h6>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -203,8 +310,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        </div>
+    </div>
+        
+    
 </section>
 <section style="background: url(/Public/img/bannervespa.png) center top no-repeat; background-size: cover;"
          class="bar no-mb color-white text-center bg-fixed relative-positioned">
@@ -229,11 +339,11 @@
                     <h3>Các hãng xe</h3>
                 </div>
                 <ul class="list-unstyled owl-carousel brand no-mb">
-                   @foreach( var item in (List<BRAND>)ViewBag.BRAND)
-                     {
-                    <li class="item"><img src="@item.ImgBrand" alt="" class="img-fluid"></li>
+                    @foreach (var item in (List<BRAND>)ViewBag.BRAND)
+                    {
+                        <li class="item"><img src="@item.ImgBrand" alt="" class="img-fluid"></li>
                     }
-                    
+
                 </ul>
             </div>
         </div>
@@ -246,7 +356,7 @@
                 <div class="heading text-center">
                     <h2>Sản phẩm ưu đãi</h2>
                 </div>
-                <div class="project owl-carousel">
+                <div class="project-carousel">
                     <div class="container">
                         <div class="project owl-carousel">
                             <div class="item">
@@ -264,6 +374,42 @@
                                                                 <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
                                                             }
                                                         }
+                                                        <div class="overlay d-flex align-items-center justify-content-center">
+                                                            <div class="content">
+                                                                <div class="name">
+                                                                    <h3>Thông tin chi tiết</h3>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <p class="buttons">
+                                                                        <h6 class="btn btn-template-outlined-white">
+                                                                            Xem chi tiết
+                                                                        </h6>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="row portfolio text-center color-white">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <div class="image">
+                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                    @foreach (var item in product.IMG_PRODUCT)
+                                                    {
+                                                        if (item.IdProduct == product.IdProduct)
+                                                        {
+                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                        }
+                                                    }
                                                     <div class="overlay d-flex align-items-center justify-content-center">
                                                         <div class="content">
                                                             <div class="name">
@@ -278,22 +424,95 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    </a>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
-                                    }                             
+                                    </div>
+                                }
+
                             </div>
+                            @*<div class="row portfolio text-center color-white">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <div class="image">
+                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                    @foreach (var item in product.IMG_PRODUCT)
+                                                    {
+                                                        if (item.IdProduct == product.IdProduct)
+                                                        {
+                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                        }
+                                                    }
+                                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                                        <div class="content">
+                                                            <div class="name">
+                                                                <h3>Thông tin chi tiết</h3>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p class="buttons">
+                                                                    <h6 class="btn btn-template-outlined-white">
+                                                                        Xem chi tiết
+                                                                    </h6>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="row portfolio text-center color-white">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box-image">
+                                            <div class="image">
+                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                    @foreach (var item in product.IMG_PRODUCT)
+                                                    {
+                                                        if (item.IdProduct == product.IdProduct)
+                                                        {
+                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                        }
+                                                    }
+                                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                                        <div class="content">
+                                                            <div class="name">
+                                                                <h3>Thông tin chi tiết</h3>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p class="buttons">
+                                                                    <h6 class="btn btn-template-outlined-white">
+                                                                        Xem chi tiết
+                                                                    </h6>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>*@
                         </div>
                     </div>
                 </div>
-                <div class="see-more text-center">
-                    <a href="@Url.Action("Index","Product")" class="btn btn-template-outlined">Xem thêm</a>
-                </div>
             </div>
+
+        </div>
+        <div class="see-more text-center">
+            <p></p><a href="portfolio-4.html" class="btn btn-template-outlined">Xem thêm</a>
         </div>
     </div>
-    </div>
+
+
 </section>
 <section class="bar bg-gray no-mb">
     <div class="container">
@@ -302,82 +521,54 @@
                 <h2>Tạp chí xe</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="home-blog-post">
-                        <div class="image">
-                            <img src="/Public/img/tapchixe.jpg" alt="..." class="img-fluid">
-                            <div class="overlay d-flex align-items-center justify-content-center">
-                                <a href="#"
-                                   class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a>
+                @foreach (var item in (List<BLOG>)ViewBag.BLOG)
+                {
+                   
+                    foreach (var picture in item.IMG_BLOG)
+                    {
+                        <div class="col-lg-3">
+                            <div class="home-blog-post">
+                                <div class="image">
+                                    @if (item.IdBlog == picture.IdBlog)
+                                    {
+                                    <img src="@picture.LinkImg" alt="..." class="img-fluid">
+                                    }
+                                    <div class="overlay d-flex align-items-center justify-content-center">
+                                        <a href="@Url.Action("Detail", "Blog", new { id = item.IdBlog }, null)"
+                                           class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i>Đọc thêm</a>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h4><a href="#">
+                                         @if (item.Title.Length > 40)
+                                         {
+                                           @Html.Raw(item.Title.Substring(0, 40))
+
+                                         }
+                                         else
+                                         {
+                                           @Html.Raw(item.Title)
+                                         }
+                                        </a></h4>
+                                    @*<p class="author-category">By <a href="#">Vulee </a> in <a href="#">Tạp chí xe</a></p>*@
+                                    @*<p class="intro" style="font-size:10px; ">
+                                        @if (item.Content.Length > 40)
+                                        {
+                                            @Html.Raw(item.Content.Substring(0, 30))
+
+                                        }
+                                        else
+                                        {
+                                            @Html.Raw(item.Content)
+                                        }
+                                    </p>*@
+                                    <a href="@Url.Action("Detail", "Blog", new { id = item.IdBlog }, null)" ></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="text">
-                            <h4><a href="#">Trên tay Chi tiết Honda H’ness CB350 tại Việt Nam</a></h4>
-                            <p class="author-category">By <a href="#">Vulee </a> in <a href="#">Tạp chí xe</a></p>
-                            <p class="intro">
-                                Honda CB350 H'ness ra mắt tại Ấn Độ vào khoảng tháng 9 năm ngoái và giờ thì đã có mặt
-                                tại thị trường Việt Nam
-                            </p><a href="#" class="btn btn-template-outlined">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="home-blog-post">
-                        <div class="image">
-                            <img src="/Public/img/tapchixe.jpg" alt="..." class="img-fluid">
-                            <div class="overlay d-flex align-items-center justify-content-center">
-                                <a href="#"
-                                   class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a>
-                            </div>
-                        </div>
-                        <div class="text">
-                            <h4><a href="#">mô tô Husqvarna sẽ có mặt tại Việt Nam vào tháng 8 </a></h4>
-                            <p class="author-category">By <a href="#">Đạt Phạm</a> in <a href="#">Tạp chí xe</a></p>
-                            <p class="intro">
-                                Husqvarna - thương hiệu xe nước Áo có nguồn gốc Thụy Điển sẽ sớm có mặt tại Việt Nam
-                                trong năm nay.
-                            </p><a href="#" class="btn btn-template-outlined">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="home-blog-post">
-                        <div class="image">
-                            <img src="/Public/img/tapchixe.jpg" alt="..." class="img-fluid">
-                            <div class="overlay d-flex align-items-center justify-content-center">
-                                <a href="#"
-                                   class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a>
-                            </div>
-                        </div>
-                        <div class="text">
-                            <h4><a href="#">Yamaha R1 2016: đẹp, mạnh, động cơ khác với số đông</a></h4>
-                            <p class="author-category">By <a href="#">Vũ Chí</a> in <a href="#">Tạp chí xe</a></p>
-                            <p class="intro">
-                                FYamaha R1 là một chiếc superbike được nhiều anh em yêu thích từ khi mới ra mắt cho
-                                tới thời điểm hiện tại.
-                            </p><a href="#" class="btn btn-template-outlined">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="home-blog-post">
-                        <div class="image">
-                            <img src="/Public/img/tapchixeDibaoCreer.jpg" alt="..." class="img-fluid">
-                            <div class="overlay d-flex align-items-center justify-content-center">
-                                <a href="#"
-                                   class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a>
-                            </div>
-                        </div>
-                        <div class="text">
-                            <h4><a href="#">Trên tay Dibao Creer 50cc: xe dành cho học sinh, giá 24 triệu </a></h4>
-                            <p class="author-category">By <a href="#">Hiệp Phan</a> in <a href="#">Tạp chí xe</a></p>
-                            <p class="intro">
-                                Dibao Creer là mẫu xe 50 phân khối với thiết kế hướng đến các bạn vẫn chưa có bằng
-                                lái
-                            </p><a href="#" class="btn btn-template-outlined">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
+
+                    }
+                }
             </div>
         </div>
     </div>

@@ -50,6 +50,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var cate = db.CATEGORY_BLOG.Where(p => p.NameCate.ToLower() == cATEGORY_BLOG.NameCate.ToLower()).SingleOrDefault();
+                if (cate != null)
+                {
+                    ViewBag.Error = "Thể loại bài viết đã tồn tại";
+                    return View(cATEGORY_BLOG);
+                }
                 db.CATEGORY_BLOG.Add(cATEGORY_BLOG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +88,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var cate = db.CATEGORY_BLOG.Where(p => p.NameCate.ToLower() == cATEGORY_BLOG.NameCate.ToLower()).SingleOrDefault();
+                if (cate != null)
+                {
+                    ViewBag.Error = "Thể loại bài viết đã tồn tại";
+                    return View(cATEGORY_BLOG);
+                }
                 db.Entry(cATEGORY_BLOG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

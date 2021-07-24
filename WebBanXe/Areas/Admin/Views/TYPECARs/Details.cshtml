@@ -5,31 +5,40 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>TYPECAR</h4>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NameType)
-        </dt>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">CHI TIẾT LOẠI XE</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
 
-        <dd>
-            @Html.DisplayFor(model => model.NameType)
-        </dd>
+                    @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdType }) |
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgType)
-        </dt>
+    <hr />
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Details", "TYPECAR", FormMethod.Post))
+            {
+                <input name="id" value="@Model.IdType" hidden />
+                <div class="mb-3">
+                    <label class="form-label">Tên loại xe</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.NameType" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hình ảnh</label>
+                    <img src="@Model.ImgType" alt="" class="img-fluid row border border-2 border-dark mx-auto shadow text-center" />
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImgType)
-        </dd>
-
-    </dl>
+            }
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdType }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

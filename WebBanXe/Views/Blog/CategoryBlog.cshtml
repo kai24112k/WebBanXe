@@ -6,7 +6,7 @@
             <li class="nav-item">
                 @foreach (var categoryblog in Model)
                 {
-                    <a href="@Url.Action("BlogHome","Blog", new { id = @categoryblog.IdCate },null)" class="list-group-item">@categoryblog.NameCate</a>
+                    <a href="@Url.Action("BlogHome","Blog", new { IdCate = categoryblog.IdCate },null)" class="list-group-item">@categoryblog.NameCate</a>
                 }
             </li>
           

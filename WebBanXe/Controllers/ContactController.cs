@@ -9,9 +9,16 @@ namespace WebBanXe.Controllers
 {
     public class ContactController : Controller
     {
+      
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Contact
         [Route("lien-he")]
+       
+        public ActionResult ContactPage()
+        {
+            return View();
+
+        }
         [HttpPost]
         public ActionResult ContactPage(USER user,FormCollection contactForm)
         {
@@ -19,9 +26,21 @@ namespace WebBanXe.Controllers
             var title = contactForm["title"];
             var email = contactForm["email"];
             var content = contactForm["content"];
+           
+    
+            
             contact.Title = title;
             contact.Email = email;
             contact.Content = content;
+            if(Session["userID"]!= null)
+            {
+                contact.IdUser = int.Parse(Session["userID"].ToString());
+            }
+            else
+            {
+                Session["userID"] = null;
+            }
+            
             contact.Status = false;
             if (user != null)
             {
@@ -30,22 +49,11 @@ namespace WebBanXe.Controllers
             }
             db.CONTACTs.Add(contact);
             db.SaveChanges();
-            ViewBag.Notice = "<div class='alert alert-success text-center text-dark' role='alert'>Gửi liên hệ thành công</div>";
-            return View(user);
-        }
 
-        [Route("lien-he")]
-        public ActionResult ContactPage()
-        {
-            ViewBag.Title = "Trang liên hệ";
-            if (Session["userID"] != null)
-            {
-                USER user = new USER();
-                user = db.USERs.Find(Session["userID"]);
-                return View(user);
-            }
-            return View();
-           
+            ViewBag.Notice = "<div class='alert alert-success text-center text-dark' role='alert'>Gửi liên hệ thành công</div>";
+
+            return View(contact);
         }
+       
     }
 }

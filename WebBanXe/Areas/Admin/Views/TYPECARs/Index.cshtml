@@ -8,40 +8,44 @@
 <p style="text-align:right;margin:20px;">
     <a href="@Url.Action("Create","TYPECARs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table id="myTable">
+<table class="table" id="myTable">
     <thead>
         <tr>
+            <th width=150>Hình ảnh</th>
             <th>
                 @Html.DisplayNameFor(model => model.NameType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImgType)
-            </th>
-            <th></th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.ImgType)
+        </th>*@
+            <th>Chỉnh sửa</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImgType)
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","TYPECARs",new { @id = item.IdType })">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","TYPECARs",new { @id = item.IdType })">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","TYPECARs",new { @id = item.IdType })">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <img src="@item.ImgType" alt="@item.ImgType" class="img-fluid admin_img text-center" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameType)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImgType)
+            </td>*@
+            <td>
+                <a class="btn btn-sm btn-success" href="@Url.Action("Edit","TYPECARs",new { @id = item.IdType })">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","TYPECARs",new { @id = item.IdType })">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+                <a class="btn btn-sm btn-info" href="@Url.Action("Details","TYPECARs",new { @id = item.IdType })">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

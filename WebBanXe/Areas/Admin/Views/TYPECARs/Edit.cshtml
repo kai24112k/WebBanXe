@@ -7,10 +7,10 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "TYPECARs", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <hr />
     <div class="form-group">
@@ -25,7 +25,12 @@
             </div>
         </div>
     </div>
-
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Error
+        </div>
+    }
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.IdType)
@@ -37,22 +42,50 @@
             @Html.ValidationMessageFor(model => model.NameType, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        <lable class="control-label col-md-2">Hình ảnh</lable>
-        <div class="col-md-10">
-            <input type="file" name="fileUpload" id="fileUpload">
-            <div class="image-preview" id="imagePreview">
-                <img src="" alt="Image Preview" class="image-preview-img " />
-                <span class="image-preview-text">Image Preview</span>
+    @Html.HiddenFor(e => e.IdType)
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <lable class="control-label col-md-2">Hình ảnh</lable>
+            <div class="col-md-12">
+                <input type="file" name="fileUpload" id="fileUpload">
+                <div class="image-preview" id="imagePreview">
+                    <img src="@Url.Content(Model.ImgType)" alt="Image Preview" class="image-preview-img " style="display:block;" />
+
+                </div>
             </div>
         </div>
     </div>
+    }
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Lưu" class="btn btn-default" />
+            <input type="submit" value="Lưu" class="btn btn-success form-control" />
         </div>
     </div>
 </div>
 }
+<script>
+    var fileUpload = document.getElementById("fileUpload");
+    var previewContainer = document.getElementById("imagePreview");
+    var previewImage = previewContainer.querySelector(".image-preview-img");
 
+
+    fileUpload.addEventListener("change", function () {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+
+            previewImage.style.display = "block";
+            reader.readAsDataURL(file);
+            reader.addEventListener("load", function () {
+                previewImage.setAttribute("src", this.result);
+            });
+        }
+        else {
+
+            previewImage.style.display = null;
+            previewImage.setAttribute("src", this.result);
+        }
+    });
+</script>

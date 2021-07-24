@@ -65,10 +65,10 @@ namespace WebBanXe.Areas.Admin.Controllers
                 db.BLOGs.Add(bLOG);
                 if (fileUpload != null)
                 {
-                    var extension = Path.GetExtension(fileUpload.FileName);
+                    
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia" + extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia.png");
                     var path = Path.Combine(Server.MapPath("~/Public/img/blogs/"), fileName);
                     try
                     {
@@ -82,9 +82,16 @@ namespace WebBanXe.Areas.Admin.Controllers
                     var img = new IMG_BLOG();
                     img.AltImg = fileName;
                     img.LinkImg = "/Public/img/blogs/"+ fileName;
-                    img.IdBlog = bLOG.IdBlog;
-                   
+                    img.IdBlog = bLOG.IdBlog;                   
                     db.IMG_BLOG.Add(img);
+                }
+                var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
+                if (blog != null)
+                {
+                    ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
+                    ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
+                    ViewBag.Error = "Tiêu đề đã tồn tại";
+                    return View(bLOG);
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -117,15 +124,54 @@ namespace WebBanXe.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]  
         [ValidateInput(false)]
-        public ActionResult Edit (BLOG bLOG)
+        public ActionResult Edit (BLOG bLOG, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
-                bLOG.IdUser = int.Parse(Session["userID"].ToString());
+
                 bLOG.DateCreate = DateTime.Now;
-                db.Entry(bLOG).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                bLOG.IdUser = int.Parse(Session["userID"].ToString());
+
+                if (fileUpload != null)
+                {
+                    if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
+                    if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia.png");
+                    var path = Path.Combine(Server.MapPath("~/Public/img/blogs/"), fileName);
+                    try
+                    {
+                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                    }
+                    catch
+                    {
+
+                    }
+                    fileUpload.SaveAs(path);
+                    var img = new IMG_BLOG();
+                    img.AltImg = fileName;
+                    img.LinkImg = "/Public/img/blogs/" + fileName;
+                    img.IdBlog = bLOG.IdBlog;
+                    var imgageold = db.IMG_BLOG.Where(x => x.LinkImg == img.LinkImg).SingleOrDefault();
+                    if (imgageold != null)
+                    {
+                        db.IMG_BLOG.Remove(imgageold);
+                    }
+
+                    db.IMG_BLOG.Add(img);
+
+
+                    var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
+                    if (blog != null)
+                    {
+                        ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
+                        ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
+                        ViewBag.Error = "Tiêu đề đã tồn tại";
+                        return View(bLOG);
+                    }
+                    db.Entry(bLOG).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
             ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);

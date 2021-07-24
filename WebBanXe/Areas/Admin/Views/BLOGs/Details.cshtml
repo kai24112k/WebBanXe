@@ -6,10 +6,10 @@
 }
 
 
-<div>
+<div class="container">
     <hr />
     <div class="form-group">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-9">
                     <h2 class="h2">XEM CHI TIẾT</h2>
@@ -22,38 +22,38 @@
         </div>
     </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            <textarea rows="15" cols="125">@Html.DisplayFor(model => model.Content)</textarea>
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateCreate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CATEGORY_BLOG.NameCate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CATEGORY_BLOG.NameCate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USER.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USER.FullName)
-        </dd>
-
-    </dl>
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="mb-3">
+                        <label class="form-label">Tên bài viết</label>
+                        <input type="text" name="address" class="form-control" required value="@Model.Title" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngày tạo</label>
+                        <input type="text" name="title" class="form-control" value="@Model.DateCreate" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Thể loại</label>
+                        <input name="message" class="form-control" rows="7" value="@Model.CATEGORY_BLOG.NameCate" readonly>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Hình ảnh</label>
+                    @foreach (var picture in Model.IMG_BLOG)
+                    {
+                        
+                            <img src="@picture.LinkImg" alt="Example blog post alt" class="row border border-2 border-dark rounded-3 my-1 py-4 img-fluid shadow">
+                        
+                    }
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Nội dung bài viết</label>
+                    <textarea rows="10" class="form-control" readonly>@Html.Raw(Model.Content)</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

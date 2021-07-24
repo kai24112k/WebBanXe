@@ -5,23 +5,35 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>CATEGORY_BLOG</h4>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NameCate)
-        </dt>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">CHI TIẾT THỂ LOẠI</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
 
-        <dd>
-            @Html.DisplayFor(model => model.NameCate)
-        </dd>
+                    @Html.ActionLink("CHỈNH SỬA", "Edit", new { id = Model.IdCate }) |
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
 
-    </dl>
+    <hr />
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Details", "CATEGORY_BLOG", FormMethod.Post))
+            {
+                <input name="id" value="@Model.IdCate" hidden />
+                <div class="mb-3">
+                    <label class="form-label">Tên thể loại</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.NameCate" readonly>
+                </div>         
+            }
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCate }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

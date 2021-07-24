@@ -17,24 +17,29 @@
         </div>
     </div>
 </div>
-
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
 <hr />
 
 @using (Html.BeginForm("Create", "TYPECARs", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.NameType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NameType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NameType, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NameType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NameType, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
+        <div class="form-group">
             <lable class="control-label col-md-2">Hình ảnh</lable>
             <div class="col-md-10">
                 <input type="file" name="fileUpload" id="fileUpload">
@@ -44,13 +49,13 @@
                 </div>
             </div>
         </div>
-    
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Tạo" class="btn btn-default" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
 }
 
 <script>
@@ -60,7 +65,7 @@
     var previewText = previewContainer.querySelector(".image-preview-text");
 
     fileUpload.addEventListener("change", function () {
-        var file = this.files[0] ;
+        var file = this.files[0];
         if (file) {
             var reader = new FileReader();
             previewText.style.display = "none";

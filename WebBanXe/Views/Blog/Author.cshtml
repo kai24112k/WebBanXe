@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebBanXe.Model.USER>
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-body">
+        <ul class="nav nav-pills flex-column text-sm">
+            <li class="nav-item">
+                @foreach (var authorBlog in Model)
+                {
+                    <a href="@Url.Action("BlogHome","Blog", new { IdUser = authorBlog.FullName },null)" class="list-group-item">@authorBlog.FullName</a>
+                }
+            </li>
+
+        </ul>
+    </div>
+</div>
+

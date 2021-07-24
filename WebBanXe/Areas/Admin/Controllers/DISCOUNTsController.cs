@@ -50,6 +50,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var discount = db.DISCOUNTs.Where(p => p.CodeDiscount.ToLower() == dISCOUNT.CodeDiscount.ToLower() || p.Value == dISCOUNT.Value).SingleOrDefault();
+                if (discount != null)
+                {
+                    ViewBag.Error = "Khuyến mãi đã tồn tại";
+                    return View(dISCOUNT);
+                }
                 db.DISCOUNTs.Add(dISCOUNT);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +88,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var discount = db.DISCOUNTs.Where(p => p.CodeDiscount.ToLower() == dISCOUNT.CodeDiscount.ToLower() || p.Value == dISCOUNT.Value).SingleOrDefault();
+                if (discount != null)
+                {
+                    ViewBag.Error = "Khuyến mãi đã tồn tại";
+                    return View(dISCOUNT);
+                }
                 db.Entry(dISCOUNT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

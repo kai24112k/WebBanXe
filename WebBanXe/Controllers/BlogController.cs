@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,35 @@ namespace WebBanXe.Controllers
     {
         // GET: Blog
         DBBanXeEntities db = new DBBanXeEntities();
-       
-        private List<BLOG> GetBlog (int count)
+     
+        //private List<BLOG> GetBlog (int count)
+        //{
+        //    return db.BLOGs.OrderByDescending(a => a.IdBlog).Take(count).ToList();
+        //}
+        [Route("tap-chi-xe")]
+        public ActionResult BlogHome(int? IdCate/*, int? page*/, int? IdUser)
         {
-            return db.BLOGs.OrderByDescending(a => a.DateCreate).Take(count).ToList();
-        }
-        public ActionResult BlogHome(int ? page)
-        {
-            int pageSize = 5;
-            int pageNum = (page ?? 1);
-            var NewBlog = GetBlog(5);
+            //int pageSize = 3;
+            //int pageNum = (page ?? 1);
+            //var NewBlog = GetBlog(4);
+            //return View(NewBlog.ToPagedList(pageNum, pageSize));
 
-            //List<BLOG> listBlog = new List<BLOG>();
-            //listBlog = db.BLOGs.ToList();
-            return View(NewBlog.ToPagedList(pageNum, pageSize));
+            List<BLOG> listBlog = new List<BLOG>();
+            listBlog = db.BLOGs.ToList();
+            ViewBag.FULLNAME = db.USERs.ToList();
+            if (IdCate != null || IdUser != null )
+            {
+                listBlog = db.BLOGs.Where(p => p.IdCate == IdCate || p.IdUser == IdUser).ToList();
+              
+            }
+            else
+            {
+                listBlog = db.BLOGs.ToList();
+            }
+            return View(listBlog);
         }
+       
+
         // GET: Product
         public ActionResult CategoryBlog()
         {
@@ -35,13 +50,19 @@ namespace WebBanXe.Controllers
             category_Blog = db.CATEGORY_BLOG.ToList();
             return View(category_Blog);
         }
-    
+        [Route("tap-chi-xe/{id}")]
         public ActionResult Detail(int id)
         {
             BLOG blog = new BLOG();
             blog = db.BLOGs.Where(p => p.IdBlog == id).SingleOrDefault();
             
             return View(blog);
+        }
+        public ActionResult Author()
+        {
+            List<USER> author_Blog = new List<USER>();
+            author_Blog = db.USERs.ToList();
+            return View(author_Blog);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using WebBanXe.Model;
 
 namespace WebBanXe.Controllers
-{
+{   
     public class RentController : Controller
     {
         DBBanXeEntities db = new DBBanXeEntities();

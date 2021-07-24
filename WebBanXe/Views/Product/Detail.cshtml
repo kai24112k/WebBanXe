@@ -1,4 +1,4 @@
-﻿﻿﻿
+﻿﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 <div id="heading-breadcrumbs">
@@ -20,7 +20,7 @@
     <div class="container">
         <section class="bar">
             <div class="row portfolio-product">
-                <div class="col-sm-6 card">
+                <div class="col-sm-5 card">
                     <div class=" owl-carouse mb-4">
                         <div class="item ">
                             @foreach (var item in Model.IMG_PRODUCT)
@@ -44,29 +44,29 @@
                            class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
                             THÊM VÀO GIỎ HÀNG
                         </a>
-                        <a href="@Url.Action("addCart", "Cart", new { @iMaProduct = @Model.IdProduct, @strURL=Request.Url.ToString() })"
-                           class="btn-danger mx-3" style="padding: 15px 2px;box-shadow: 1px #c22026;">
-                            MUA NGAY
-                        </a>
-                        <h5 class="my-4">Gọi đặt hàng: 0987654321 hoặc 0123456789</h5>
+                        <button class="btn-danger mx-3" style="height: 50px;">MUA NGAY</button>
+                        <h5 class="my-4">Gọi đặt hàng: <a href="tel:+707450094" style="color: #000;">0707450094</a></h5>
                         <h4 style="color: brown;">CHIA SẺ NGAY</h4>
                         <div class="fb-share-button" data-href="@ViewBag.Url" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.Url" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 
 
                     </div>
                 </div>
-                <div class="col-sm-2 card">
-
-                    <div class="card">
-                        <h3 class="my-4 text-center card-footer"> Thông tin nổi bật</h3>
-                        <ul>
-                            <li>Dành cho lứa tuổi từ 15 trở lên</li>
-                            <li>Không còn nỗi lo lên về số, chỉ cần kéo ga nhẹ nhàng lướt nhanh</li>
-                            <li>Cốp rộng chứa đồ và sàn để chân thoải mái</li>
-                            <li>Bảo hành 2 năm động cơ và 3 năm khung sườn</li>
-                            <li>Đổi mới trong 3 ngày đầu tiên</li>
-                        </ul>
-                    </div>
+                <div class="col-sm-3 card">
+                    <h4 class="my-4 text-center card-footer" style="color:springgreen"> CHÚNG TÔI CAM KẾT</h4>
+                    <i class="fas fa-tools" style="color:sandybrown"> <b>SỬA CHỮA TẬN NƠI</b></i>
+                    <br />
+                    <br />
+                    <i class="fas fa-first-aid" style="color:brown"> <b>CỨU HỘ KHẨN CẤP</b></i>
+                    <br />
+                    <br />
+                    <i class="fas fa-shipping-fast" style="color:dodgerblue"> <b>GIAO HÀNG MIỄN PHÍ</b></i>
+                    <br />
+                    <br />
+                    <i class="fas fa-sync-alt" style="color:red"> <b>CHẤT LƯỢNG CHÍNH HÃNG</b></i>
+                    <br />
+                    <br />
+                    <i class="fas fa-medal" style="color:palevioletred"> <b>THỦ TỤC ĐƠN GIẢN</b></i>
                 </div>
             </div>
             <div class="fb-comments" data-href="@ViewBag.Url" data-width="1100" data-numposts="5"></div>
