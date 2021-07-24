@@ -83,29 +83,40 @@
                             <h3>Sản phẩm liên quan</h3>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="box-image">
-                            <div class="image">
-                                @foreach (var item in Model.IMG_PRODUCT)
-                                {
-                                    <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
-                                }
-                                <div class="overlay d-flex align-items-center justify-content-center">
-                                    <div class="content">
-                                        <div class="name no-mb">
-                                            <h3><a href="@Url.Action("Detail","Product", new { id = 2 },null)" class="color-white"></a></h3>
-                                        </div>
-                                        <div class="text">
-
-                                            <p class="buttons">
-                                                <a href="@Url.Action("Detail","Product", new { id = 2 },null)"
-                                                   class="btn btn-template-outlined-white">Xem chi tiết</a>
-                                            </p>
-                                        </div>
+                    <div class="row portfolio text-center color-white">
+                        @foreach (var product in ViewBag.Same)
+                        {
+                            <div class="col-md-4">
+                                <div class="box-image">
+                                    <div class="image">
+                                        <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                            @foreach (var item in product.IMG_PRODUCT)
+                                            {
+                                                if (item.IdProduct == product.IdProduct)
+                                                {
+                                                    <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                }
+                                            }
+                                            <div class="overlay d-flex align-items-center justify-content-center">
+                                                <div class="content">
+                                                    <div class="name">
+                                                        <h3>Thông tin chi tiết</h3>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p class="buttons">
+                                                            <h6 class="btn btn-template-outlined-white">
+                                                                Xem chi tiết
+                                                            </h6>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+
                     </div>
                 </div>
             </section>

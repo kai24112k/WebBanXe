@@ -247,7 +247,7 @@ namespace WebBanXe.Controllers
                         orderDetail.Quantity = product.iQuantity;
                         order.ORDER_DETAIL.Add(orderDetail);
                     }
-
+                    db.SaveChanges();
                     // Order success
                     try
                     {

@@ -25,30 +25,69 @@
     <hr />
     <div class="row border border-2 border-dark rounded-3 py-3">
         <div class="col-md-12">
-           
-                <div class="mb-3">
-                    <div class="mb-3">
-                        <label class="form-label">Họ tên</label>
-                        <input name="message" class="form-control" rows="7" value="@Model.USER.FullName" readonly>
-                    </div>
-                    <label class="form-label">Tổng tiền</label>
-                    <input type="text" name="address" class="form-control" required value="@Model.TotalMoney" readonly>
-                </div>
-              
-                <div class="mb-3">
-                    <label class="form-label">Tiền giảm</label>
-                    <input type="text" name="title" class="form-control" value="@Model.ReduceMoney" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Ngày mua</label>
-                    <input name="message" class="form-control" rows="7" value="@Model.DayCreate" readonly>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Thành tiền</label>
-                    <input name="message" class="form-control" rows="7" value="@Model.FinalMoney" readonly>
-                </div>
 
-            
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label class="form-label">Họ tên</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.USER.FullName" readonly>
+                </div>
+                <label class="form-label">Tổng tiền</label>
+                <input type="text" name="address" class="form-control" required value="@Model.TotalMoney" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tiền giảm</label>
+                <input type="text" name="title" class="form-control" value="@Model.ReduceMoney" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ngày mua</label>
+                <input name="message" class="form-control" rows="7" value="@Model.DayCreate" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Thành tiền</label>
+                <input name="message" class="form-control" rows="7" value="@Model.FinalMoney" readonly>
+            </div>
+            <table class="table" id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            Sản phẩm
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Giá tiền
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ORDER_DETAIL)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRODUCT.NameProduct)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <script>
+    jQuery(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        });
+    });
+            </script>
+
         </div>
     </div>
 </div>

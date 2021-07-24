@@ -1,7 +1,6 @@
 ﻿@using WebBanXe.Model
 @using PagedList.Mvc;
-@model List<WebBanXe.Model.BLOG>
-@*@model PagedList.PagedList<BLOG>*@
+@model PagedList.PagedList<BLOG>
 @{
     ViewBag.Title = "Tạp chí xe";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -106,21 +105,21 @@
                             </div>
                         }
                         <ul class="pager d-flex align-items-center justify-content-between list-unstyled" style="position: absolute; width: 100%; padding-right: 15px; bottom: -80px; ">
-                            @*<li class="MenuPage">
+                            <li class="MenuPage">
                                 @Html.PagedListPager(Model, Page => Url.Action("BlogHome", new { Page = Page }))
-                            </li>*@
+                            </li>
 
 
                             <li class="previous"><a href="#" class="btn btn-template-outlined">← Older</a></li>
                             <li class="next disabled"><a href="" class="btn btn-template-outlined">Newer →</a></li>
                         </ul>
                     </div>
-                    @* @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;*@
 
                 </section>
-
-
             </div>
+        </div>
+    </div>
+</div>
             <div class="col-md-3">
                 <div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
@@ -148,7 +147,7 @@
 
 
         </div>*@
-                <div class="panel panel-default sidebar-menu">
+                @*<div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
                         <h2><a href="#">TÁC GIẢ</a></h2>
                     </div>
@@ -156,7 +155,7 @@
                         @Html.Action("Author", "Blog")
                     </div>
                 </div>
-            </div>
+            </div>*@
 </div>
 
 

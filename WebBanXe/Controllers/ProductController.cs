@@ -46,7 +46,7 @@ namespace WebBanXe.Controllers
             var request = HttpContext.Request.Url.AbsoluteUri;
             ViewBag.Url = request;
             ViewBag.Title = product.NameProduct;
-
+            ViewBag.Same = db.PRODUCTs.Where(x => x.IdType == product.IdType || x.IdBrand == product.IdBrand).ToList();
             var imgDB = product.IMG_PRODUCT.FirstOrDefault();
             if (imgDB != null) ViewBag.MetaIMG = imgDB.LinkImg;
 
