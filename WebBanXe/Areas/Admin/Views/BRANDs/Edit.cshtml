@@ -51,7 +51,7 @@
             <div class="col-md-12">
                 <input type="file" name="fileUpload" id="fileUpload">
                 <div class="image-preview" id="imagePreview">
-                    <img src="@Url.Content(Model.ImgBrand)" alt="Image Preview" class="image-preview-img " style="display:block;" />
+                    <img src="@Html.Raw(Model.ImgBrand)" alt="Image Preview" class="image-preview-img " style="display:block;" />
 
                 </div>
             </div>
