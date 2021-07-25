@@ -68,6 +68,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             { 
+                 var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower()).SingleOrDefault();
+                if (typecar != null)
+                {                  
+                    ViewBag.Error = "Loại xe đã tồn tại";
+                    return View(tYPECAR);
+                }
                 if (fileUpload != null)
                 {
                     var extension = Path.GetExtension(fileUpload.FileName);
@@ -87,12 +93,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     tYPECAR.ImgType = "/Public/img/typecars/" + fileName;
                     db.TYPECARs.Add(tYPECAR);
                 }
-                var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower()).SingleOrDefault();
-                if (typecar != null)
-                {                  
-                    ViewBag.Error = "Loại xe đã tồn tại";
-                    return View(tYPECAR);
-                }
+               
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }         
@@ -124,7 +125,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower()).SingleOrDefault();
+                var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower() && p.IdType != tYPECAR.IdType).SingleOrDefault();
                 if (typecar != null)
                 {
                     ViewBag.Error = "Loại xe đã tồn tại";
@@ -150,13 +151,14 @@ namespace WebBanXe.Areas.Admin.Controllers
                     UpdateModel(tYPECAR);
 
                     db.SaveChanges();
-
+                   
                     db.Entry(tYPECAR).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-            return View(tYPECAR);
+                return View(tYPECAR);
+            
         }
 
         // GET: Admin/TYPECARs/Delete/5

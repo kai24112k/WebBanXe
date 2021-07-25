@@ -59,7 +59,14 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
+                if (blog != null)
+                {
+                    ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
+                    ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
+                    ViewBag.Error = "Tiêu đề đã tồn tại";
+                    return View(bLOG);
+                }
                 bLOG.DateCreate = DateTime.Now;
                 bLOG.IdUser = int.Parse( Session["userID"].ToString());
                 db.BLOGs.Add(bLOG);
@@ -85,14 +92,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     img.IdBlog = bLOG.IdBlog;                   
                     db.IMG_BLOG.Add(img);
                 }
-                var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
-                if (blog != null)
-                {
-                    ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
-                    ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
-                    ViewBag.Error = "Tiêu đề đã tồn tại";
-                    return View(bLOG);
-                }
+               
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -122,9 +122,9 @@ namespace WebBanXe.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]  
+        [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit (BLOG bLOG, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(BLOG bLOG, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
@@ -177,18 +177,18 @@ namespace WebBanXe.Areas.Admin.Controllers
         // POST: Admin/BLOGs/Delete/5
 
         public ActionResult Delete(int id)
-        {
-
-            BLOG bLOG = db.BLOGs.Find(id);
-            db.BLOGs.Remove(bLOG);
-            var listImg = db.IMG_BLOG.Where(p => p.IdBlog == id).ToList();
-            foreach (var item in listImg)
             {
-                db.IMG_BLOG.Remove(item);
+
+                BLOG bLOG = db.BLOGs.Find(id);
+                db.BLOGs.Remove(bLOG);
+                var listImg = db.IMG_BLOG.Where(p => p.IdBlog == id).ToList();
+                foreach (var item in listImg)
+                {
+                    db.IMG_BLOG.Remove(item);
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

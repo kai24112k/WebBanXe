@@ -78,6 +78,7 @@ namespace WebBanXe.Areas.Admin.Controllers
 
                     db.BRANDs.Add(bRAND);
                 }
+               
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -137,6 +138,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                   
                     db.SaveChanges();
                 }
+              
                 db.Entry(bRAND).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

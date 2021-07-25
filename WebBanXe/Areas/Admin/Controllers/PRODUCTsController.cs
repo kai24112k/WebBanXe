@@ -164,7 +164,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     db.IMG_PRODUCT.Remove(imgold);
                     db.IMG_PRODUCT.Add(img);
                 }
-
+               
                 db.Entry(pRODUCT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
