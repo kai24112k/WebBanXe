@@ -128,10 +128,16 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower() && p.IdBlog != bLOG.IdBlog).SingleOrDefault();
+                if (blog != null)
+                {
+                    ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
+                    ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
+                    ViewBag.Error = "Tiêu đề đã tồn tại";
+                    return View(bLOG);
+                }
                 bLOG.DateCreate = DateTime.Now;
                 bLOG.IdUser = int.Parse(Session["userID"].ToString());
-
                 if (fileUpload != null)
                 {
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
@@ -156,18 +162,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     {
                         db.IMG_BLOG.Remove(imgageold);
                     }
-
                     db.IMG_BLOG.Add(img);
-
-
-                    var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
-                    if (blog != null)
-                    {
-                        ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
-                        ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
-                        ViewBag.Error = "Tiêu đề đã tồn tại";
-                        return View(bLOG);
-                    }
                     db.Entry(bLOG).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

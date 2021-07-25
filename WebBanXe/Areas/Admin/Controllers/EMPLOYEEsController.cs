@@ -12,8 +12,8 @@ namespace WebBanXe.Areas.Admin.Controllers
 {
     public class EMPLOYEEsController : BaseController
     {
-        private DBBanXeEntities db = new DBBanXeEntities();
-
+        private static DBBanXeEntities db = new DBBanXeEntities();
+        public List<USER_ROLE> listRole = db.USER_ROLE.Where(u => u.IdRole != 1 && u.IdRole != 3).ToList();
         // GET: Admin/EMPLOYEEs
         public ActionResult Index()
         {
@@ -39,7 +39,6 @@ namespace WebBanXe.Areas.Admin.Controllers
         // GET: Admin/EMPLOYEEs/Create
         public ActionResult Create()
         {
-            var listRole = db.USER_ROLE.Where(u => u.IdRole != 1 && u.IdRole != 3);
             ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName");
             return View();
         }
@@ -55,10 +54,10 @@ namespace WebBanXe.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower() 
-                || p.Phone == uSER.Phone).SingleOrDefault();
+                || p.Phone == uSER.Phone).FirstOrDefault();
                 if (user != null)
                 {
-                    ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+                    ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName", uSER.IdRole);
                     ViewBag.Error = "Người dùng đã tồn tại";
                     return View(uSER);
                 }
@@ -67,7 +66,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+            ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName", uSER.IdRole);
             return View(uSER);
         }
 
@@ -83,7 +82,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+            ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName", uSER.IdRole);
             return View(uSER);
         }
 
@@ -96,11 +95,11 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower()
-               || p.Phone == uSER.Phone && p.IdUser != uSER.IdUser).SingleOrDefault();
+                var user = db.USERs.Where(p => (p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower()
+               || p.Phone == uSER.Phone) && p.IdUser != uSER.IdUser).SingleOrDefault();
                 if (user != null)
                 {
-                    ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+                    ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName", uSER.IdRole);
                     ViewBag.Error = "Người dùng đã tồn tại";
                     return View(uSER);
                 }
@@ -108,7 +107,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
+            ViewBag.IdRole = new SelectList(listRole, "IdRole", "RoleName", uSER.IdRole);
             return View(uSER);
         }
 
