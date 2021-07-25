@@ -5,79 +5,58 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>USER</h4>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">CHI TIẾT NGƯỜI DÙNG</h2>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+    <hr />
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Details", "EMPLOYEEs", FormMethod.Post))
+            {
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <div class="mb-3">
+                    <label class="form-label">Họ và tên</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.FullName" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Username" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" name="title" class="form-control" value="@Model.Email" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Address" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Phone" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày tạo</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.DayCreate" readonly>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DayCreate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DayCreate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USER_ROLE.RoleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USER_ROLE.RoleName)
-        </dd>
-
-    </dl>
+            }
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

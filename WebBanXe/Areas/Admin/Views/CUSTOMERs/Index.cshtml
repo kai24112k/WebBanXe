@@ -1,76 +1,92 @@
 ﻿@model IEnumerable<WebBanXe.Model.USER>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "USER";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="text-align:right;margin:20px;">
+    <a href="@Url.Action("Create","CUSTOMERs")" class="btn btn-primary">Tạo mới</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DayCreate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USER_ROLE.RoleName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayCreate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.USER_ROLE.RoleName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdUser }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdUser }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdUser })
-        </td>
-    </tr>
-}
-
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DayCreate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.USER_ROLE.RoleName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DayCreate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER_ROLE.RoleName)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="@Url.Action("Edit","CUSTOMERs",new { @id = item.IdUser })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete","CUSTOMERs",new { @id = item.IdUser })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","CUSTOMERs",new { @id = item.IdUser })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+<script>
+    jQuery(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        });
+    });
+</script>
