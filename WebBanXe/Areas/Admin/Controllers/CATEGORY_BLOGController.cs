@@ -88,7 +88,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cate = db.CATEGORY_BLOG.Where(p => p.NameCate.ToLower() == cATEGORY_BLOG.NameCate.ToLower()).SingleOrDefault();
+                var cate = db.CATEGORY_BLOG.Where(p => p.NameCate.ToLower() == cATEGORY_BLOG.NameCate.ToLower() && p.IdCate != cATEGORY_BLOG.IdCate).SingleOrDefault();
                 if (cate != null)
                 {
                     ViewBag.Error = "Thể loại bài viết đã tồn tại";

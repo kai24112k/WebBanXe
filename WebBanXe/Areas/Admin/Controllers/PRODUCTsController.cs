@@ -133,6 +133,14 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower() && p.IdProduct != pRODUCT.IdProduct).SingleOrDefault();
+                if (product != null)
+                {
+                    ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
+                    ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
+                    ViewBag.Error = "Sản phẩm đã tồn tại";
+                    return View(pRODUCT);
+                }
                 if (fileUpload != null)
                 {                 
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
@@ -156,14 +164,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     db.IMG_PRODUCT.Remove(imgold);
                     db.IMG_PRODUCT.Add(img);
                 }
-                var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower()).SingleOrDefault();
-                if (product != null)
-                {
-                    ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
-                    ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
-                    ViewBag.Error = "Sản phẩm đã tồn tại";
-                    return View(pRODUCT);
-                }
+               
                 db.Entry(pRODUCT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

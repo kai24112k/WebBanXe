@@ -88,7 +88,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var discount = db.DISCOUNTs.Where(p => p.CodeDiscount.ToLower() == dISCOUNT.CodeDiscount.ToLower() || p.Value == dISCOUNT.Value).SingleOrDefault();
+                var discount = db.DISCOUNTs.Where(p => (p.CodeDiscount.ToLower() == dISCOUNT.CodeDiscount.ToLower() || p.Value == dISCOUNT.Value) && p.IdDiscount != dISCOUNT.IdDiscount).SingleOrDefault();
                 if (discount != null)
                 {
                     ViewBag.Error = "Khuyến mãi đã tồn tại";
