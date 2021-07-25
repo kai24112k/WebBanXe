@@ -236,7 +236,6 @@ namespace WebBanXe.Controllers
                     // Add order vào db
                     db.ORDERs.Add(order);
                     db.SaveChanges();
-
                     // Get id order
                     idOrder = order.IdOrder;
                     foreach (var product in cart.ListProduct)
@@ -248,7 +247,7 @@ namespace WebBanXe.Controllers
                         orderDetail.Quantity = product.iQuantity;
                         order.ORDER_DETAIL.Add(orderDetail);
                     }
-
+                    db.SaveChanges();
                     // Order success
                     try
                     {

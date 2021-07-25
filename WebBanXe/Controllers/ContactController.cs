@@ -12,6 +12,7 @@ namespace WebBanXe.Controllers
       
         DBBanXeEntities db = new DBBanXeEntities();
         // GET: Contact
+        [Route("lien-he")]
        
         public ActionResult ContactPage()
         {
@@ -19,12 +20,9 @@ namespace WebBanXe.Controllers
 
         }
         [HttpPost]
-        public ActionResult ContactPage(FormCollection contactForm)
+        public ActionResult ContactPage(USER user,FormCollection contactForm)
         {
             CONTACT contact = new CONTACT();
-
-
-           
             var title = contactForm["title"];
             var email = contactForm["email"];
             var content = contactForm["content"];
@@ -44,6 +42,11 @@ namespace WebBanXe.Controllers
             }
             
             contact.Status = false;
+            if (user != null)
+            {
+                contact.Email = user.Email;
+                contact.IdUser = user.IdUser;
+            }
             db.CONTACTs.Add(contact);
             db.SaveChanges();
 

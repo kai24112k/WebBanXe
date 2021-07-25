@@ -12,8 +12,6 @@ namespace WebBanXe.Controllers
         DBBanXeEntities db = new DBBanXeEntities();
 
         // GET: Product
-
-
         public ActionResult Index()
         {
             //var ngaynhan = Session["Ngaynhan"];
@@ -24,20 +22,22 @@ namespace WebBanXe.Controllers
         }
 
         [Route("thue-xe")]
-        public ActionResult Prent(int? idBrand, int? idType, int? idStatus, int? page)
+        public ActionResult RentProduct(int? idBrand, int? idType, int? page)
         {
-            List<PRODUCT> listproduct = new List<PRODUCT>();
+            //int pageSize = 6;
+            //int pageNum = (page ?? 1);
+            //var xemoi = 
+            List<RENT> listrent = new List<RENT>();
             ViewBag.BRAND = db.BRANDs.ToList();
-            if (idBrand != null || idType != null || idStatus != null)
+            if (idBrand != null || idType != null)
             {
-                listproduct = db.PRODUCTs.Where(p => p.IdBrand == idBrand || p.IdType == idType || p.Status == idStatus).ToList();
+                listrent = db.RENTs.Where(p => p.PRODUCT.IdBrand == idBrand || p.PRODUCT.IdType == idType).ToList();
             }
             else
             {
-                listproduct = db.PRODUCTs.Where(s=>s.Status == 0).ToList();
+                listrent = db.RENTs.ToList();
             }
-            return View(listproduct);
-
+            return View(listrent);
         }
 
         [Route("thue-xe/{url}")]
@@ -69,6 +69,6 @@ namespace WebBanXe.Controllers
             List<TYPECAR> listtypecar = new List<TYPECAR>();
             listtypecar = db.TYPECARs.ToList();
             return View(listtypecar);
-        } 
+        }
     }
 }

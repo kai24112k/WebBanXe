@@ -13,6 +13,7 @@ namespace WebBanXe.Controllers
         [Route("gioi-thieu")]
         public ActionResult Index()
         {
+            ViewBag.Title = "Giới thiệu";
             return View();
         }
     }

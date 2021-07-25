@@ -1,13 +1,7 @@
 ﻿@model IEnumerable<WebBanXe.Model.ORDER>
-
 @{
-    ViewBag.Title = "ORDER";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br />
-<p style="text-align:right;margin:20px;">
-    
-</p>
 <table class="table" id="myTable">
     <thead>
         <tr>
@@ -72,7 +66,7 @@
                     }
                     else
                     {
-                        <i class="fas fa-check"style="font-size:30px;color:green"></i>
+                        <i class="fas fa-check" style="font-size:30px;color:green"></i>
                     }
                 </td>
                 <td>
@@ -91,11 +85,20 @@
                         Thanh toán COD
                     </td>
                 }
-                <td>
-                    <a class="btn btn-sm btn-info" href="@Url.Action("Details","ORDERs",new { @id = item.IdOrder })">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                </td>
+                @if (!string.IsNullOrEmpty(item.MomoPaymentID) && item.Status == 0)
+                {
+                    <td>
+                        <a class="btn btn-sm btn-info" href="@Url.Action("PaymentAgain","Cart",new { @id = item.IdOrder })">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                    </td>
+                }
+
             </tr>
         }
     </tbody>
@@ -109,3 +112,18 @@
         });
     });
 </script>
+
+<style>
+    #myTable_wrapper {
+        margin: 0 20px;
+    }
+
+    #myTable > thead {
+        background-color: lightskyblue;
+        color: ghostwhite;
+    }
+
+    #myTable, th, td {
+        border: 1px solid #000000;
+    }
+</style>
