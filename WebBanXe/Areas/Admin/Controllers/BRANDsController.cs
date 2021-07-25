@@ -52,6 +52,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var brand = db.BRANDs.Where(p => p.NameBrand.ToLower() == bRAND.NameBrand.ToLower()).SingleOrDefault();
+                if (brand != null)
+                {
+                    ViewBag.Error = "Hãng xe đã tồn tại";
+                    return View(bRAND);
+                }
                 if (fileUpload != null)
                 {
                     var extension = Path.GetExtension(fileUpload.FileName);
@@ -72,12 +78,7 @@ namespace WebBanXe.Areas.Admin.Controllers
 
                     db.BRANDs.Add(bRAND);
                 }
-                var brand = db.BRANDs.Where(p => p.NameBrand.ToLower() == bRAND.NameBrand.ToLower()).SingleOrDefault();
-                if (brand != null)
-                {
-                    ViewBag.Error = "Hãng xe đã tồn tại";
-                    return View(bRAND);
-                }
+               
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -109,6 +110,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {   
             if (ModelState.IsValid)
             {
+                var brand = db.BRANDs.Where(p => p.NameBrand.ToLower() == bRAND.NameBrand.ToLower() && p.IdBrand != bRAND.IdBrand).SingleOrDefault();
+                if (brand != null)
+                {
+                    ViewBag.Error = "Hãng xe đã tồn tại";
+                    return View(bRAND);
+                }
                 if (fileUpload != null)
                 {
                
@@ -131,12 +138,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                   
                     db.SaveChanges();
                 }
-                var brand = db.BRANDs.Where(p => p.NameBrand.ToLower() == bRAND.NameBrand.ToLower()).SingleOrDefault();
-                if (brand != null)
-                {
-                    ViewBag.Error = "Hãng xe đã tồn tại";
-                    return View(bRAND);
-                }
+              
                 db.Entry(bRAND).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
