@@ -43,7 +43,9 @@ namespace WebBanXe.Controllers
                 USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole == 3);
                 if (user != null)
                 {
-                    SaveSession(user);
+                    Session["userID"] = user.IdUser;
+                    Session["fullName"] = user.FullName;
+                    Session["Role"] = user.USER_ROLE.RoleName;
 
                     if (!string.IsNullOrEmpty(Request.QueryString["returnURL"]))
                     {

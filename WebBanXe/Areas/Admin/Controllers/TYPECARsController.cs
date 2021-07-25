@@ -144,17 +144,19 @@ namespace WebBanXe.Areas.Admin.Controllers
                     UpdateModel(tYPECAR);
 
                     db.SaveChanges();
-                var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower()).SingleOrDefault();
-                if (typecar != null)
-                {
-                    ViewBag.Error = "Loại xe đã tồn tại";
-                    return View(tYPECAR);
+                    var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower()).SingleOrDefault();
+                    if (typecar != null)
+                    {
+                        ViewBag.Error = "Loại xe đã tồn tại";
+                        return View(tYPECAR);
+                    }
+                    db.Entry(tYPECAR).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                db.Entry(tYPECAR).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
-            return View(tYPECAR);
+                return View(tYPECAR);
+            
         }
 
         // GET: Admin/TYPECARs/Delete/5

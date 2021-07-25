@@ -122,9 +122,9 @@ namespace WebBanXe.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]  
+        [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit (BLOG bLOG, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(BLOG bLOG, HttpPostedFileBase fileUpload)
         {
             if (ModelState.IsValid)
             {
@@ -133,7 +133,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                 bLOG.IdUser = int.Parse(Session["userID"].ToString());
 
                 if (fileUpload != null)
-                {             
+                {
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
                     var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia.png");
@@ -152,48 +152,49 @@ namespace WebBanXe.Areas.Admin.Controllers
                     img.LinkImg = "/Public/img/blogs/" + fileName;
                     img.IdBlog = bLOG.IdBlog;
                     var imgageold = db.IMG_BLOG.Where(x => x.LinkImg == img.LinkImg).SingleOrDefault();
-                    if(imgageold != null)
+                    if (imgageold != null)
                     {
                         db.IMG_BLOG.Remove(imgageold);
                     }
-                
+
                     db.IMG_BLOG.Add(img);
-                   
-                 
-                var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
-                if (blog != null)
-                {
-                    ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
-                    ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
-                    ViewBag.Error = "Tiêu đề đã tồn tại";
-                    return View(bLOG);
+
+
+                    var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower()).SingleOrDefault();
+                    if (blog != null)
+                    {
+                        ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
+                        ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
+                        ViewBag.Error = "Tiêu đề đã tồn tại";
+                        return View(bLOG);
+                    }
+                    db.Entry(bLOG).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                db.Entry(bLOG).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
-           
-            ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
-            ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
-            return View(bLOG);
-        }
+                ViewBag.IdCate = new SelectList(db.CATEGORY_BLOG, "IdCate", "NameCate", bLOG.IdCate);
+                ViewBag.IdUser = new SelectList(db.USERs, "IdUser", "FullName", bLOG.IdUser);
+                return View(bLOG);
+            }
+        
 
 
         // POST: Admin/BLOGs/Delete/5
 
         public ActionResult Delete(int id)
-        {
-
-            BLOG bLOG = db.BLOGs.Find(id);
-            db.BLOGs.Remove(bLOG);
-            var listImg = db.IMG_BLOG.Where(p => p.IdBlog == id).ToList();
-            foreach (var item in listImg)
             {
-                db.IMG_BLOG.Remove(item);
+
+                BLOG bLOG = db.BLOGs.Find(id);
+                db.BLOGs.Remove(bLOG);
+                var listImg = db.IMG_BLOG.Where(p => p.IdBlog == id).ToList();
+                foreach (var item in listImg)
+                {
+                    db.IMG_BLOG.Remove(item);
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
