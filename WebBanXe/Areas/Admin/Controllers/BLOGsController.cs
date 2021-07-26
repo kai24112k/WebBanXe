@@ -138,7 +138,6 @@ namespace WebBanXe.Areas.Admin.Controllers
                 }
                 bLOG.DateCreate = DateTime.Now;
                 bLOG.IdUser = int.Parse(Session["userID"].ToString());
-
                 if (fileUpload != null)
                 {
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
@@ -163,11 +162,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     {
                         db.IMG_BLOG.Remove(imgageold);
                     }
-
                     db.IMG_BLOG.Add(img);
-
-
-                   
                     db.Entry(bLOG).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

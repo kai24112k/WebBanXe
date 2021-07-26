@@ -66,7 +66,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower()).SingleOrDefault();
-               if (product!=null)
+               if (product!=null || fileUpload == null)
                 {
                     ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
                     ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
@@ -133,12 +133,12 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower() && p.IdProduct != pRODUCT.IdProduct).SingleOrDefault();
-                if (product != null)
+                var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower() && pRODUCT.IdProduct != p.IdProduct).SingleOrDefault();
+                if (product != null || fileUpload == null)
                 {
                     ViewBag.IdBrand = new SelectList(db.BRANDs, "IdBrand", "NameBrand", pRODUCT.IdBrand);
                     ViewBag.IdType = new SelectList(db.TYPECARs, "IdType", "NameType", pRODUCT.IdType);
-                    ViewBag.Error = "Sản phẩm đã tồn tại";
+                    ViewBag.Error = "Sản phẩm đã tồn tại và vui lòng nhập đầy đủ thông tin";
                     return View(pRODUCT);
                 }
                 if (fileUpload != null)
