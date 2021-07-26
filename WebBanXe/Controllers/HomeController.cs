@@ -26,12 +26,12 @@ namespace WebBanXe.Controllers
         {
             //List<PRODUCT> listProduct = new List<PRODUCT>();
             //listProduct = db.PRODUCTs.ToList();
-            var newproduct = GetNewProduct(3);
-           
+            ViewBag.Product = GetNewProduct(3);
+            ViewBag.Blog = GetBlog(4);
             ViewBag.BRAND = db.BRANDs.ToList();
-            ViewBag.BLOG = db.BLOGs.ToList();
-            var NewBlog = GetBlog(4);
-            return View(newproduct);
+         
+          
+            return View();
 
         }
         

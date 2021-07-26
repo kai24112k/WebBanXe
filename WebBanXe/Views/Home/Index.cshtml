@@ -1,4 +1,4 @@
-﻿@using WebBanXe.Model
+﻿@model IEnumerable<WebBanXe.Model.BRAND>
 @{
     ViewBag.Title = "DHCV Motobikes";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -162,7 +162,7 @@
                     <div class="container">
                         <div class="project owl-carousel">
                             <div class="row portfolio text-center color-white">
-                                @foreach (var product in Model)
+                                @foreach (var product in ViewBag.Product)
                                 {
                                     <div class="col-md-4">
                                         <div class="box-image">
@@ -197,7 +197,7 @@
 
                             </div>
                             <div class="row portfolio text-center color-white">
-                                @foreach (var product in Model)
+                                @foreach (var product in ViewBag.Product)
                                 {
                                     <div class="col-md-4">
                                         <div class="box-image">
@@ -232,7 +232,7 @@
 
                             </div>
                             <div class="row portfolio text-center color-white">
-                                @foreach (var product in Model)
+                                @foreach (var product in ViewBag.Product)
                                 {
                                     <div class="col-md-4">
                                         <div class="box-image">
@@ -275,10 +275,10 @@
             </div>
 
         </div>
-       
+
     </div>
-        
-    
+
+
 </section>
 <section style="background: url(/Public/img/bannervespa.png) center top no-repeat; background-size: cover;"
          class="bar no-mb color-white text-center bg-fixed relative-positioned">
@@ -303,7 +303,7 @@
                     <h3>Các hãng xe</h3>
                 </div>
                 <ul class="list-unstyled owl-carousel brand no-mb">
-                    @foreach (var item in (List<BRAND>)ViewBag.BRAND)
+                    @foreach (var item in ViewBag.BRAND)
                     {
                         <li class="item"><img src="@item.ImgBrand" alt="" class="img-fluid"></li>
                     }
@@ -325,7 +325,7 @@
                         <div class="project owl-carousel">
                             <div class="item">
                                 <div class="row portfolio text-center color-white">
-                                    @foreach (var product in Model)
+                                    @foreach (var product in ViewBag.Product)
                                     {
                                         <div class="col-md-4">
                                             <div class="box-image">
@@ -361,7 +361,7 @@
                                 </div>
                             </div>
                             <div class="row portfolio text-center color-white">
-                                @foreach (var product in Model)
+                                @foreach (var product in ViewBag.Product)
                                 {
                                     <div class="col-md-4">
                                         <div class="box-image">
@@ -396,75 +396,75 @@
 
                             </div>
                             @*<div class="row portfolio text-center color-white">
-                                @foreach (var product in Model)
-                                {
-                                    <div class="col-md-4">
-                                        <div class="box-image">
-                                            <div class="image">
-                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
-                                                    @foreach (var item in product.IMG_PRODUCT)
-                                                    {
-                                                        if (item.IdProduct == product.IdProduct)
+                                    @foreach (var product in Model)
+                                    {
+                                        <div class="col-md-4">
+                                            <div class="box-image">
+                                                <div class="image">
+                                                    <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                        @foreach (var item in product.IMG_PRODUCT)
                                                         {
-                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                            if (item.IdProduct == product.IdProduct)
+                                                            {
+                                                                <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                            }
                                                         }
-                                                    }
-                                                    <div class="overlay d-flex align-items-center justify-content-center">
-                                                        <div class="content">
-                                                            <div class="name">
-                                                                <h3>Thông tin chi tiết</h3>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p class="buttons">
-                                                                    <h6 class="btn btn-template-outlined-white">
-                                                                        Xem chi tiết
-                                                                    </h6>
-                                                                </p>
+                                                        <div class="overlay d-flex align-items-center justify-content-center">
+                                                            <div class="content">
+                                                                <div class="name">
+                                                                    <h3>Thông tin chi tiết</h3>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <p class="buttons">
+                                                                        <h6 class="btn btn-template-outlined-white">
+                                                                            Xem chi tiết
+                                                                        </h6>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </a>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                }
+                                    }
 
-                            </div>
-                            <div class="row portfolio text-center color-white">
-                                @foreach (var product in Model)
-                                {
-                                    <div class="col-md-4">
-                                        <div class="box-image">
-                                            <div class="image">
-                                                <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
-                                                    @foreach (var item in product.IMG_PRODUCT)
-                                                    {
-                                                        if (item.IdProduct == product.IdProduct)
+                                </div>
+                                <div class="row portfolio text-center color-white">
+                                    @foreach (var product in Model)
+                                    {
+                                        <div class="col-md-4">
+                                            <div class="box-image">
+                                                <div class="image">
+                                                    <a href="@Url.Action("Detail","Product", new { url = product.ToURL() }, null)">
+                                                        @foreach (var item in product.IMG_PRODUCT)
                                                         {
-                                                            <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                            if (item.IdProduct == product.IdProduct)
+                                                            {
+                                                                <img src="@item.LinkImg" alt="@item.AltImg" class="img-fluid">
+                                                            }
                                                         }
-                                                    }
-                                                    <div class="overlay d-flex align-items-center justify-content-center">
-                                                        <div class="content">
-                                                            <div class="name">
-                                                                <h3>Thông tin chi tiết</h3>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p class="buttons">
-                                                                    <h6 class="btn btn-template-outlined-white">
-                                                                        Xem chi tiết
-                                                                    </h6>
-                                                                </p>
+                                                        <div class="overlay d-flex align-items-center justify-content-center">
+                                                            <div class="content">
+                                                                <div class="name">
+                                                                    <h3>Thông tin chi tiết</h3>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <p class="buttons">
+                                                                        <h6 class="btn btn-template-outlined-white">
+                                                                            Xem chi tiết
+                                                                        </h6>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </a>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                }
+                                    }
 
-                            </div>*@
+                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -485,9 +485,9 @@
                 <h2>Tạp chí xe</h2>
             </div>
             <div class="row">
-                @foreach (var item in (List<BLOG>)ViewBag.BLOG)
+                @foreach (var item in ViewBag.Blog)
                 {
-                   
+
                     foreach (var picture in item.IMG_BLOG)
                     {
                         <div class="col-lg-3">
@@ -495,7 +495,7 @@
                                 <div class="image">
                                     @if (item.IdBlog == picture.IdBlog)
                                     {
-                                    <img src="@picture.LinkImg" alt="..." class="img-fluid">
+                                        <img src="@picture.LinkImg" alt="..." class="img-fluid">
                                     }
                                     <div class="overlay d-flex align-items-center justify-content-center">
                                         <a href="@Url.Action("Detail", "Blog", new { id = item.IdBlog }, null)"
@@ -503,30 +503,32 @@
                                     </div>
                                 </div>
                                 <div class="text">
-                                    <h4><a href="#">
-                                         @if (item.Title.Length > 40)
-                                         {
-                                           @Html.Raw(item.Title.Substring(0, 40))
+                                    <h4>
+                                        <a href="#">
+                                            @if (item.Title.Length > 40)
+                                            {
+                                                @Html.Raw(item.Title.Substring(0, 40))
 
-                                         }
-                                         else
-                                         {
-                                           @Html.Raw(item.Title)
-                                         }
-                                        </a></h4>
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw(item.Title)
+                                            }
+                                        </a>
+                                    </h4>
                                     @*<p class="author-category">By <a href="#">Vulee </a> in <a href="#">Tạp chí xe</a></p>*@
                                     @*<p class="intro" style="font-size:10px; ">
-                                        @if (item.Content.Length > 40)
-                                        {
-                                            @Html.Raw(item.Content.Substring(0, 30))
+                                            @if (item.Content.Length > 40)
+                                            {
+                                                @Html.Raw(item.Content.Substring(0, 30))
 
-                                        }
-                                        else
-                                        {
-                                            @Html.Raw(item.Content)
-                                        }
-                                    </p>*@
-                                    <a href="@Url.Action("Detail", "Blog", new { id = item.IdBlog }, null)" ></a>
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw(item.Content)
+                                            }
+                                        </p>*@
+                                    <a href="@Url.Action("Detail", "Blog", new { id = item.IdBlog }, null)"></a>
                                 </div>
                             </div>
                         </div>
