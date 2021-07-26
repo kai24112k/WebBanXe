@@ -56,7 +56,7 @@
                     {
                         if (item.IdProduct == picture.IdProduct)
                         {
-                            <img src="@picture.LinkImg" alt="Example blog post alt" class="img-fluid admin_img">
+                            <img src="@picture.LinkImg?v=@DateTime.Now.ToFileTimeUtc()" alt="Example blog post alt" class="img-fluid admin_img">
                         }
 
                     }

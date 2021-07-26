@@ -22,7 +22,7 @@ namespace WebBanXe.Controllers
 
         public ActionResult Index(int? idBrand, int? idType, int? idStatus, int? page)
         {
-            int pageSize = 3;
+            int pageSize = 6;
             int pageNum = (page ?? 1);
             var NewProduct = new List<PRODUCT>();
             List<PRODUCT> listproduct = new List<PRODUCT>();

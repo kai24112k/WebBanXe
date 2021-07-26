@@ -142,6 +142,8 @@ namespace WebBanXe.Areas.Admin.Controllers
                     ViewBag.Error = "Sản phẩm đã tồn tại và vui lòng nhập đầy đủ thông tin";
                     return View(pRODUCT);
                 }
+                db.Entry(pRODUCT).State = EntityState.Modified;
+                db.SaveChanges();
                 if (fileUpload != null)
                 {                 
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
@@ -166,7 +168,6 @@ namespace WebBanXe.Areas.Admin.Controllers
                     db.IMG_PRODUCT.Remove(imgold);
                     db.IMG_PRODUCT.Add(img);
                 }
-                db.Entry(pRODUCT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
