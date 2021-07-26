@@ -43,7 +43,7 @@
                         @Html.LabelFor(model => model.NameProduct, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-12">
                             @Html.EditorFor(model => model.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger"  })
+                            @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -77,18 +77,21 @@
                         </div>
                     </div>
                 </div>
+                @foreach (var picture in Model.IMG_PRODUCT)
+                {
                     <div class="col-md-4">
                         <div class="form-group">
                             <lable class="control-label col-md-2">Hình ảnh</lable>
                             <div class="col-md-12">
                                 <input type="file" name="fileUpload" id="fileUpload">
                                 <div class="image-preview" id="imagePreview">
-                                    <img src="" alt="" class="image-preview-img " style="display:block;" />
+                                    <img src="@picture.LinkImg" alt="" class="image-preview-img " style="display:block;" />
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>
+                }
+                </div>
         </div>
     </div>
 

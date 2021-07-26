@@ -85,27 +85,23 @@
                     <ul class="pager d-flex align-items-center justify-content-between list-unstyled" style="position: absolute; width: 100%; padding-right: 15px; bottom: -80px; ">
 
 
-                        <li style="text-align: right;">
-                            Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;
-                            <div class="MenuTrang">
+                        <li>
+
+                            <div class="MenuPage">
 
                                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
                             </div>
-                            <style>
-                                .MenuTrang li {
-                                    display: inline;
-                                }
-                            </style>
+
                         </li>
 
-                       
+
                     </ul>
-                   
+
                 </div>
-               
+
 
             </div>
-           
+
         </section>
     </div>
 </div>
@@ -160,3 +156,32 @@
         </div>
     </div>
 </section>
+<style>
+    .MenuPage li {
+        display: inline;
+        text-align: center;
+        background-color: #DA251C;
+
+    }
+
+    .pagination a {
+        color: black;
+        float: right;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+
+    }
+
+        .pagination a.active {
+            background-color: dodgerblue;
+            color: white;
+           
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            background-color: #DA251C;
+            color:#fff;
+        }
+</style>

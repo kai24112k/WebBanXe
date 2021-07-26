@@ -133,34 +133,33 @@
         </div>
     </div>
 
-    @*<div class="panel panel-default sidebar-menu">
-        <div class="panel-heading">
-            <h2><a href="#">TÁC GIẢ</a></h2>
-        </div>
-        @foreach (var item in (List<USER>)ViewBag.FULLNAME)
-        {
-            <div class="panel-body">
-                <div class="card-title md-3" style="width: 100%;">
+</div>
+<style>
+    .MenuPage li {
+        display: inline;
+        text-align: center;
+        background-color: #DA251C;
+    }
 
-                    @item.FullName
+    .pagination a {
+        color: black;
+        float: right;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
 
-                </div>
-            </div>
+        .pagination a.active {
+            background-color: dodgerblue;
+            color: white;
         }
 
-
-
-        </div>*@
-    @*<div class="panel panel-default sidebar-menu">
-                <div class="panel-heading">
-                    <h2><a href="#">TÁC GIẢ</a></h2>
-                </div>
-                <div class="panel-body">
-                    @Html.Action("Author", "Blog")
-                </div>
-            </div>
-        </div>*@
-</div>
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            background-color: #DA251C;
+            color: #fff;
+        }
+</style>
 
 
 
