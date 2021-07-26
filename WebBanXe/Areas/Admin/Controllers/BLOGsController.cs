@@ -68,7 +68,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     return View(bLOG);
                 }
                 bLOG.DateCreate = DateTime.Now;
-                bLOG.IdUser = int.Parse( Session["userID"].ToString());
+                bLOG.IdUser = int.Parse( Session["UserAdmin"].ToString());
                 db.BLOGs.Add(bLOG);
                 if (fileUpload != null)
                 {

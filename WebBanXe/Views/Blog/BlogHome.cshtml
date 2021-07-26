@@ -1,14 +1,14 @@
 ﻿@using WebBanXe.Model
-@using PagedList.Mvc;
+
 @model PagedList.PagedList<BLOG>
+
 @{
     ViewBag.Title = "Tạp chí xe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
+@using PagedList;
+@using PagedList.Mvc;
 
 <section style="background: url('/Public/img/photogrid.jpg') center center repeat; background-size: cover;"
          class="relative-positioned">
@@ -105,21 +105,19 @@
                             </div>
                         }
                         <ul class="pager d-flex align-items-center justify-content-between list-unstyled" style="position: absolute; width: 100%; padding-right: 15px; bottom: -80px; ">
-                            <li class="MenuPage">
+
+
+                            <li class="pagination-container PagedList-skipToPrevious"><a href="#" class=" btn btn-template-outlined">← Older</a></li>
+                            <li >
                                 @Html.PagedListPager(Model, Page => Url.Action("BlogHome", new { Page = Page }))
                             </li>
 
-
-                            <li class="previous"><a href="#" class="btn btn-template-outlined">← Older</a></li>
-                            <li class="next disabled"><a href="" class="btn btn-template-outlined">Newer →</a></li>
+                            <li class="PagedList-skipToNext"><a href="" class="btn btn-template-outlined">Newer →</a></li>
                         </ul>
                     </div>
 
                 </section>
             </div>
-        </div>
-    </div>
-</div>
             <div class="col-md-3">
                 <div class="panel panel-default sidebar-menu">
                     <div class="panel-heading">
@@ -129,7 +127,13 @@
                         @Html.Action("CategoryBlog", "Blog")
                     </div>
                 </div>
-                @*<div class="panel panel-default sidebar-menu">
+
+            </div>
+
+        </div>
+    </div>
+
+    @*<div class="panel panel-default sidebar-menu">
         <div class="panel-heading">
             <h2><a href="#">TÁC GIẢ</a></h2>
         </div>
@@ -147,15 +151,15 @@
 
 
         </div>*@
-                @*<div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading">
-                        <h2><a href="#">TÁC GIẢ</a></h2>
-                    </div>
-                    <div class="panel-body">
-                        @Html.Action("Author", "Blog")
-                    </div>
+    @*<div class="panel panel-default sidebar-menu">
+                <div class="panel-heading">
+                    <h2><a href="#">TÁC GIẢ</a></h2>
                 </div>
-            </div>*@
+                <div class="panel-body">
+                    @Html.Action("Author", "Blog")
+                </div>
+            </div>
+        </div>*@
 </div>
 
 

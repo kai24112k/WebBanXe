@@ -23,10 +23,13 @@ namespace WebBanXe.Model
     
         public int IdDiscount { get; set; }
         [Display(Name = "MÃ GIẢM GIÁ")]
+        [Required(ErrorMessage = "Mã giảm giá không được để trống")]
         public string CodeDiscount { get; set; }
         [Display(Name = "GIÁ TRỊ")]
+        [Required(ErrorMessage = "Giá trị không được để trống")]
         public int Value { get; set; }
         [Display(Name = "TRẠNG THÁI")]
+        [Required(ErrorMessage = "Trạng thái không được để trống")]
         public bool Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

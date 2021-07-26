@@ -22,6 +22,7 @@ namespace WebBanXe.Model
         [Display(Name = "EMAIL")]
         public string Email { get; set; }
         [Display(Name = "NỘI DUNG")]
+        [Required(ErrorMessage = "Nội dung không được để trống")]
         public string Content { get; set; }
         [Display(Name = "TRẠNG THÁI")]
         public Nullable<bool> Status { get; set; }

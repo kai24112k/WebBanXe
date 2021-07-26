@@ -22,6 +22,7 @@ namespace WebBanXe.Model
     
         public int IdCate { get; set; }
         [Display(Name = "THỂ LOẠI BÀI VIẾT")]
+        [Required(ErrorMessage = "Tên không được để trống")]
         public string NameCate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

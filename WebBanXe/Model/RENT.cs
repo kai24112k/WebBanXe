@@ -17,12 +17,17 @@ namespace WebBanXe.Model
     {
         public int IdRent { get; set; }
         [Display(Name = "NGÀY THUÊ")]
+        [Required(ErrorMessage = "Ngày thuê không được để trống")]
         public System.DateTime DateRent { get; set; }
         [Display(Name = "NGÀY TRẢ")]
+        [Required(ErrorMessage = "Ngày trả không được để trống")]
         public System.DateTime DateBack { get; set; }
         [Display(Name = "GIÁ")]
+        [Required(ErrorMessage = "Giá tiền không được để trống")]
+        [Range(1000000, 10000000, ErrorMessage = "Giá thuê phải từ {1} đến {2}.")]
         public int Price { get; set; }
         [Display(Name = "TRẠNG THÁI")]
+        [Required(ErrorMessage = "Trạng thái không được để trống")]
         public bool Status { get; set; }
         public int IdUser { get; set; }
         public int IdProduct { get; set; }

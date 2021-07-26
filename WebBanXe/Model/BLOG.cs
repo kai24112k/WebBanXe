@@ -16,6 +16,8 @@ namespace WebBanXe.Model
     public partial class BLOG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+
+     
         public BLOG()
         {
             this.IMG_BLOG = new HashSet<IMG_BLOG>();
@@ -24,11 +26,13 @@ namespace WebBanXe.Model
         public int IdBlog { get; set; }
         public int IdCate { get; set; }
         public int IdUser { get; set; }
-        [Display(Name = "NỘI DUNG")]
+        [Display(Name = "NỘI DUNG")]    
+        [Required(ErrorMessage = "Nội dung không được để trống")]
         public string Content { get; set; }
         [Display(Name = "NGÀY TẠO")]
         public System.DateTime DateCreate { get; set; }
         [Display(Name = "TIÊU ĐỀ")]
+        [Required(ErrorMessage = "Tiêu đề không được để trống")]
         public string Title { get; set; }
     
         public virtual CATEGORY_BLOG CATEGORY_BLOG { get; set; }

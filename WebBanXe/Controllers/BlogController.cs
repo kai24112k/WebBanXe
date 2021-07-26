@@ -22,7 +22,7 @@ namespace WebBanXe.Controllers
         [Route("tap-chi-xe")]
         public ActionResult BlogHome(int? IdCate, int? page, int? IdUser)
         {
-                int pageSize = 4;
+                int pageSize = 2;
                 int pageNum = (page ?? 1);
             var NewBlog = new List<BLOG>();
 

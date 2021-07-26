@@ -22,8 +22,10 @@ namespace WebBanXe.Model
         }   
         public int IdBrand { get; set; }
         [Display(Name = "HÃNG XE")]
+        [Required(ErrorMessage = "Hãng xe không được để trống")]
         public string NameBrand { get; set; }
         [Display(Name = "HÌNH ẢNH")]
+     
         public string ImgBrand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT> PRODUCTs { get; set; }

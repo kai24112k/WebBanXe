@@ -60,10 +60,10 @@ namespace WebBanXe.Areas.Admin.Controllers
                 }
                 if (fileUpload != null)
                 {
-                    var extension = Path.GetExtension(fileUpload.FileName);
+                   
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bRAND.NameBrand.ToLower()) + "-anh-bia" + extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(bRAND.NameBrand.ToLower()) + "-anh-bia.png");
                     var path = Path.Combine(Server.MapPath("~/Public/img/brands/"), fileName);
                     try
                     {

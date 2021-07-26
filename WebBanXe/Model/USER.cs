@@ -27,16 +27,22 @@ namespace WebBanXe.Model
         public int IdUser { get; set; }
         public int IdRole { get; set; }
         [Display(Name = "HỌ VÀ TÊN")]
+        [Required(ErrorMessage = "Họ tên không được để trống")]
         public string FullName { get; set; }
         [Display(Name = "EMAIL")]
+        [Required(ErrorMessage = "Email không được để trống")]
         public string Email { get; set; }
         [Display(Name = "TÊN TÀI KHOẢN")]
+        [Required(ErrorMessage = "Tên tài khoản không được để trống")]
         public string Username { get; set; }
         [Display(Name = "MẬT KHẨU")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string Password { get; set; }
         [Display(Name = "ĐỊA CHỈ")]
+        [Required(ErrorMessage = "Địa chỉ không được để trống")]
         public string Address { get; set; }
         [Display(Name = "SĐT")]
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
         public string Phone { get; set; }
         [Display(Name = "NGÀY TẠO")]
         public Nullable<System.DateTime> DayCreate { get; set; }

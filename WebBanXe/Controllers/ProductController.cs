@@ -1,3 +1,4 @@
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -14,24 +15,27 @@ namespace WebBanXe.Controllers
 
         [Route("san-pham")]
         // GET: Product
+        private List<PRODUCT> GetProduct(List<PRODUCT> products)
+        {
+            return products.OrderByDescending(a => a.IdProduct).ToList();
+        }
 
-     
         public ActionResult Index(int? idBrand, int? idType, int? idStatus, int? page)
         {
-            //int pageSize = 6;
-            //int pageNum = (page ?? 1);
-            //var xemoi = 
+            int pageSize = 3;
+            int pageNum = (page ?? 1);
+            var NewProduct = new List<PRODUCT>();
             List<PRODUCT> listproduct = new List<PRODUCT>();
             ViewBag.BRAND = db.BRANDs.ToList();
             if (idBrand != null || idType != null || idStatus != null)
             {
-                listproduct = db.PRODUCTs.Where(p => p.IdBrand == idBrand || p.IdType == idType || p.Status == idStatus).ToList();
+                NewProduct = GetProduct(db.PRODUCTs.Where(p => p.IdBrand == idBrand || p.IdType == idType || p.Status == idStatus).ToList());
             }
             else
             {
-                listproduct = db.PRODUCTs.ToList();
+                NewProduct = GetProduct(db.PRODUCTs.ToList());
             }
-            return View(listproduct);
+            return View(NewProduct.ToPagedList(pageNum, pageSize));
 
         }
 

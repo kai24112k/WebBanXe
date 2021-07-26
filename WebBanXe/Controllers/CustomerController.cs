@@ -30,7 +30,7 @@ namespace WebBanXe.Controllers
         public ActionResult Login(FormCollection frm)
         {
             var userName = frm["userName"];
-            var password = MD5Helper.MD5Hash(frm["password"]);
+            var password =  MD5Helper.MD5Hash(frm["password"]);
 
             if (String.IsNullOrEmpty(userName))
             {
@@ -43,7 +43,7 @@ namespace WebBanXe.Controllers
             }
             else
             {
-                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password);
+                USER user = db.USERs.SingleOrDefault(u => u.Username == userName && u.Password == password && u.IdRole == 3);
                 if (user != null)
                 {
                     Session["userID"] = user.IdUser;

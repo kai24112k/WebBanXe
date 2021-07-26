@@ -17,6 +17,7 @@ namespace WebBanXe.Model
         public int IdImg { get; set; }
         public int IdClass { get; set; }
         public string AltImg { get; set; }
+
         public string LinkImg { get; set; }
     
         public virtual CLASS CLASS { get; set; }

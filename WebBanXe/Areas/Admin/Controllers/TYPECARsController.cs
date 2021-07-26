@@ -70,16 +70,17 @@ namespace WebBanXe.Areas.Admin.Controllers
             { 
                  var typecar = db.TYPECARs.Where(p => p.NameType.ToLower() == tYPECAR.NameType.ToLower()).SingleOrDefault();
                 if (typecar != null)
-                {                  
+                {
                     ViewBag.Error = "Loại xe đã tồn tại";
                     return View(tYPECAR);
                 }
+
                 if (fileUpload != null)
                 {
-                    var extension = Path.GetExtension(fileUpload.FileName);
+                   
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
                     if (fileUpload.ContentLength > 3 * 1024 * 1024) throw new Exception("Hình ảnh vượt quá 3Mb");
-                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(tYPECAR.NameType.ToLower()) + "-anh-bia" + extension);
+                    var fileName = Path.GetFileName(RemoveVietnamese.convertToSlug(tYPECAR.NameType.ToLower()) + "-anh-bia.png");
                     var path = Path.Combine(Server.MapPath("~/Public/img/typecars/"), fileName);
                     try
                     {

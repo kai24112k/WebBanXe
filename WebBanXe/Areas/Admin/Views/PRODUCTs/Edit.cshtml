@@ -43,7 +43,7 @@
                         @Html.LabelFor(model => model.NameProduct, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-12">
                             @Html.EditorFor(model => model.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger"  })
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,27 +53,54 @@
                             @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    @foreach (var picture in Model.IMG_PRODUCT)
-                    {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <lable class="control-label col-md-2">Hình ảnh</lable>
-                                <div class="col-md-12">
-                                    <input type="file" name="fileUpload" id="fileUpload">
-                                    <div class="image-preview" id="imagePreview">
-                                        <img src="@picture.LinkImg" alt="Image Preview" class="image-preview-img " style="display:block;" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdBrand, "IdBrand", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.DropDownList("IdBrand", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdBrand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-                                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdType, "IdType", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.DropDownList("IdType", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                @foreach (var picture in Model.IMG_PRODUCT)
+                {
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <lable class="control-label col-md-2">Hình ảnh</lable>
+                            <div class="col-md-12">
+                                <input type="file" name="fileUpload" id="fileUpload">
+                                <div class="image-preview" id="imagePreview">
+                                    <img src="@picture.LinkImg" alt="Image Preview" class="image-preview-img " style="display:block;" />
+
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
+                }
 
-                </div>
+
             </div>
         </div>
     </div>
+
+
+   
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -82,31 +109,6 @@
             <script>CKEDITOR.replace("txtContent");</script>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.IdBrand, "IdBrand", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("IdBrand", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.IdBrand, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.IdType, "IdType", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("IdType", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.IdType, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Lưu" class="btn btn-primary form-control" />

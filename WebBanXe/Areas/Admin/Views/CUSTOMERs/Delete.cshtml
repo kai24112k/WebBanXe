@@ -5,85 +5,71 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>USER</h4>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="h2">XÓA NGƯỜI DÙNG</h2>
+                    <p>Bạn có chắc chắn muốn xóa người dùng này không?</p>
+                </div>
+                <div class="col-md-3" style="text-align:right;">
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DayCreate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DayCreate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USER_ROLE.RoleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USER_ROLE.RoleName)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                    @Html.ActionLink("QUAY LẠI", "Index")
+                </div>
+            </div>
         </div>
-    }
+    </div>
+
+    <hr />
+
+
+    <div class="row border border-2 border-dark rounded-3 py-3">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Delete", "EMPLOYEEs", FormMethod.Post))
+            {
+
+                <div class="mb-3">
+                    <label class="form-label">Họ và tên</label>
+                    <input type="text" name="address" class="form-control" required value="@Model.FullName" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Username" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" name="title" class="form-control" value="@Model.Email" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Address" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.Phone" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày tạo</label>
+                    <input name="message" class="form-control" rows="7" value="@Model.DayCreate" readonly>
+                </div>
+
+
+
+
+            }
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-success form-control" />
+
+                </div>
+            }
+        </div>
+    </div>
+
+
 </div>
