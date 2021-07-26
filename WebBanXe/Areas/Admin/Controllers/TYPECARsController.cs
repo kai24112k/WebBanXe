@@ -147,12 +147,9 @@ namespace WebBanXe.Areas.Admin.Controllers
 
                     }
                     fileUpload.SaveAs(path);
-
                     tYPECAR.ImgType = "/Public/img/typecars/" + fileName;
                     UpdateModel(tYPECAR);
-
                     db.SaveChanges();
-                   
                     db.Entry(tYPECAR).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

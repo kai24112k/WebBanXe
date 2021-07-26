@@ -126,6 +126,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(BLOG bLOG, HttpPostedFileBase fileUpload)
         {
+            var pathold = Path.Combine(Server.MapPath("~/Public/img/products/"), Path.GetFileName(RemoveVietnamese.convertToSlug(bLOG.Title.ToLower()) + "-anh-bia.png"));
             if (ModelState.IsValid)
             {
                 var blog = db.BLOGs.Where(p => p.Title.ToLower() == bLOG.Title.ToLower() && p.IdBlog != bLOG.IdBlog).SingleOrDefault();
@@ -146,6 +147,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     var path = Path.Combine(Server.MapPath("~/Public/img/blogs/"), fileName);
                     try
                     {
+                        if (System.IO.File.Exists(pathold)) System.IO.File.Delete(pathold);
                         if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
                     }
                     catch
@@ -157,10 +159,10 @@ namespace WebBanXe.Areas.Admin.Controllers
                     img.AltImg = fileName;
                     img.LinkImg = "/Public/img/blogs/" + fileName;
                     img.IdBlog = bLOG.IdBlog;
-                    var imgageold = db.IMG_BLOG.Where(x => x.LinkImg == img.LinkImg).SingleOrDefault();
-                    if (imgageold != null)
+                    var imgold = db.IMG_BLOG.Where(x => x.IdBlog == img.IdBlog).SingleOrDefault();
+                    if (imgold != null)
                     {
-                        db.IMG_BLOG.Remove(imgageold);
+                        db.IMG_BLOG.Remove(imgold);
                     }
                     db.IMG_BLOG.Add(img);
                     db.Entry(bLOG).State = EntityState.Modified;
