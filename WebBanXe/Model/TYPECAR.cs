@@ -26,7 +26,6 @@ namespace WebBanXe.Model
         [Required(ErrorMessage = "Loại xe không được để trống")]
         public string NameType { get; set; }
         [Display(Name = "HÌNH ẢNH")]
-        [Required(ErrorMessage = "Hình ảnh không được để trống")]
         public string ImgType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

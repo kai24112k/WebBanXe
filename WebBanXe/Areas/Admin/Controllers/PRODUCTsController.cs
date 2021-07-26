@@ -131,6 +131,7 @@ namespace WebBanXe.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(PRODUCT pRODUCT, HttpPostedFileBase fileUpload)
         {
+            var pathold = Path.Combine(Server.MapPath("~/Public/img/products/"), Path.GetFileName(RemoveVietnamese.convertToSlug(pRODUCT.NameProduct.ToLower()) + "-anh-bia.png"));
             if (ModelState.IsValid)
             {
                 var product = db.PRODUCTs.Where(p => p.NameProduct.ToLower() == pRODUCT.NameProduct.ToLower() && pRODUCT.IdProduct != p.IdProduct).SingleOrDefault();
@@ -149,6 +150,7 @@ namespace WebBanXe.Areas.Admin.Controllers
                     var path = Path.Combine(Server.MapPath("~/Public/img/products/"), fileName);
                     try
                     {
+                        if (System.IO.File.Exists(pathold)) System.IO.File.Delete(pathold);
                         if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
                     }
                     catch
@@ -160,11 +162,10 @@ namespace WebBanXe.Areas.Admin.Controllers
                     img.AltImg = fileName;
                     img.LinkImg = "/Public/img/products/" + fileName;
                     img.IdProduct = pRODUCT.IdProduct;
-                    var imgold = db.IMG_PRODUCT.Where(x => x.LinkImg == img.LinkImg).SingleOrDefault();
+                    var imgold = db.IMG_PRODUCT.Where(x => x.IdProduct == img.IdProduct).SingleOrDefault();
                     db.IMG_PRODUCT.Remove(imgold);
                     db.IMG_PRODUCT.Add(img);
                 }
-               
                 db.Entry(pRODUCT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
