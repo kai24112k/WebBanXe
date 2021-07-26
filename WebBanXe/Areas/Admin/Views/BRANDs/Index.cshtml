@@ -27,7 +27,7 @@
         {
         <tr>
             <td>
-                <img src="@Html.Raw(item.ImgBrand)" alt="@Html.Raw(item.ImgBrand)"  class="img-fluid admin_img text-center"  />
+                <img src="@Html.Raw(item.ImgBrand)?v=@DateTime.Now.ToFileTimeUtc()" alt="@item.NameBrand"  class="img-fluid admin_img text-center"  />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NameBrand)

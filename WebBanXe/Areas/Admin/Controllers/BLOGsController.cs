@@ -137,8 +137,9 @@ namespace WebBanXe.Areas.Admin.Controllers
                     ViewBag.Error = "Tiêu đề đã tồn tại";
                     return View(bLOG);
                 }
-                bLOG.DateCreate = DateTime.Now;
-                bLOG.IdUser = int.Parse(Session["userID"].ToString());
+                db.Entry(bLOG).State = EntityState.Modified;
+                db.SaveChanges();
+                bLOG.IdUser = int.Parse(Session["UserAdmin"].ToString());
                 if (fileUpload != null)
                 {
                     if (!fileUpload.ContentType.Contains("image")) throw new Exception("File hình không hợp lệ");
@@ -165,7 +166,6 @@ namespace WebBanXe.Areas.Admin.Controllers
                         db.IMG_BLOG.Remove(imgold);
                     }
                     db.IMG_BLOG.Add(img);
-                    db.Entry(bLOG).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
