@@ -25,14 +25,21 @@ namespace WebBanXe.Model
     
         public int IdProduct { get; set; }
         [Display (Name="SẢN PHẨM")]
+        [Required]
         public string NameProduct { get; set; }
         [Display(Name = "GIÁ")]
+        [Required]
+        [Range(100000,1000000000,ErrorMessage ="Giá vui lòng nhập trên {1} và dưới {2}")]
         public int Price { get; set; }
         [Display(Name = "MÔ TẢ")]
+        [Required]
         public string Description { get; set; }
         [Display(Name = "TRẠNG THÁI")]
+        [Required]
         public int Status { get; set; }
+        [Required]
         public int IdBrand { get; set; }
+        [Required]
         public int IdType { get; set; }
     
         public virtual BRAND BRAND { get; set; }
