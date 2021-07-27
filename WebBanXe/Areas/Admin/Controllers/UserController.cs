@@ -7,10 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebBanXe.Model;
-
 namespace WebBanXe.Areas.Admin.Controllers
 {
-    public class EMPLOYEEsController : BaseController
+    public class UserController : BaseController
     {
         private DBBanXeEntities db = new DBBanXeEntities();
         // GET: Admin/EMPLOYEEs
@@ -52,7 +51,7 @@ namespace WebBanXe.Areas.Admin.Controllers
             uSER.DayCreate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower() 
+                var user = db.USERs.Where(p => p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower()
                 || p.Phone == uSER.Phone).FirstOrDefault();
                 if (user != null)
                 {
@@ -94,9 +93,8 @@ namespace WebBanXe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                uSER.DayCreate = DateTime.Now;
                 var user = db.USERs.Where(p => (p.FullName.ToLower() == uSER.FullName.ToLower() || p.Email.ToLower() == uSER.Email.ToLower()
-               || p.Phone == uSER.Phone) && p.IdUser != uSER.IdUser).FirstOrDefault();
+               || p.Phone == uSER.Phone) && p.IdUser != uSER.IdUser).SingleOrDefault();
                 if (user != null)
                 {
                     ViewBag.IdRole = new SelectList(db.USER_ROLE, "IdRole", "RoleName", uSER.IdRole);
@@ -112,9 +110,9 @@ namespace WebBanXe.Areas.Admin.Controllers
         }
 
         // GET: Admin/EMPLOYEEs/Delete/5
-       
+
         public ActionResult Delete(int id)
-        {   
+        {
             USER uSER = db.USERs.Find(id);
             db.USERs.Remove(uSER);
             db.SaveChanges();

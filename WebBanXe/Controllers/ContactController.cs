@@ -19,34 +19,35 @@ namespace WebBanXe.Controllers
             return View();
 
         }
+
+        [Route("lien-he")]
         [HttpPost]
-        public ActionResult ContactPage(USER user,FormCollection contactForm)
+        public ActionResult ContactPage(FormCollection contactForm)
         {
             CONTACT contact = new CONTACT();
             var title = contactForm["title"];
             var email = contactForm["email"];
             var content = contactForm["content"];
-           
-    
-            
             contact.Title = title;
             contact.Email = email;
             contact.Content = content;
-            if(Session["userID"]!= null)
+            var user = new USER();
+            if (Session["userID"]!= null)
             {
                 contact.IdUser = int.Parse(Session["userID"].ToString());
+                user = db.USERs.Where(x => x.IdUser == contact.IdUser).SingleOrDefault();
+                if (user != null)
+                {
+                    contact.Email = user.Email;
+                    contact.IdUser = user.IdUser;
+                }
             }
             else
             {
-                Session["userID"] = null;
+                contact.IdUser = null;
             }
             
             contact.Status = false;
-            if (user != null)
-            {
-                contact.Email = user.Email;
-                contact.IdUser = user.IdUser;
-            }
             db.CONTACTs.Add(contact);
             db.SaveChanges();
 

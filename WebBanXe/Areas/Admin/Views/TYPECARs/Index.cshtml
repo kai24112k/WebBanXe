@@ -26,7 +26,7 @@
         {
         <tr>
             <td>
-                <img src="@item.ImgType" alt="@item.ImgType" class="img-fluid admin_img text-center" />
+                <img src="@item.ImgType?v=@DateTime.Now.ToFileTimeUtc()" alt="@item.ImgType" class="img-fluid admin_img text-center" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NameType)
